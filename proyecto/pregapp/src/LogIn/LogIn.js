@@ -5,11 +5,16 @@ import Image from '../components/Image/Image';
 import Logo from '../images/logo.png';
 import Title from '../components/Text/Title';
 import PlainText from '../components/Text/PlainText';
+import TextLink from './components/TextLinkButton';
 
 function LogIn(){
 
   const handleClick = () => {
     console.log("Button clicked!");
+  }
+
+  const handleClickTextLink = () => {
+    console.log("TextLink clicked!");
   }
 
     return (
@@ -19,6 +24,7 @@ function LogIn(){
         <Title className="title" valueText={'Titulo'}/>
         <Button className="buttonSalir" valueButton={'SALIR'} onClick={handleClick}/>
         <PlainText className="text" textValue={'Texto de ejemplo'}/>
+        <TextLink className="textLink" textValue={'Texto enlace de ejemplo'} onClick={handleClickTextLink}/>
       </header>
     </div>
     );

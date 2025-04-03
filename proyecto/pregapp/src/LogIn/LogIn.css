@@ -12,3 +12,9 @@
     font-weight: bold;
     color: #000000;
 }
+
+.textLink {
+    color: #00d2cf;
+    background-color: transparent;
+    border: none;
+}
