@@ -1,3 +1,14 @@
 .buttonSalir {
     font-size: 25px;
 }
+
+.imgLogo {
+    width: 240px;
+    height: 240px;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000;
+}

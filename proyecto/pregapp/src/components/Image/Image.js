@@ -1,7 +1,7 @@
-function Image({src}) {
+function Image({className, src}) {
     return (
       <div>
-        <img src={src} alt="imagen"></img>
+        <img className={className} src={src} alt="imagen"></img>
       </div>
     );
   }

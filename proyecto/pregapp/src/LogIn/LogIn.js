@@ -3,6 +3,8 @@ import './LogIn.css';
 import Button from '../components/Button/Button';
 import Image from '../components/Image/Image';
 import Logo from '../images/logo.png';
+import Title from '../components/Text/Title';
+import PlainText from '../components/Text/PlainText';
 
 function LogIn(){
 
@@ -13,9 +15,10 @@ function LogIn(){
     return (
     <div className="LogIn">
       <header className="LogIn-header">   
-        <h1>Pagina</h1>
+        <Image className={"imgLogo"} src={Logo}/>
+        <Title className="title" valueText={'Titulo'}/>
         <Button className="buttonSalir" valueButton={'SALIR'} onClick={handleClick}/>
-        <Image src={Logo}/>
+        <PlainText className="text" textValue={'Texto de ejemplo'}/>
       </header>
     </div>
     );
