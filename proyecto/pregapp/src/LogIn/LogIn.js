@@ -1,6 +1,6 @@
 import React from 'react';
 import './LogIn.css';
-import Button from '../components/Button';
+import Button from '../components/Button/Button';
 
 function LogIn(){
 
