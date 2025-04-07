@@ -7,7 +7,7 @@ import Title from '../../components/Text/Title';
 import PlainText from '../../components/Text/PlainText';
 import { useState, useEffect } from 'react';
 import InputText from '../../components/Form/InputText';
-
+import '../../styles/inputs.css';
 function LogIn(){
   // Esto es un ejemplo para probar los componentes
   const handleClick = () => {
