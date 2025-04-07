@@ -1,0 +1,17 @@
+.buttonStandard {
+    font-size: 25px;
+}
+.buttonSalir {
+    font-size: 25px;
+    background-color: #E94E4E;
+    color: #000000;
+    border-radius: 24px;
+    width: 136px;
+    height: 52px;
+    border:#000000 0.3px solid;
+    @media (max-width: 768px) {
+        width: 100px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
