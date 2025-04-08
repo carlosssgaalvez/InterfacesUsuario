@@ -26,3 +26,17 @@
         font-size: 20px;
     }
 }
+
+.buttonMenu {
+    font-size: 20px;
+    color: #000000;
+    border-radius: 30px;
+    width: 475px;
+    height: 67px;
+    border:#000000 0.3px solid;
+    @media (max-width: 768px) {
+        width: 286px;
+        height: 49px;
+        font-size: 16px;
+    }
+}
