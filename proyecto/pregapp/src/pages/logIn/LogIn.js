@@ -4,18 +4,17 @@ import Button from '../../components/Button/Button';
 import Image from '../../components/Image/Image';
 import Logo from '../../images/logo.png';
 import Title from '../../components/Text/Title';
-import PlainText from '../../components/Text/PlainText';
+import ButtonBack from '../../components/Button/ButtonBack';
 import { useState, useEffect } from 'react';
 import InputText from '../../components/Form/InputText';
 import '../../styles/inputs.css';
 import '../../styles/buttons.css';
 import Label from '../../components/Text/Label';
 import { useNavigate } from 'react-router-dom';
-
+import ButtonAdvance from '../../components/Button/ButtonAdvance';
 function LogIn(){
   // Esto es un ejemplo para probar los componentes
   const navigate = useNavigate();
-
   const handleClick = () => {
     console.log("Button clicked!");
   }
@@ -33,7 +32,8 @@ function LogIn(){
     setInputValue(event.target.value);
   };
  
-  return (
+  return  (
+    
     <div className="LogIn">
       <header className="LogIn-header">   
         <div className="container">
@@ -56,8 +56,8 @@ function LogIn(){
         </div>
       </header>
         <div className="buttonContainer">
-        <Button className="buttonBack" valueButton={'Salir'} onClick={handleExit}/>
-        <Button className={"buttonAdvance"} valueButton={'Iniciar sesión'} onClick={handleClick}/>
+        <ButtonBack valueButton={'Regresar'} onClick={handleExit}/> 
+        <ButtonAdvance  valueButton={'Iniciar sesión'} onClick={handleClick}/>
         </div>
     </div>
     );
