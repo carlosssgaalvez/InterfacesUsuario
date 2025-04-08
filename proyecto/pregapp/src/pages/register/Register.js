@@ -1,5 +1,5 @@
 import React from 'react';
-import './LogIn.css';
+import './Register.css';
 import Button from '../../components/Button/Button';
 import Image from '../../components/Image/Image';
 import Logo from '../../images/logo.png';
@@ -12,20 +12,20 @@ import '../../styles/buttons.css';
 import Label from '../../components/Text/Label';
 import { useNavigate } from 'react-router-dom';
 
-function LogIn(){
+function Register(){
   // Esto es un ejemplo para probar los componentes
-  const navigate = useNavigate();
-
   const handleClick = () => {
     console.log("Button clicked!");
   }
 
+  const navigate = useNavigate(); 
+  
   const handleExit = () => {
-    window.close(); 
+     navigate('/login'); 
   };
 
   const handleClickTextLink = () => {
-    navigate('/register');
+    console.log("TextLink clicked!");
   }
     
   const [inputValue, setInputValue] = useState(''); 
@@ -34,33 +34,38 @@ function LogIn(){
   };
  
   return (
-    <div className="LogIn">
-      <header className="LogIn-header">   
+    <div className="Register">
+      <header className="Register-header">   
         <div className="container">
         <Image className={"imgLogo"} src={Logo}/>
-          <Title className="title" valueText={'INICIAR SESIÓN'}/>
-          <br/>
+        <Title className="title" valueText={'REGISTRATE'}/>
+        <br/>
+
+          <Label className="estiloTexto" forId={'correo'} textValue={'Correo electrónico'}/> 
+          <InputText id={'correo'} className={"inputText"} placeholder={"Escribe tu correo electrónico"}/><br/>
+          <br/><br/>
 
           <Label className="estiloTexto" forId={'usuario'} textValue={'Usuario'}/> 
           <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"}/><br/>
-          <br/>
+          <br/><br/>
           
           <Label className="estiloTexto" forId={'contrasenia'} textValue={'Contraseña'}/>
           <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"}/><br/>
-          <br/>
+          <br/><br/>
 
-          <Label idFor={'linkButton'} className="estiloTexto" textValue={'¿No tienes cuenta?, '}/>
-          <Button id={'linkButton'} className="textLink" valueButton={'registrate aquí'} onClick={handleClickTextLink}/>
-          <br/>
+          <Label className="estiloTexto" forId={'contrasenia2'} textValue={'Repite la contraseña'}/>
+          <InputText id={'contrasenia2'} className={"inputText"} placeholder={"Repite tu contraseña"}/><br/>
+          
           
         </div>
       </header>
         <div className="buttonContainer">
-        <Button className="buttonBack" valueButton={'Salir'} onClick={handleExit}/>
-        <Button className={"buttonAdvance"} valueButton={'Iniciar sesión'} onClick={handleClick}/>
+        <Button className="buttonBack" valueButton={'Volver'} onClick={handleExit}/>
+        <Button className={"buttonAdvance"} valueButton={'Confirmar'} onClick={handleClick}/>
+        
         </div>
     </div>
     );
 }
 
-export default LogIn;
+export default Register;
