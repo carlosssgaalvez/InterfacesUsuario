@@ -36,19 +36,25 @@ function LogIn(){
         <div className="container">
         <Image className={"imgLogo"} src={Logo}/>
           <Title className="title" valueText={'INICIAR SESIÓN'}/>
+
           <Label className="estiloTexto" forId={'usuario'} textValue={'Usuario'}/> 
           <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"}/><br/>
           <br/>
+          
           <Label className="estiloTexto" forId={'contrasenia'} textValue={'Contraseña'}/>
           <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"}/><br/>
           <br/>
+
           <Label idFor={'linkButton'} className="estiloTexto" textValue={'¿No tienes cuenta?, '}/>
           <Button id={'linkButton'} className="textLink" valueButton={'registrate aquí'} onClick={handleClickTextLink}/>
           <br/>
+          
         </div>
       </header>
-        <br/>
-        <Button className="buttonSalir" valueButton={'Salir'} onClick={handleExit}/><Button className={"buttonStandar"} valueButton={'Iniciar sesión'} onClick={handleClick}/>
+        <div className="buttonContainer">
+        <Button className="buttonBack" valueButton={'Salir'} onClick={handleExit}/>
+        <Button className={"buttonAdvance"} valueButton={'Iniciar sesión'} onClick={handleClick}/>
+        </div>
     </div>
     );
 }
