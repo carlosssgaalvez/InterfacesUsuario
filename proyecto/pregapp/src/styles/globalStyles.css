@@ -1,3 +1,10 @@
 .app{
     font-family: 'inter', sans-serif;
 }
+.labelText {
+    min-width: 120px;
+    text-align: left;
+    font-size: 20px;
+    color: #000000;
+    
+}

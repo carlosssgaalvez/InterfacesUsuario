@@ -11,6 +11,8 @@ import '../../styles/inputs.css';
 import '../../styles/buttons.css';
 import Label from '../../components/Text/Label';
 import { useNavigate } from 'react-router-dom';
+import DivLabelInput from '../../components/divs/divLabelInput';
+import DivGap4 from '../../components/divs/divGap4';
 
 function Register(){
   // Esto es un ejemplo para probar los componentes
@@ -40,24 +42,24 @@ function Register(){
         <div className="container">
         <Image className={"imgLogo"} src={Logo}/>
         <Title className="title" valueText={'REGISTRATE'}/>
-        <br/>
-
-          <Label className="estiloTexto" forId={'correo'} textValue={'Correo electrónico'}/> 
-          <InputText id={'correo'} className={"inputText"} placeholder={"Escribe tu correo electrónico"} type={"text"}/><br/>
-          <br/><br/>
-
-          <Label className="estiloTexto" forId={'usuario'} textValue={'Usuario'}/> 
-          <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"} type={"text"}/><br/>
-          <br/><br/>
-          
-          <Label className="estiloTexto" forId={'contrasenia'} textValue={'Contraseña'}/>
-          <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"} type={"password"}/><br/>
-          <br/><br/>
-
-          <Label className="estiloTexto" forId={'contrasenia2'} textValue={'Repite la contraseña'}/>
-          <InputText id={'contrasenia2'} className={"inputText"} placeholder={"Repite tu contraseña"} type={"password"}/><br/>
-          
-          
+        <DivGap4>
+          <DivLabelInput>
+            <Label className="labelText" forId={'correo'} textValue={'Email:'}/> 
+            <InputText id={'correo'} className={"inputText"} placeholder={"Escribe tu correo electrónico"} type={"text"}/><br/>
+          </DivLabelInput>
+          <DivLabelInput>
+            <Label className="labelText" forId={'usuario'} textValue={'Usuario:'}/> 
+            <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"} type={"text"}/><br/>
+          </DivLabelInput>
+          <DivLabelInput>
+            <Label className="labelText" forId={'contrasenia'} textValue={'Contraseña:'}/>
+            <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"} type={"password"}/><br/>
+          </DivLabelInput>
+          <DivLabelInput>
+            <Label className="labelText" forId={'contrasenia2'} textValue={'Contraseña:'}/>
+            <InputText id={'contrasenia2'} className={"inputText"} placeholder={"Repite tu contraseña"} type={"password"}/><br/>
+          </DivLabelInput>
+        </DivGap4>
         <br/><br/>
         <div className="buttonContainer">
         <Button className="buttonBack" valueButton={'Volver'} onClick={handleExit}/>

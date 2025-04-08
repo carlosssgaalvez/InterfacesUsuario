@@ -9,9 +9,12 @@ import { useState, useEffect } from 'react';
 import InputText from '../../components/Form/InputText';
 import '../../styles/inputs.css';
 import '../../styles/buttons.css';
+import '../../styles/globalStyles.css';
 import Label from '../../components/Text/Label';
 import { useNavigate } from 'react-router-dom';
 import ButtonAdvance from '../../components/Button/ButtonAdvance';
+import DivGap4 from '../../components/divs/divGap4';
+import DivLabelInput from '../../components/divs/divLabelInput';
 function LogIn(){
   // Esto es un ejemplo para probar los componentes
   const navigate = useNavigate();
@@ -43,22 +46,23 @@ function LogIn(){
     <div className="LogIn">
       <header className="LogIn-header">   
         <div className="container">
-        <Image className={"imgLogo"} src={Logo}/>
-          <Title className="title" valueText={'INICIAR SESIÓN'}/>
-          <br/>
-
-          <Label className="estiloTexto" forId={'usuario'} textValue={'Usuario'}/> 
-          <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"} value={userNameValue} onChange={handleChangeUserName}/><br/>
-          <br/>
+          <Image className={"imgLogo"} src={Logo}/>
+          <DivGap4>
+            <Title className="title" valueText={'INICIAR SESIÓN'}/>
           
-          <Label className="estiloTexto" forId={'contrasenia'} textValue={'Contraseña'} onChange={handleChangeUserName}/>
-          <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"} value={passwordValue} onChange={handleChangePassword} type={"password"}/><br/>
-          <br/>
-
-          <Label idFor={'linkButton'} className="estiloTexto" textValue={'¿No tienes cuenta?, '}/>
-          <Button id={'linkButton'} className="textLink" valueButton={'registrate aquí'} onClick={handleClickTextLink}/>
-          <br/>
-          
+          <DivLabelInput>
+            <Label className="labelText" forId={'usuario'} textValue={'Usuario:'}/> 
+            <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"} value={userNameValue} onChange={handleChangeUserName}/><br/>
+          </DivLabelInput>
+          <DivLabelInput>
+            <Label className="labelText" forId={'contrasenia'} textValue={'Contraseña:'}/>
+            <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"} value={passwordValue} onChange={handleChangePassword} type={"password"}/><br/>
+          </DivLabelInput>
+          <DivLabelInput>
+            <Label idFor={'linkButton'} className="labelText" textValue={'¿No tienes cuenta?, '}/>
+            <Button id={'linkButton'} className="textLink" valueButton={'registrate aquí'} onClick={handleClickTextLink}/>
+          </DivLabelInput>
+          </DivGap4>
         </div>
       </header>
         <div className="buttonContainer">
