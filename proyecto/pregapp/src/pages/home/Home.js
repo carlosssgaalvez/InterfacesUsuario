@@ -13,7 +13,11 @@ function Home() {
     <div>
         <Title className={'title'} valueText={'nombreJuego'}/>
         <PlainText className={'plainText'} textValue={user}/>
+<<<<<<< Updated upstream
         <br></br>
+=======
+        <br/>
+>>>>>>> Stashed changes
         <PlainText className={'plainText'} textValue={password}/>
     </div>
   ):<h1>acceso denegado</h1>;

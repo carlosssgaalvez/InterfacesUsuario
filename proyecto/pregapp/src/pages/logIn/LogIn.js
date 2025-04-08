@@ -48,11 +48,19 @@ function LogIn(){
           <br/>
 
           <Label className="estiloTexto" forId={'usuario'} textValue={'Usuario'}/> 
+<<<<<<< Updated upstream
           <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"} value={userNameValue} onChange={handleChangeUserName}/><br/>
           <br/>
           
           <Label className="estiloTexto" forId={'contrasenia'} textValue={'Contraseña'} onChange={handleChangeUserName}/>
           <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"} value={passwordValue} onChange={handleChangePassword} type={"password"}/><br/>
+=======
+          <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"}  value={userNameValue} onChange={handleChangeUserName}/><br/>
+          <br/>
+          
+          <Label className="estiloTexto" forId={'contrasenia'} textValue={'Contraseña'}/>
+          <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"} value={passwordValue} onChange={handleChangePassword}/><br/>
+>>>>>>> Stashed changes
           <br/>
 
           <Label idFor={'linkButton'} className="estiloTexto" textValue={'¿No tienes cuenta?, '}/>
