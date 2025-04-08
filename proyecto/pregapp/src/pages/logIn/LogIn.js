@@ -4,8 +4,7 @@ import Button from '../../components/Button/Button';
 import Image from '../../components/Image/Image';
 import Logo from '../../images/logo.png';
 import Title from '../../components/Text/Title';
-import PlainText from '../../components/Text/PlainText';
-import { useState, useEffect } from 'react';
+import {useState} from 'react';
 import InputText from '../../components/Form/InputText';
 import '../../styles/inputs.css';
 import '../../styles/buttons.css';
@@ -16,23 +15,29 @@ function LogIn(){
   // Esto es un ejemplo para probar los componentes
   const navigate = useNavigate();
 
+  const [userNameValue, setInputValueUserName] = useState('');
+ 
+  const handleChangeUserName = (event) => {
+    setInputValueUserName(event.target.value);
+  }
+
+  const [passwordValue, setInputValuePassword] = useState(''); 
+  const handleChangePassword = (event) => {
+    setInputValuePassword(event.target.value);
+  };
+
   const handleClick = () => {
-    console.log("Button clicked!");
+    navigate('/home', {state: {user: userNameValue, password: passwordValue}});
   }
 
   const handleExit = () => {
-    window.close(); 
+    navigate('/home'); 
   };
 
   const handleClickTextLink = () => {
     navigate('/register');
   }
-    
-  const [inputValue, setInputValue] = useState(''); 
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-  };
- 
+
   return (
     <div className="LogIn">
       <header className="LogIn-header">   
@@ -45,8 +50,8 @@ function LogIn(){
           <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"}/><br/>
           <br/>
           
-          <Label className="estiloTexto" forId={'contrasenia'} textValue={'Contraseña'}/>
-          <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"}/><br/>
+          <Label className="estiloTexto" forId={'contrasenia'} textValue={'Contraseña'} value={userNameValue} onChange={handleChangeUserName}/>
+          <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"} value={passwordValue} onChange={handleChangePassword}/><br/>
           <br/>
 
           <Label idFor={'linkButton'} className="estiloTexto" textValue={'¿No tienes cuenta?, '}/>
