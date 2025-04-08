@@ -2,9 +2,9 @@
     width: 240px;
     height: 240px;
     float: center;
+    margin-bottom: -20px;
     
 }
-
 .title {
     font-size: 30px;
     font-weight: bold;
@@ -12,10 +12,10 @@
 }
 
 .container {
-    background-color: white;
+    background-image: url('../../images/fondo_1.webp');
+    background-size: cover;
     padding: 40px;
     text-align: center;
-    
     
 }
 
