@@ -48,11 +48,11 @@ function LogIn(){
           <br/>
 
           <Label className="estiloTexto" forId={'usuario'} textValue={'Usuario'}/> 
-          <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"}/><br/>
+          <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"} value={userNameValue} onChange={handleChangeUserName}/><br/>
           <br/>
           
-          <Label className="estiloTexto" forId={'contrasenia'} textValue={'Contraseña'} value={userNameValue} onChange={handleChangeUserName}/>
-          <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"} value={passwordValue} onChange={handleChangePassword}/><br/>
+          <Label className="estiloTexto" forId={'contrasenia'} textValue={'Contraseña'} onChange={handleChangeUserName}/>
+          <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"} value={passwordValue} onChange={handleChangePassword} type={"password"}/><br/>
           <br/>
 
           <Label idFor={'linkButton'} className="estiloTexto" textValue={'¿No tienes cuenta?, '}/>
@@ -62,7 +62,6 @@ function LogIn(){
         </div>
       </header>
         <div className="buttonContainer">
-        <ButtonBack valueButton={'Regresar'} onClick={handleExit}/> 
         <ButtonAdvance  valueButton={'Iniciar sesión'} onClick={handleClick}/>
         </div>
     </div>
