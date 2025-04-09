@@ -1,20 +1,18 @@
 import React from 'react';
-import './Profile.css';
+import './Instructions.css';
 import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
 import '../../styles/inputs.css';
 import '../../styles/buttons.css';
 import '../../styles/globalStyles.css';
-import Title from '../../components/Text/Title';
-import Profimg from '../../images/perfil_sin_marca.png';
+import imgLogo from '../../images/logo.png';
 import Label from '../../components/Text/Label';
-import Button from '../../components/Button/Button';
+import PlainText from '../../components/Text/PlainText';
 import Image from '../../components/Image/Image';
 import ButtonBack from '../../components/Button/ButtonBack';
 import DivGap4 from '../../components/divs/divGap4';
 
 
-function Profile() {
+function Instructions() {
     // Esto es un ejemplo para probar los componentes
     const navigate = useNavigate();
     const { user, password } = {user:'Usuario', password:'1234' }; 
@@ -24,18 +22,15 @@ function Profile() {
       }
 
   return (
-     <div className="Profile">
-      <header className="Profile-header">   
-        
-          <Image className={"imgProfile"} src={Profimg}/>
-          <DivGap4>
-            <Title className="title" valueText={user}/>
-            <Label className="labelText" forId={'descripcion'} textValue={'Texto por determinar'}/>
-            <Title className="title" valueText={'Preguntas Acertadas'}/>
-            <Label className="labelText" forId={'aciertos'} textValue={'2000'}/>
-           
-          </DivGap4>
-       
+     <div className="Instructions">
+      <header className="instruction-header">   
+          <Image className={"logo"} src={imgLogo}/>
+            <PlainText className="plainText1" textValue={'Como Jugar'}/>
+            <PlainText className="plainText2" textValue={'Explicación 1 acerca del juego y su funcionamiento'}/>
+            <PlainText className="plainText1" textValue={'Como Jugar 2'}/>
+            <PlainText className="plainText2" textValue={'Explicación 2 acerca del juego y su funcionamiento'}/>
+            <PlainText className="plainText1" textValue={'Como Jugar 3'}/>
+            <PlainText className="plainText2" textValue={'Explicación 3 acerca del juego y su funcionamiento'}/>
       </header>
         <div className="buttonContainer">
         <ButtonBack  valueButton={'Volver'} onClick={handleClick}/>
@@ -44,4 +39,4 @@ function Profile() {
   );
  
 }
-export default Profile;
+export default Instructions;

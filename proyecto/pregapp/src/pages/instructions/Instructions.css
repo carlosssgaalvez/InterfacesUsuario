@@ -1,25 +1,29 @@
-.imgProfile {
+.logo {
     width: 240px;
     height: 240px;
     float: center;
-    margin-bottom: -20px;
-    
+    margin-bottom: -20px; 
 }
-.title {
+
+
+.Instructions .plainText1 {
     font-size: 30px;
     font-weight: bold;
     color: #000000;
+    text-align: left;
+    margin-left:100px
+
 }
 
-.Profile {
+.Instructions {
     background-image: url('../../images/fondo_1.webp');
     background-size:cover;
-    padding: 40px;
-    text-align: center;
+    align-items: center;
+   
     
 }
 
-.buttonContainer {
+.Instructions .buttonContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -27,8 +31,10 @@
     gap: 16px; 
     margin-top: 20px;
 }
-
-.Profile .labelText {
-    text-align: center;
-  }
-
+.Instructions .plainText2 {
+    font-size: 20px;
+    font-weight: normal;
+    color: #000000;
+    text-align: left;
+    margin-left: 100px;
+}

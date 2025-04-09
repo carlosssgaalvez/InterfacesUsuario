@@ -3,6 +3,7 @@ import Home from './pages/home/Home';
 import LogIn from "./pages/logIn/LogIn.js";
 import Register from './pages/register/Register.js';
 import Profile from './pages/profile/Profile.js';
+import Instructions from './pages/instructions/Instructions.js';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
               <Route path="/register" element={<Register />} /> {/* Página de registro */}
               <Route path="/home" element={<Home />} />       {/* Página principal */}
               <Route path="/profile" element={<Profile />} />       {/* Página de perfil */}
+              <Route path="/instructions" element={<Instructions />} />       {/* Página de instrucciones */}
             </Routes>
           </Router>
     </div>
