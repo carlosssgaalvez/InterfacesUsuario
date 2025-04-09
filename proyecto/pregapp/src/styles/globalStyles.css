@@ -8,3 +8,9 @@
     color: #000000;
     
 }
+.answerText {
+    font-size: 15px;
+    color: #000000;
+    text-align: left;
+    margin-left: 10px;
+}
