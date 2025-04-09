@@ -1,7 +1,7 @@
 import React from 'react';
 import './LogIn.css';
 import Button from '../../components/Button/Button';
-import Image from '../../components/Image/Image';
+import ImageLogo from '../../components/Image/ImageLogo';
 import Logo from '../../images/logo.png';
 import Title from '../../components/Text/Title';
 import ButtonBack from '../../components/Button/ButtonBack';
@@ -46,8 +46,9 @@ function LogIn(){
     <div className="LogIn">
       <header className="LogIn-header">   
         <div className="container">
-          <Image className={"imgLogo"} src={Logo}/>
-          <DivGap4>
+        <DivGap4>
+          <ImageLogo className={"imgLogo"} src={Logo}/>
+         
             <Title className="title" valueText={'INICIAR SESIÓN'}/>
           
           <DivLabelInput>
@@ -63,11 +64,13 @@ function LogIn(){
             <Button id={'linkButton'} className="textLink" valueButton={'registrate aquí'} onClick={handleClickTextLink}/>
           </DivLabelInput>
           </DivGap4>
-        </div>
-      </header>
+        
+        <br/>
         <div className="buttonContainer">
         <ButtonAdvance  valueButton={'Iniciar sesión'} onClick={handleClick}/>
         </div>
+        </div>
+        </header>
     </div>
     );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Register.css';
 import Button from '../../components/Button/Button';
-import Image from '../../components/Image/Image';
+import ImageLogo from '../../components/Image/ImageLogo';
 import Logo from '../../images/logo.png';
 import Title from '../../components/Text/Title';
 import PlainText from '../../components/Text/PlainText';
@@ -40,9 +40,10 @@ function Register(){
       <header className="Register-header">   
     
         <div className="container">
-        <Image className={"imgLogo"} src={Logo}/>
-        <Title className="title" valueText={'REGISTRATE'}/>
         <DivGap4>
+        <ImageLogo className={"imgLogo"} src={Logo}/>
+        <Title className="title" valueText={'REGISTRATE'}/>
+       
           <DivLabelInput>
             <Label className="labelText" forId={'correo'} textValue={'Email:'}/> 
             <InputText id={'correo'} className={"inputText"} placeholder={"Escribe tu correo electrónico"} type={"text"}/><br/>
