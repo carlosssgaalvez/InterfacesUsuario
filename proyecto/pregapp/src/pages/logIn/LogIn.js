@@ -35,7 +35,7 @@ function LogIn(){
   }
 
   const handleExit = () => {
-    navigate('/home'); 
+    navigate('/login'); 
   };
 
   const handleClickTextLink = () => {

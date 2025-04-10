@@ -17,14 +17,16 @@ import DivGap4 from '../../components/divs/divGap4';
 import DivLabelInput from '../../components/divs/divLabelInput';
 import QuestionText from '../../components/Text/QuestionText';
 import ButtonAnswer from '../../components/Button/ButtonAnswer';
+import { useLocation } from 'react-router-dom';
 
 function Question(){
   // Esto es un ejemplo para probar los componentes
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const { user, password } = {user:'Usuario', password:'1234' }; 
 
   const handleExit = () => {
-    navigate('/home'); 
+    navigate('/home', {state: {user, password}}); 
   };
   
   const handleClickRight = () => {
