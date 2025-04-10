@@ -62,7 +62,19 @@
     cursor: pointer;
 }
 
-.buttonAdvance{
+.buttonAdvance2{
+    font-size: 25px;
+    background-color: #2ECC71;
+    color: #000000;
+    border-radius: 30px;
+    width: 200px;
+    height: 52px;
     margin-left: 30%;
-}
+    border:#000000 0.3px solid;
+    @media (max-width: 768px) {
+        width: 100px;
+        height: 40px;
+        font-size: 20px;
+    }
+} 
 

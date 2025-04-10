@@ -61,7 +61,7 @@ function Settings() {
           />
         </div>
         <div className="control-row">
-          <Button className={"buttonAdvance"} valueButton={'Guardar'} onClick={handleClick}/>
+          <Button className={"buttonAdvance2"} valueButton={'Guardar'} onClick={handleClick}/>
         </div>
         </div>
       </DivGap4>
