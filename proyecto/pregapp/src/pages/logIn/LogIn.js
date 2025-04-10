@@ -34,10 +34,7 @@ function LogIn(){
     navigate('/home', {state: {user: userNameValue, password: passwordValue}});
   }
 
-  const handleExit = () => {
-    navigate('/login'); 
-  };
-
+  
   const handleClickTextLink = () => {
     navigate('/register');
   }
@@ -47,8 +44,9 @@ function LogIn(){
       <header className="LogIn-header">   
         <div className="container">
         <DivGap4>
+        <br/><br/>
           <ImageLogo className={"imgLogo"} src={Logo}/>
-         
+          
             <Title className="title" valueText={'INICIAR SESIÓN'}/>
           
           <DivLabelInput>

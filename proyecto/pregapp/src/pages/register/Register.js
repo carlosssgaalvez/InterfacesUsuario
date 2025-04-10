@@ -13,6 +13,8 @@ import Label from '../../components/Text/Label';
 import { useNavigate } from 'react-router-dom';
 import DivLabelInput from '../../components/divs/divLabelInput';
 import DivGap4 from '../../components/divs/divGap4';
+import { useLocation } from 'react-router-dom';
+
 
 function Register(){
   // Esto es un ejemplo para probar los componentes
@@ -21,19 +23,19 @@ function Register(){
   }
 
   const navigate = useNavigate(); 
+  const location = useLocation();
+  const { user, password } = {user:'Usuario', password:'1234' }; 
 
   const handleExit = () => {
      navigate('/login'); 
   };
 
-  const handleClickTextLink = () => {
-    console.log("TextLink clicked!");
+  const handleAdvance = () => {
+    navigate('/home', {state: {user, password}}); 
   }
     
   const [inputValue, setInputValue] = useState(''); 
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-  };
+  
  
   return (
     <div className="Register">
@@ -41,6 +43,7 @@ function Register(){
     
         <div className="container">
         <DivGap4>
+          <br/><br/>
         <ImageLogo className={"imgLogo"} src={Logo}/>
         <Title className="title" valueText={'REGISTRATE'}/>
        
@@ -64,7 +67,7 @@ function Register(){
         <br/><br/>
         <div className="buttonContainer">
         <Button className="buttonBack" valueButton={'Volver'} onClick={handleExit}/>
-        <Button className={"buttonAdvance"} valueButton={'Confirmar'} onClick={handleClick}/>
+        <Button className={"buttonAdvance"} valueButton={'Confirmar'} onClick={handleAdvance}/>
         
         </div>
         </div>

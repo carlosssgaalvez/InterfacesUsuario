@@ -39,7 +39,7 @@ function Home() {
         <DivGap4>
           <br/><br/>
         <ImageLogo className={"imgLogo"} src={Logo}/>
-      
+          
           <DivLabelInput>
           <ButtonMenu idButton={'button1'} valueButton={'JUGAR'} colorButton={'#1ABC9C'} onClick={handleClickJugar}/>
             <br/><br/>
@@ -58,7 +58,7 @@ function Home() {
           </DivLabelInput>
           </DivGap4>
         
-        <br/>
+        <br/><br/>
         <div className="buttonContainer">
         <Button className="buttonBack" valueButton={'Volver'} onClick={handleExit}/>
         

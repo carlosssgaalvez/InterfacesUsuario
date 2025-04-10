@@ -39,8 +39,10 @@ function Settings() {
       <header className="Profile-header">
         {/* Aquí podrías agregar más contenido si lo necesitas */}
       </header>
-      <ImageLogo className={"imgLogo"} src={Logo} />
+      
       <DivGap4>
+        <br/><br/>
+      <ImageLogo className={"imgLogo"} src={Logo} />
         <div className="containerSettings">
         <div className="control-row">
           <img src={Sound} alt="Sound" className="logo" />
