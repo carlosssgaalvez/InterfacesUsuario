@@ -18,6 +18,7 @@
 .Instructions {
     background-image: url('../../images/fondo_1.webp');
     background-size:cover;
+    min-height: 100vh; /* Esto asegura que cubre toda la pantalla */
     align-items: center;
    
     
