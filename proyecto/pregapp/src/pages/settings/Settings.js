@@ -6,6 +6,8 @@ import Music from '../../images/music.png';
 import Sound from '../../images/sound.png';
 import DivGap4 from '../../components/divs/divGap4';
 import Slider from '../../components/Slider/Slider';
+import Button from '../../components/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 function Settings() {
   const [soundValue, setSoundValue] = useState(50);  // Estado para el volumen del sonido
@@ -23,6 +25,14 @@ function Settings() {
     // Provisional para mostrar el valor en la consola
     console.log(`Nuevo volumen de música: ${value}`);
   };
+
+  // Esto es un ejemplo para probar los componentes
+  const navigate = useNavigate();
+  const { user, password } = {user:'Usuario', password:'1234' }; 
+
+  const handleClick = () => {
+    navigate('/home', {state: {user, password}});
+  }
 
   return (
     <div className="settings">
@@ -49,6 +59,9 @@ function Settings() {
             value={musicValue}
             onChange={handleMusicChange}
           />
+        </div>
+        <div className="control-row">
+          <Button className={"buttonAdvance"} valueButton={'Guardar'} onClick={handleClick}/>
         </div>
         </div>
       </DivGap4>

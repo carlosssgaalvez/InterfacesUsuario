@@ -21,7 +21,7 @@
 .control-row {
     display: flex;             
     justify-content: space-between; 
-    align-items: center;        
+    align-items: center;     
     margin-bottom: 20px;        /* Añadimos un poco de espacio entre las filas */
 }
 
@@ -60,5 +60,9 @@
     background-color: #4CAF50;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.buttonAdvance{
+    margin-left: 30%;
 }
 
