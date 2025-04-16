@@ -39,9 +39,9 @@ function SelectMode() {
           <DivGap4>
             <br/><br/>
           <ImageLogo className={"imgLogo"} src={Logo}/>
-            <Title className={"title"} text={"Selecciona modo de juego"}/>
+            <Title className={"title"} valueText={"SELECCIONA MODO DE JUEGO"}/>
             <DivLabelInput>
-            <ButtonMenu idButton={'button1'} valueButton={'MODO 1'} colorButton={'#1ABC9C'} onClick={handleClickJugarModo1}/>
+            <ButtonMenu idButton={'button1'} valueButton={'MODO PREGUNTAS'} colorButton={'#1ABC9C'} onClick={handleClickJugarModo1}/>
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
