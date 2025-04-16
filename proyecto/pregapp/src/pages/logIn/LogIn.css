@@ -1,12 +1,3 @@
-.imgLogo {
-    width: 240px;
-    height: 240px;
-    float: center;
-    margin-bottom: -20px;
-    object-fit: cover;
-    border-radius: 50%;
-    
-}
 .title {
     font-size: 30px;
     font-weight: bold;

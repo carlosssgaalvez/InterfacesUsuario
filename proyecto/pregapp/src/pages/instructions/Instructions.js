@@ -10,6 +10,7 @@ import PlainText from '../../components/Text/PlainText';
 import Image from '../../components/Image/Image';
 import ButtonBack from '../../components/Button/ButtonBack';
 import DivGap4 from '../../components/divs/divGap4';
+import ImageLogo from '../../components/Image/ImageLogo';
 
 
 function Instructions() {
@@ -24,7 +25,7 @@ function Instructions() {
   return (
      <div className="Instructions">
       <header className="instruction-header">   
-          <Image className={"logo"} src={imgLogo}/>
+          <ImageLogo className={"imgLogo"} src={imgLogo}/>
             <PlainText className="plainText1" textValue={'Como Jugar'}/>
             <PlainText className="plainText2" textValue={'Explicación 1 acerca del juego y su funcionamiento'}/>
             <PlainText className="plainText1" textValue={'Como Jugar 2'}/>
