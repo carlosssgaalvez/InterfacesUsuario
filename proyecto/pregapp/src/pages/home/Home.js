@@ -1,7 +1,5 @@
 import React from 'react';
-import Title from '../../components/Text/Title';
 import { useLocation } from 'react-router-dom';
-import PlainText from '../../components/Text/PlainText';
 import ButtonMenu from '../../components/Button/ButtonMenu';
 import DivGap4 from '../../components/divs/divGap4';
 import DivLabelInput from '../../components/divs/divLabelInput';
@@ -17,7 +15,7 @@ function Home() {
   const navigate = useNavigate(); 
   const { user, password } = location.state ||{} ;
   const handleClickJugar = () => {
-    navigate('/question');
+    navigate('/selectMode', {state: {user: user, password: password}});
   }
   const handleClickInstrucciones = () => {
     navigate('/instructions');

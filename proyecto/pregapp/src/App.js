@@ -6,6 +6,7 @@ import Profile from './pages/profile/Profile.js';
 import Instructions from './pages/instructions/Instructions.js';
 import Settings from './pages/settings/Settings.js';
 import Question from './pages/question/Question.js';
+import SelectMode from './pages/selectMode/SelectMode.js';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
               <Route path="/instructions" element={<Instructions />} />       {/* Página de instrucciones */}
               <Route path="/settings" element={<Settings />} />       {/* Página de configuración */}
               <Route path="/question" element={<Question />} />       {/* Página de preguntas */}
+              <Route path="/selectMode" element={<SelectMode />} />       {/* Página de selección de modo */}
             </Routes>
           </Router>
     </div>

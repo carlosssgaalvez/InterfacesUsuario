@@ -20,13 +20,12 @@ import ButtonAnswer from '../../components/Button/ButtonAnswer';
 import { useLocation } from 'react-router-dom';
 
 function Question(){
-  // Esto es un ejemplo para probar los componentes
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { user, password } = {user:'Usuario', password:'1234' }; 
+    const location = useLocation();
+    const navigate = useNavigate(); 
+    const { user, password } = location.state ||{} ;
 
   const handleExit = () => {
-    navigate('/home', {state: {user, password}}); 
+    navigate('/selectMode', {state: {user, password}}); 
   };
   
   const handleClickRight = () => {
