@@ -63,7 +63,7 @@ function Question(){
         
         <br/><br/>
         <div className="buttonContainer2">
-        <Button className="buttonBack" valueButton={'Volver'} onClick={handleExit}/>    
+        <ButtonBack valueButton={'Volver'} onClick={handleExit}/>    
         <ButtonAdvance  valueButton={'Siguiente'} onClick={handleExit}/>
         </div>
         </div>
