@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+
 import ButtonMenu from '../../components/Button/ButtonMenu';
 import DivGap4 from '../../components/divs/divGap4';
 import DivLabelInput from '../../components/divs/divLabelInput';
@@ -9,17 +9,19 @@ import ButtonBack from '../../components/Button/ButtonBack';
 import '../../styles/buttons.css';
 import Title from '../../components/Text/Title';
 import { useEffect, useState } from 'react';
+
 function SelectMode() {
     const navigate = useNavigate(); 
-   const [user, setUser] = useState('');
-        useEffect(() => {
-          const storedUser = localStorage.getItem('user');
-          if (storedUser) {
-            setUser(JSON.parse(storedUser));
-          } else {
-            setUser(undefined); // or set it to an empty string or any other default value
-          }
-        },[]);
+    const [user, setUser] = useState('');
+    useEffect(() => {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      } else {
+        setUser(undefined); // or set it to an empty string or any other default value
+      }
+    },[]);
+
     const handleClickJugarModo1 = () => {
       navigate('/question?idPregunta=1');
       localStorage.setItem('puntosPartidaActual', 0);

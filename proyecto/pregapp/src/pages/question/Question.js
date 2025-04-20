@@ -1,11 +1,8 @@
 import React from 'react';
 import './Question.css';
-import ImageLogo from '../../components/Image/ImageLogo';
-import Logo from '../../images/logo.png';
-import Title from '../../components/Text/Title';
 import ButtonBack from '../../components/Button/ButtonBack';
 import { useState, useEffect } from 'react';
-import InputText from '../../components/Form/InputText';
+
 import '../../styles/inputs.css';
 import '../../styles/buttons.css';
 import '../../styles/globalStyles.css';
@@ -18,21 +15,12 @@ import ButtonAnswer from '../../components/Button/ButtonAnswer';
 import { useLocation } from 'react-router-dom';
 import PopupButton from '../../components/Button/PopupButton';
 import questionsData from '../../resources/questions.json';
+
 function Question(){
   const location = useLocation();
   const navigate = useNavigate(); 
   const idPregunta = new URLSearchParams(location.search).get('idPregunta');
-
   const [user, setUser] = useState('');
-       useEffect(() => {
-         const storedUser = localStorage.getItem('user');
-         if (storedUser) {
-           setUser(JSON.parse(storedUser));
-         } else {
-           setUser(undefined); // or set it to an empty string or any other default value
-         }
-       },[]);
-  
   const rightAnswer =  questionsData[idPregunta-1].respuesta_correcta;
   const questionOptions = questionsData[idPregunta-1].opciones;
   const questionText = questionsData[idPregunta-1].pregunta;
@@ -43,6 +31,17 @@ function Question(){
   const [colorAnswer4, setColorAnswer4] = useState('buttonAnswer');
   const [success, setSuccess] = useState(false);
   const [isDisabledAnswer, setIsDisabledAnswer] = useState(false);
+  
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    } else {
+      setUser(undefined); // or set it to an empty string or any other default value
+    }
+  },[]);
+  
+
 
   const handleExit = () => {
     const puntosPartidaActual = 0;

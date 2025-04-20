@@ -6,20 +6,16 @@ import '../../styles/buttons.css';
 import '../../styles/globalStyles.css';
 import ButtonAdvance from '../../components/Button/ButtonAdvance';
 import DivGap4 from '../../components/divs/divGap4';
-import QuestionText from '../../components/Text/QuestionText';
-
 import { useNavigate } from 'react-router-dom';
 import PopupButton from '../../components/Button/PopupButton';
 import questionsData from '../../resources/questions.json';
+
 function FinalPoints(){
   const navigate = useNavigate();
   const puntosTotales = questionsData.length * 20;
   const [puntosPartidaActual, setPuntosPartidaActual] = useState(0);
-  const handleExit = () => {
-    localStorage.setItem('puntosPartidaActual', 0);
-    navigate('/selectMode'); 
-  };
- const [user, setUser] = useState('');
+  const [user, setUser] = useState('');
+  
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
@@ -35,6 +31,11 @@ function FinalPoints(){
       setPuntosPartidaActual(0); // or set it to an empty string or any other default value
     }    
   },[]);
+
+  const handleExit = () => {
+    localStorage.setItem('puntosPartidaActual', 0);
+    navigate('/selectMode'); 
+  };
 
   const handleClickNext = () => {
     localStorage.setItem('puntosPartidaActual', 0);
