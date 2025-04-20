@@ -33,52 +33,53 @@ function Question(){
   const [colorAnswer2, setColorAnswer2] = useState('buttonAnswer');
   const [colorAnswer3, setColorAnswer3] = useState('buttonAnswer');
   const [colorAnswer4, setColorAnswer4] = useState('buttonAnswer');
+
+  const [isDisabledAnswer, setIsDisabledAnswer] = useState(false);
+
   const handleClickAnswer1  = (event) => {
     console.log(event.target.id);
     console.log(rightAnswer);
-    if(rightAnswer == event.target.id){
+    if(rightAnswer === event.target.id){
       setColorAnswer1('buttonAnswerRight');
     }else{
       setColorAnswer1('buttonAnswerWrong');
     }
+    setIsDisabledAnswer(true);
   };
 
   const handleClickAnswer2  = (event) => {
     console.log(event.target.id);
     console.log(rightAnswer);
-    if(rightAnswer == event.target.id){
+    if(rightAnswer === event.target.id){
       setColorAnswer2('buttonAnswerRight');
     }else{
       setColorAnswer2('buttonAnswerWrong');
     }
+    setIsDisabledAnswer(true);
   };
 
   const handleClickAnswer3  = (event) => {
     console.log(event.target.id);
     console.log(rightAnswer);
-    if(rightAnswer == event.target.id){
+    if(rightAnswer === event.target.id){
       setColorAnswer3('buttonAnswerRight');
     }else{
       setColorAnswer3('buttonAnswerWrong');
     }
+    setIsDisabledAnswer(true);
   };
 
   const handleClickAnswer4  = (event) => {
     console.log(event.target.id);
     console.log(rightAnswer);
-    if(rightAnswer == event.target.id){
+    if(rightAnswer === event.target.id){
       setColorAnswer4('buttonAnswerRight');
     }else{
       setColorAnswer4('buttonAnswerWrong');
     }
+    setIsDisabledAnswer(true);
   };
 
-  const handleClickRight = () => {
-    alert("Respuesta correcta");
-  }
-  const handleClickWrong = () => {
-    alert("Respuesta incorrecta");
-  } 
   const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
   return isLoggedIn? (
     <div>
@@ -89,19 +90,19 @@ function Question(){
             <QuestionText className={"pregunta"} forId={"pregunta1"} titleValue={"Pregunta 1"} textValue={"Cuál es el mejor de estas opciones"}/>
             <br/>
           <DivLabelInput>
-            <ButtonAnswer idButton={"1"} className={colorAnswer1} valueButton={"Opción 1"} onClick={handleClickAnswer1}/>
+            <ButtonAnswer idButton={"1"} className={colorAnswer1} valueButton={"Opción 1"} onClick={handleClickAnswer1} isDisabled={isDisabledAnswer}/>
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
-            <ButtonAnswer idButton={"2"} className={colorAnswer2} valueButton={"Opción 2"} onClick={handleClickAnswer2}/>
+            <ButtonAnswer idButton={"2"} className={colorAnswer2} valueButton={"Opción 2"} onClick={handleClickAnswer2} isDisabled={isDisabledAnswer}/>
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
-            <ButtonAnswer idButton={"3"} className={colorAnswer3} valueButton={"Opción 3"} onClick={handleClickAnswer3}/>
+            <ButtonAnswer idButton={"3"} className={colorAnswer3} valueButton={"Opción 3"} onClick={handleClickAnswer3} isDisabled={isDisabledAnswer}/>
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
-            <ButtonAnswer idButton={"4"} className={colorAnswer4} valueButton={"Opción 4"} onClick={handleClickAnswer4}/>
+            <ButtonAnswer idButton={"4"} className={colorAnswer4} valueButton={"Opción 4"} onClick={handleClickAnswer4} isDisabled={isDisabledAnswer}/>
             <br/><br/>
           </DivLabelInput>
           </DivGap4>
