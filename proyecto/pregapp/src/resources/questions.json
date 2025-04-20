@@ -1,0 +1,53 @@
+[
+    {
+      "pregunta": "¿Cuál es la capital de Australia?",
+      "opciones": ["Sídney", "Canberra", "Melbourne", "Brisbane"],
+      "respuesta_correcta": "Canberra"
+    },
+    {
+      "pregunta": "¿Quién escribió 'Cien años de soledad'?",
+      "opciones": ["Mario Vargas Llosa", "Pablo Neruda", "Gabriel García Márquez", "Isabel Allende"],
+      "respuesta_correcta": "Gabriel García Márquez"
+    },
+    {
+      "pregunta": "¿Qué elemento químico tiene el símbolo O?",
+      "opciones": ["Oro", "Oxígeno", "Osmio", "Óxido"],
+      "respuesta_correcta": "Oxígeno"
+    },
+    {
+      "pregunta": "¿En qué año llegó el hombre a la Luna?",
+      "opciones": ["1965", "1969", "1972", "1959"],
+      "respuesta_correcta": "1969"
+    },
+    {
+      "pregunta": "¿Cuál es el océano más grande del mundo?",
+      "opciones": ["Atlántico", "Índico", "Pacífico", "Ártico"],
+      "respuesta_correcta": "Pacífico"
+    },
+    {
+      "pregunta": "¿Qué país tiene forma de bota?",
+      "opciones": ["España", "Italia", "Grecia", "Chile"],
+      "respuesta_correcta": "Italia"
+    },
+    {
+      "pregunta": "¿Cuál es el planeta más grande del sistema solar?",
+      "opciones": ["Saturno", "Júpiter", "Neptuno", "Tierra"],
+      "respuesta_correcta": "Júpiter"
+    },
+    {
+      "pregunta": "¿Qué idioma se habla en Brasil?",
+      "opciones": ["Español", "Portugués", "Francés", "Italiano"],
+      "respuesta_correcta": "Portugués"
+    },
+    {
+      "pregunta": "¿Qué artista pintó la Mona Lisa?",
+      "opciones": ["Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Michelangelo"],
+      "respuesta_correcta": "Leonardo da Vinci"
+    },
+    {
+      "pregunta": "¿Cuál es el río más largo del mundo?",
+      "opciones": ["Nilo", "Amazonas", "Yangtsé", "Misisipi"],
+      "respuesta_correcta": "Amazonas"
+    }
+  ]
+  
