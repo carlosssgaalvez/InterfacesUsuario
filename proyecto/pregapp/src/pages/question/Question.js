@@ -22,41 +22,86 @@ function Question(){
   const location = useLocation();
   const navigate = useNavigate(); 
   const { user, password } = location.state ||{} ;
+  
+  const rightAnswer = '1';
 
   const handleExit = () => {
     navigate('/selectMode', {state: {user, password}}); 
   };
-  
+
+  const [colorAnswer1, setColorAnswer1] = useState('buttonAnswer');
+  const [colorAnswer2, setColorAnswer2] = useState('buttonAnswer');
+  const [colorAnswer3, setColorAnswer3] = useState('buttonAnswer');
+  const [colorAnswer4, setColorAnswer4] = useState('buttonAnswer');
+  const handleClickAnswer1  = (event) => {
+    console.log(event.target.id);
+    console.log(rightAnswer);
+    if(rightAnswer == event.target.id){
+      setColorAnswer1('buttonAnswerRight');
+    }else{
+      setColorAnswer1('buttonAnswerWrong');
+    }
+  };
+
+  const handleClickAnswer2  = (event) => {
+    console.log(event.target.id);
+    console.log(rightAnswer);
+    if(rightAnswer == event.target.id){
+      setColorAnswer2('buttonAnswerRight');
+    }else{
+      setColorAnswer2('buttonAnswerWrong');
+    }
+  };
+
+  const handleClickAnswer3  = (event) => {
+    console.log(event.target.id);
+    console.log(rightAnswer);
+    if(rightAnswer == event.target.id){
+      setColorAnswer3('buttonAnswerRight');
+    }else{
+      setColorAnswer3('buttonAnswerWrong');
+    }
+  };
+
+  const handleClickAnswer4  = (event) => {
+    console.log(event.target.id);
+    console.log(rightAnswer);
+    if(rightAnswer == event.target.id){
+      setColorAnswer4('buttonAnswerRight');
+    }else{
+      setColorAnswer4('buttonAnswerWrong');
+    }
+  };
+
   const handleClickRight = () => {
-    
-  };
+    alert("Respuesta correcta");
+  }
   const handleClickWrong = () => {
-    
-        
-  };
+    alert("Respuesta incorrecta");
+  } 
   const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
   return isLoggedIn? (
-    <div className="LogIn">
-      <header className="LogIn-header">   
+    <div>
+      <header>   
         <div className="container">
         <DivGap4>
             <br/><br/><br/>
             <QuestionText className={"pregunta"} forId={"pregunta1"} titleValue={"Pregunta 1"} textValue={"Cuál es el mejor de estas opciones"}/>
             <br/>
           <DivLabelInput>
-            <ButtonAnswer className={"buttonAnswer"} valueButton={"Opción 1"} onClick={handleClickRight}/>
+            <ButtonAnswer idButton={"1"} className={colorAnswer1} valueButton={"Opción 1"} onClick={handleClickAnswer1}/>
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
-            <ButtonAnswer className={"buttonAnswer"} valueButton={"Opción 2"} onClick={handleClickWrong}/>
+            <ButtonAnswer idButton={"2"} className={colorAnswer2} valueButton={"Opción 2"} onClick={handleClickAnswer2}/>
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
-            <ButtonAnswer className={"buttonAnswer"} valueButton={"Opción 3"} onClick={handleClickWrong}/>
+            <ButtonAnswer idButton={"3"} className={colorAnswer3} valueButton={"Opción 3"} onClick={handleClickAnswer3}/>
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
-            <ButtonAnswer className={"buttonAnswer"} valueButton={"Opción 4"} onClick={handleClickWrong}/>
+            <ButtonAnswer idButton={"4"} className={colorAnswer4} valueButton={"Opción 4"} onClick={handleClickAnswer4}/>
             <br/><br/>
           </DivLabelInput>
           </DivGap4>
@@ -75,7 +120,7 @@ function Question(){
         <p>Por favor, inicie sesión para acceder a esta página.</p>
         <ButtonBack  valueButton={'Volver'} onClick={handleExit}/>
       </div>
-      );
+    );
 }
 
 export default Question;
