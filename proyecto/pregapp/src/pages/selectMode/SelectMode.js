@@ -14,7 +14,7 @@ function SelectMode() {
     const navigate = useNavigate(); 
     const { user, password } = location.state ||{} ;
     const handleClickJugarModo1 = () => {
-      navigate('/question', {state: {user: user, password: password}});
+      navigate('/question?idPregunta=1', {state: {user: user, password: password, pointsForThisRound: 0}});
     }
     const handleClickJugarModo2 = () => {
       //navigate('/modo2');

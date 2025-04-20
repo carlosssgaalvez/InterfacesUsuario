@@ -17,13 +17,18 @@ import QuestionText from '../../components/Text/QuestionText';
 import ButtonAnswer from '../../components/Button/ButtonAnswer';
 import { useLocation } from 'react-router-dom';
 import PopupButton from '../../components/Button/PopupButton';
-
+import questionsData from '../../resources/questions.json';
 function Question(){
   const location = useLocation();
   const navigate = useNavigate(); 
+  const idPregunta = new URLSearchParams(location.search).get('idPregunta');
+  console.log("idPregunta", idPregunta);
+
   const { user, password } = location.state ||{} ;
   
-  const rightAnswer = '1';
+  const rightAnswer =  questionsData[idPregunta-1].respuesta_correcta;
+  const questionOptions = questionsData[idPregunta-1].opciones;
+  const questionText = questionsData[idPregunta-1].pregunta;
 
   const handleExit = () => {
     navigate('/selectMode', {state: {user, password}}); 
@@ -81,11 +86,15 @@ function Question(){
   };
 
   const handleClickNext = () => {
-    setIsDisabledAnswer(false);
-    setColorAnswer1('buttonAnswer');
-    setColorAnswer2('buttonAnswer');
-    setColorAnswer3('buttonAnswer');
-    setColorAnswer4('buttonAnswer');
+    if(idPregunta < questionsData.length){
+      navigate(`/question?idPregunta=${parseInt(idPregunta) + 1}`, {state: {user, password}});
+      setIsDisabledAnswer(false);
+      setColorAnswer1('buttonAnswer');
+      setColorAnswer2('buttonAnswer');
+      setColorAnswer3('buttonAnswer');
+      setColorAnswer4('buttonAnswer');
+    }
+ 
   };
 
   const handleAccessDenied = () => {
@@ -99,22 +108,22 @@ function Question(){
         <div className="container">
         <DivGap4>
             <br/><br/><br/>
-            <QuestionText className={"pregunta"} forId={"pregunta1"} titleValue={"Pregunta 1"} textValue={"Cuál es el mejor de estas opciones"}/>
+            <QuestionText className={"pregunta"} forId={"pregunta1"} titleValue={"Pregunta 1"} textValue={questionText}/>
             <br/>
           <DivLabelInput>
-            <ButtonAnswer idButton={"1"} className={colorAnswer1} valueButton={"Opción 1"} onClick={handleClickAnswer1} isDisabled={isDisabledAnswer}/>
+            <ButtonAnswer idButton={questionOptions[0]} className={colorAnswer1} valueButton={questionOptions[0]} onClick={handleClickAnswer1} isDisabled={isDisabledAnswer}/>
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
-            <ButtonAnswer idButton={"2"} className={colorAnswer2} valueButton={"Opción 2"} onClick={handleClickAnswer2} isDisabled={isDisabledAnswer}/>
+            <ButtonAnswer idButton={questionOptions[1]} className={colorAnswer2} valueButton={questionOptions[1]} onClick={handleClickAnswer2} isDisabled={isDisabledAnswer}/>
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
-            <ButtonAnswer idButton={"3"} className={colorAnswer3} valueButton={"Opción 3"} onClick={handleClickAnswer3} isDisabled={isDisabledAnswer}/>
+            <ButtonAnswer idButton={questionOptions[2]} className={colorAnswer3} valueButton={questionOptions[2]} onClick={handleClickAnswer3} isDisabled={isDisabledAnswer}/>
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
-            <ButtonAnswer idButton={"4"} className={colorAnswer4} valueButton={"Opción 4"} onClick={handleClickAnswer4} isDisabled={isDisabledAnswer}/>
+            <ButtonAnswer idButton={questionOptions[3]} className={colorAnswer4} valueButton={questionOptions[3]} onClick={handleClickAnswer4} isDisabled={isDisabledAnswer}/>
             <br/><br/>
           </DivLabelInput>
           </DivGap4>
