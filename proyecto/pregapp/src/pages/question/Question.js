@@ -80,6 +80,18 @@ function Question(){
     setIsDisabledAnswer(true);
   };
 
+  const handleClickNext = () => {
+    setIsDisabledAnswer(false);
+    setColorAnswer1('buttonAnswer');
+    setColorAnswer2('buttonAnswer');
+    setColorAnswer3('buttonAnswer');
+    setColorAnswer4('buttonAnswer');
+  };
+
+  const handleAccessDenied = () => {
+    navigate('/logIn');
+  };
+
   const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
   return isLoggedIn? (
     <div>
@@ -110,7 +122,7 @@ function Question(){
         <br/><br/>
         <div className="buttonContainer2">
         <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'} onClick={handleExit}/>    
-        <ButtonAdvance  valueButton={'Siguiente'} onClick={handleExit}/>
+        <ButtonAdvance  valueButton={'Siguiente'} onClick={handleClickNext}/>
         </div>
         </div>
         </header>
@@ -119,7 +131,7 @@ function Question(){
       <div>
         <h1>Acceso denegado</h1>
         <p>Por favor, inicie sesión para acceder a esta página.</p>
-        <ButtonBack  valueButton={'Volver'} onClick={handleExit}/>
+        <ButtonBack  valueButton={'Volver'} onClick={handleAccessDenied}/>
       </div>
     );
 }

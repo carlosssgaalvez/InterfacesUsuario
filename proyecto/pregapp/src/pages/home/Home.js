@@ -30,6 +30,11 @@ function Home() {
   const handleExit = () => {
     navigate('/login'); 
   }
+
+  const handleAccessDenied = () => {
+    navigate('/logIn');
+  };
+
   console.log("user:",user, "password",password);
   const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
   return isLoggedIn? (
@@ -68,7 +73,7 @@ function Home() {
     <div>
       <h1>Acceso denegado</h1>
       <p>Por favor, inicie sesión para acceder a esta página.</p>
-      <ButtonBack  valueButton={'Volver'} onClick={handleExit}/>
+      <ButtonBack  valueButton={'Volver'} onClick={handleAccessDenied}/>
     </div>
     );
 }

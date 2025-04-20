@@ -21,6 +21,10 @@ function Profile() {
         navigate('/home', {state: {user, password}});
     }
 
+    const handleAccessDenied = () => {
+      navigate('/logIn');
+    };
+
     const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
     return isLoggedIn? (
      <div className="Profile">
@@ -44,7 +48,7 @@ function Profile() {
     <div>
       <h1>Acceso denegado</h1>
       <p>Por favor, inicie sesión para acceder a esta página.</p>
-      <ButtonBack  valueButton={'Volver'} onClick={handleClick}/>
+      <ButtonBack  valueButton={'Volver'} onClick={handleAccessDenied}/>
     </div>
     );
  

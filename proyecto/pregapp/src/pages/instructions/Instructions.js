@@ -16,8 +16,12 @@ function Instructions() {
     const navigate = useNavigate(); 
     const { user, password } = location.state ||{} ;
     const handleClick = () => {
-        navigate('/home', {state: {user, password}});
-      }
+      navigate('/home', {state: {user, password}});
+    }
+
+    const handleAccessDenied = () => {
+      navigate('/logIn');
+    };
 
     const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
     return isLoggedIn? (
@@ -39,7 +43,7 @@ function Instructions() {
     <div>
       <h1>Acceso denegado</h1>
       <p>Por favor, inicie sesión para acceder a esta página.</p>
-      <ButtonBack  valueButton={'Volver'} onClick={handleClick}/>
+      <ButtonBack  valueButton={'Volver'} onClick={handleAccessDenied}/>
     </div>
     );
  
