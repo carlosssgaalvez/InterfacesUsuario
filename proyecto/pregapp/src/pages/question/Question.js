@@ -41,14 +41,14 @@ function Question(){
   const [colorAnswer2, setColorAnswer2] = useState('buttonAnswer');
   const [colorAnswer3, setColorAnswer3] = useState('buttonAnswer');
   const [colorAnswer4, setColorAnswer4] = useState('buttonAnswer');
-
+  const [success, setSuccess] = useState(false);
   const [isDisabledAnswer, setIsDisabledAnswer] = useState(false);
 
   const handleClickAnswer1  = (event) => {
-    console.log(event.target.id);
-    console.log(rightAnswer);
+
     if(rightAnswer === event.target.id){
       setColorAnswer1('buttonAnswerRight');
+      setSuccess(true);
     }else{
       setColorAnswer1('buttonAnswerWrong');
     }
@@ -56,10 +56,9 @@ function Question(){
   };
 
   const handleClickAnswer2  = (event) => {
-    console.log(event.target.id);
-    console.log(rightAnswer);
     if(rightAnswer === event.target.id){
       setColorAnswer2('buttonAnswerRight');
+      setSuccess(true);
     }else{
       setColorAnswer2('buttonAnswerWrong');
     }
@@ -67,10 +66,9 @@ function Question(){
   };
 
   const handleClickAnswer3  = (event) => {
-    console.log(event.target.id);
-    console.log(rightAnswer);
     if(rightAnswer === event.target.id){
       setColorAnswer3('buttonAnswerRight');
+      setSuccess(true);
     }else{
       setColorAnswer3('buttonAnswerWrong');
     }
@@ -78,10 +76,9 @@ function Question(){
   };
 
   const handleClickAnswer4  = (event) => {
-    console.log(event.target.id);
-    console.log(rightAnswer);
     if(rightAnswer === event.target.id){
       setColorAnswer4('buttonAnswerRight');
+      setSuccess(true);
     }else{
       setColorAnswer4('buttonAnswerWrong');
     }
@@ -89,6 +86,20 @@ function Question(){
   };
 
   const handleClickNext = () => {
+    if(success){
+      const currentUser = localStorage.getItem('user');
+      const userData = JSON.parse(currentUser);
+      const allUsers = localStorage.getItem('users');
+      const allUsersParsed = JSON.parse(allUsers) || [];
+      const userIndex = allUsersParsed.findIndex(u => u.username === userData.username);
+      allUsersParsed[userIndex].points += 20;
+      localStorage.setItem('users', JSON.stringify(allUsersParsed));
+      userData.points += 20;
+      localStorage.setItem('user', JSON.stringify(userData));
+      alert('¡Respuesta correcta! Has ganado 20 puntos.');
+    }else{
+      alert('Respuesta incorrecta. 0 puntos.');
+    }
     if(idPregunta < questionsData.length){
       navigate(`/question?idPregunta=${parseInt(idPregunta) + 1}`);
       setIsDisabledAnswer(false);
@@ -96,6 +107,7 @@ function Question(){
       setColorAnswer2('buttonAnswer');
       setColorAnswer3('buttonAnswer');
       setColorAnswer4('buttonAnswer');
+      setSuccess(false);
     }
  
   };

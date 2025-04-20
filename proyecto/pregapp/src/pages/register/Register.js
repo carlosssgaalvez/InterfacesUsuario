@@ -52,7 +52,7 @@ function Register(){
 
     const newUser = { email, username, password, points: 0 };
     storedUsers.push(newUser);
-
+   
     localStorage.setItem('users', JSON.stringify(storedUsers));
   
     alert('¡Registro exitoso!');
