@@ -16,3 +16,5 @@ function MiComponente() {
 
 export default MiComponente;
 ## Saber donde se encuentra el usuario en todo momento
+
+## Posible nombre de la aplicacion: kNowCat (idea)

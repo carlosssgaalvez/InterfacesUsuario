@@ -16,6 +16,7 @@ import DivLabelInput from '../../components/divs/divLabelInput';
 import QuestionText from '../../components/Text/QuestionText';
 import ButtonAnswer from '../../components/Button/ButtonAnswer';
 import { useLocation } from 'react-router-dom';
+import PopupButton from '../../components/Button/PopupButton';
 
 function Question(){
   const location = useLocation();
@@ -62,13 +63,19 @@ function Question(){
         
         <br/><br/>
         <div className="buttonContainer2">
-        <ButtonBack valueButton={'Volver'} onClick={handleExit}/>    
+        <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'} onClick={handleExit}/>    
         <ButtonAdvance  valueButton={'Siguiente'} onClick={handleExit}/>
         </div>
         </div>
         </header>
     </div>
-    ):<h1>acceso denegado</h1>;
+    ): (
+      <div>
+        <h1>Acceso denegado</h1>
+        <p>Por favor, inicie sesión para acceder a esta página.</p>
+        <ButtonBack  valueButton={'Volver'} onClick={handleExit}/>
+      </div>
+      );
 }
 
 export default Question;

@@ -8,6 +8,7 @@ import ImageLogo from '../../components/Image/ImageLogo';
 import Logo from '../../images/logo.png';
 import ButtonBack from '../../components/Button/ButtonBack';
 import '../../styles/buttons.css';
+import PopupButton from '../../components/Button/PopupButton';
 
 function Home() {
   
@@ -59,14 +60,14 @@ function Home() {
         
         <br/><br/>
         <div className="buttonContainer">
-        <ButtonBack valueButton={'Volver'} onClick={handleExit}/>
-        
+          <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la aplicación?'} onClick={handleExit}/>
         </div>
         <br/><br/>
     </div>
   ): (
     <div>
-      <h1>acceso denegado</h1>
+      <h1>Acceso denegado</h1>
+      <p>Por favor, inicie sesión para acceder a esta página.</p>
       <ButtonBack  valueButton={'Volver'} onClick={handleExit}/>
     </div>
     );

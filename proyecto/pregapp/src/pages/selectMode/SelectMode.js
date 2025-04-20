@@ -66,7 +66,8 @@ function SelectMode() {
       </div>
     ): (
       <div>
-        <h1>acceso denegado</h1>
+        <h1>Acceso denegado</h1>
+        <p>Por favor, inicie sesión para acceder a esta página.</p>
         <ButtonBack  valueButton={'Volver'} onClick={handleExit}/>
       </div>
       );

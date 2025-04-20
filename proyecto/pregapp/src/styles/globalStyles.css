@@ -23,3 +23,32 @@
     border-radius: 50%;
     
 }
+
+.ventana-popup {
+    position: fixed;
+    width: 270px;
+    height: 150px;
+    top: 50%;
+    left: 50%;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    padding: 25px 50px;
+}
+
+.contenido-popup {
+    text-align: center;
+}
+
+#contenedor-popup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65vh;
+    margin: 0;
+}
+
+.h1-popup {
+    font-size: 20px;
+}
