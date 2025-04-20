@@ -24,17 +24,40 @@ function Register(){
 
   const navigate = useNavigate(); 
   const location = useLocation();
-  const { user, password } = {user:'Usuario', password:'1234' }; 
+
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleExit = () => {
      navigate('/login'); 
   };
 
   const handleAdvance = () => {
-    navigate('/home', {state: {user, password}}); 
-  }
-    
-  const [inputValue, setInputValue] = useState(''); 
+    if (password !== confirmPassword) {
+      alert('Las contraseñas no coinciden');
+      return;
+    }
+  
+
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+  
+    const existingUser = storedUsers.find(user => user.username === username);
+    if (existingUser) {
+      alert('Ese nombre de usuario ya está registrado');
+      return;
+    }
+  
+
+    const newUser = { email, username, password, points: 0 };
+    storedUsers.push(newUser);
+
+    localStorage.setItem('users', JSON.stringify(storedUsers));
+  
+    alert('¡Registro exitoso!');
+    navigate('/login');
+  };
   
  
   return (
@@ -49,19 +72,19 @@ function Register(){
        
           <DivLabelInput>
             <Label className="labelText" forId={'correo'} textValue={'Email:'}/> 
-            <InputText id={'correo'} className={"inputText"} placeholder={"Escribe tu correo electrónico"} type={"text"}/><br/>
+            <InputText id={'correo'} value={email} onChange={e => setEmail(e.target.value)} className={"inputText"} placeholder={"Escribe tu correo electrónico"} type={"text"}/><br/>
           </DivLabelInput>
           <DivLabelInput>
             <Label className="labelText" forId={'usuario'} textValue={'Usuario:'}/> 
-            <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"} type={"text"}/><br/>
+            <InputText id={'usuario'} value={username} onChange={e => setUsername(e.target.value)} className={"inputText"} placeholder={"Escribe tu usuario"} type={"text"}/><br/>
           </DivLabelInput>
           <DivLabelInput>
             <Label className="labelText" forId={'contrasenia'} textValue={'Contraseña:'}/>
-            <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"} type={"password"}/><br/>
+            <InputText id={'contrasenia'} value={password} onChange={e => setPassword(e.target.value)} className={"inputText"} placeholder={"Escribe tu contraseña"} type={"password"}/><br/>
           </DivLabelInput>
           <DivLabelInput>
             <Label className="labelText" forId={'contrasenia2'} textValue={'Contraseña:'}/>
-            <InputText id={'contrasenia2'} className={"inputText"} placeholder={"Repite tu contraseña"} type={"password"}/><br/>
+            <InputText id={'contrasenia2'} value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} className={"inputText"} placeholder={"Repite tu contraseña"} type={"password"}/><br/>
           </DivLabelInput>
         </DivGap4>
         <br/><br/>

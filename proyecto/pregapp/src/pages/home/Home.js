@@ -1,5 +1,5 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+
 import ButtonMenu from '../../components/Button/ButtonMenu';
 import DivGap4 from '../../components/divs/divGap4';
 import DivLabelInput from '../../components/divs/divLabelInput';
@@ -11,32 +11,35 @@ import '../../styles/buttons.css';
 import PopupButton from '../../components/Button/PopupButton';
 
 function Home() {
-  
-  const location = useLocation();
-  const navigate = useNavigate(); 
-  const { user, password } = location.state ||{} ;
+  const navigate = useNavigate();
+  const [user, setUser] = useState('');
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    } else {
+      setUser(undefined); // or set it to an empty string or any other default value
+    }
+  },[]);
   const handleClickJugar = () => {
-    navigate('/selectMode', {state: {user: user, password: password}});
+    navigate('/selectMode');
   }
   const handleClickInstrucciones = () => {
-    navigate('/instructions', {state: {user: user, password: password}});
+    navigate('/instructions');
   }
   const handleClickAjustes = () => {
-    navigate('/settings', {state: {user: user, password: password}});
+    navigate('/settings');
   }
   const handleClickPerfil = () => {
-    navigate('/profile', {state: {user: user, password: password}});
+    navigate('/profile');
   }
-  const handleExit = () => {
-    navigate('/login'); 
-  }
+
 
   const handleAccessDenied = () => {
     navigate('/logIn');
   };
 
-  console.log("user:",user, "password",password);
-  const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
+  const isLoggedIn = user !== undefined && user !== "" ;
   return isLoggedIn? (
    
 
@@ -65,7 +68,7 @@ function Home() {
         
         <br/><br/>
         <div className="buttonContainer">
-          <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la aplicación?'} onClick={handleExit}/>
+          <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la aplicación?'} />
         </div>
         <br/><br/>
     </div>

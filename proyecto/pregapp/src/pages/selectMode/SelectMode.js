@@ -8,13 +8,20 @@ import Logo from '../../images/logo.png';
 import ButtonBack from '../../components/Button/ButtonBack';
 import '../../styles/buttons.css';
 import Title from '../../components/Text/Title';
-
+import { useEffect, useState } from 'react';
 function SelectMode() {
-    const location = useLocation();
     const navigate = useNavigate(); 
-    const { user, password } = location.state ||{} ;
+   const [user, setUser] = useState('');
+        useEffect(() => {
+          const storedUser = localStorage.getItem('user');
+          if (storedUser) {
+            setUser(JSON.parse(storedUser));
+          } else {
+            setUser(undefined); // or set it to an empty string or any other default value
+          }
+        },[]);
     const handleClickJugarModo1 = () => {
-      navigate('/question?idPregunta=1', {state: {user: user, password: password, pointsForThisRound: 0}});
+      navigate('/question?idPregunta=1');
     }
     const handleClickJugarModo2 = () => {
       //navigate('/modo2');
@@ -29,15 +36,14 @@ function SelectMode() {
       console.log("modo 4 seleccionado");
     }
     const handleExit = () => {
-      navigate('/home', {state: {user: user, password: password}}); 
+      navigate('/home'); 
     }
 
     const handleAccessDenied = () => {
       navigate('/logIn');
     };
 
-    console.log("user:",user, "password",password);
-    const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
+    const isLoggedIn = user !== undefined && user !== "" ;
     return isLoggedIn? (
       <div className='container'>
           <DivGap4>

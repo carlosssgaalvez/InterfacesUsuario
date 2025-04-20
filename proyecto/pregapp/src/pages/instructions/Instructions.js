@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import './Instructions.css';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -12,18 +12,26 @@ import ImageLogo from '../../components/Image/ImageLogo';
 
 
 function Instructions() {
-    const location = useLocation();
+  
     const navigate = useNavigate(); 
-    const { user, password } = location.state ||{} ;
+    const [user, setUser] = useState('');
+     useEffect(() => {
+       const storedUser = localStorage.getItem('user');
+       if (storedUser) {
+         setUser(JSON.parse(storedUser));
+       } else {
+         setUser(undefined); // or set it to an empty string or any other default value
+       }
+     },[]);
     const handleClick = () => {
-      navigate('/home', {state: {user, password}});
+      navigate('/home');
     }
 
     const handleAccessDenied = () => {
       navigate('/logIn');
     };
 
-    const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
+    const isLoggedIn = user !== undefined && user !== "";
     return isLoggedIn? (
       <div className="Instructions">
       <header className="instruction-header">   

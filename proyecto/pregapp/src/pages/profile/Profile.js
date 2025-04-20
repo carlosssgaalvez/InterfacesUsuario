@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './Profile.css';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
@@ -14,28 +14,35 @@ import DivGap4 from '../../components/divs/divGap4';
 
 
 function Profile() {
-    const location = useLocation();
     const navigate = useNavigate(); 
-    const { user, password } = location.state ||{} ;
+    const [user, setUser] = useState('');
+      useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+          setUser(JSON.parse(storedUser));
+        } else {
+          setUser(undefined); // or set it to an empty string or any other default value
+        }
+      },[]);
     const handleClick = () => {
-        navigate('/home', {state: {user, password}});
+        navigate('/home');
     }
 
     const handleAccessDenied = () => {
       navigate('/logIn');
     };
 
-    const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
+    const isLoggedIn = user !== undefined && user !== "" ;
     return isLoggedIn? (
      <div className="Profile">
       <header className="Profile-header">   
         
           <Image className={"imgProfile"} src={Profimg}/>
           <DivGap4>
-            <Title className="title" valueText={user}/>
-            <Label className="labelText" forId={'descripcion'} textValue={'Texto por determinar'}/>
+            <Title className="title" valueText={user.username}/>
+            <Label className="labelText" forId={'nombre'} textValue={user.email}/>
             <Title className="title" valueText={'Preguntas Acertadas'}/>
-            <Label className="labelText" forId={'aciertos'} textValue={'2000'}/>
+            <Label className="labelText" forId={'aciertos'} textValue={user.points}/>
            
           </DivGap4>
        

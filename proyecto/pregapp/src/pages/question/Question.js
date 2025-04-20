@@ -22,17 +22,20 @@ function Question(){
   const location = useLocation();
   const navigate = useNavigate(); 
   const idPregunta = new URLSearchParams(location.search).get('idPregunta');
-  console.log("idPregunta", idPregunta);
 
-  const { user, password } = location.state ||{} ;
+  const [user, setUser] = useState('');
+       useEffect(() => {
+         const storedUser = localStorage.getItem('user');
+         if (storedUser) {
+           setUser(JSON.parse(storedUser));
+         } else {
+           setUser(undefined); // or set it to an empty string or any other default value
+         }
+       },[]);
   
   const rightAnswer =  questionsData[idPregunta-1].respuesta_correcta;
   const questionOptions = questionsData[idPregunta-1].opciones;
   const questionText = questionsData[idPregunta-1].pregunta;
-
-  const handleExit = () => {
-    navigate('/selectMode', {state: {user, password}}); 
-  };
 
   const [colorAnswer1, setColorAnswer1] = useState('buttonAnswer');
   const [colorAnswer2, setColorAnswer2] = useState('buttonAnswer');
@@ -87,7 +90,7 @@ function Question(){
 
   const handleClickNext = () => {
     if(idPregunta < questionsData.length){
-      navigate(`/question?idPregunta=${parseInt(idPregunta) + 1}`, {state: {user, password}});
+      navigate(`/question?idPregunta=${parseInt(idPregunta) + 1}`);
       setIsDisabledAnswer(false);
       setColorAnswer1('buttonAnswer');
       setColorAnswer2('buttonAnswer');
@@ -101,7 +104,7 @@ function Question(){
     navigate('/logIn');
   };
 
-  const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
+  const isLoggedIn = user !== undefined && user !== "";
   return isLoggedIn? (
     <div>
       <header>   
@@ -130,7 +133,7 @@ function Question(){
         
         <br/><br/>
         <div className="buttonContainer2">
-        <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'} onClick={handleExit}/>    
+        <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'} />    
         <ButtonAdvance  valueButton={'Siguiente'} onClick={handleClickNext}/>
         </div>
         </div>

@@ -30,8 +30,23 @@ function LogIn(){
   };
 
   const handleClick = () => {
-    navigate('/home', {state: {user: userNameValue, password: passwordValue}});
-  }
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+    if(storedUsers.length === 0){
+      alert('No hay usuarios registrados, por favor registrate primero');
+      return;
+    }
+    // Buscar el usuario con el nombre y contraseña correctos
+    const matchedUser = storedUsers.find(
+      user => user.username === userNameValue && user.password === passwordValue
+    );
+    localStorage.setItem('user', JSON.stringify(matchedUser));
+    if (matchedUser) {
+      navigate('/home');
+    } else {
+      alert('Usuario o contraseña incorrectos');
+    }
+  };
 
   
   const handleClickTextLink = () => {

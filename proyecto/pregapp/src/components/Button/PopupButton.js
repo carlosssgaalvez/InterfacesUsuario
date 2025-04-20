@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import ButtonBack from './ButtonBack';
 import ButtonAdvance from './ButtonAdvance';
 import '../../styles/buttons.css';
-
-function PopupButton ({valueButton,textValue, onClick }) {
+import { useNavigate } from 'react-router-dom';
+function PopupButton ({valueButton,textValue }) {
 
     const [isPopupOpen, setPopupOpen] = useState(false);
-
+    const navigate = useNavigate(); 
     const openPopup = () => {
         setPopupOpen(true);
     };
+    const handleExit = () => {
+        localStorage.removeItem('user');
+        navigate('/login'); 
+      }
 
     const closePopup = () => {
         setPopupOpen(false);
@@ -26,7 +30,7 @@ function PopupButton ({valueButton,textValue, onClick }) {
                     {/* Botón para cerrar el popup */}
                     <div className="buttonContainerPopup">
                         <ButtonAdvance valueButton={"No"} onClick={closePopup}/>
-                        <ButtonBack valueButton={"Sí"} onClick={onClick}/>
+                        <ButtonBack valueButton={"Sí"} onClick={handleExit}/>
                     </div>
                 </div>
             </div>
