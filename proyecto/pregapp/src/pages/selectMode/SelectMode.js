@@ -22,6 +22,7 @@ function SelectMode() {
         },[]);
     const handleClickJugarModo1 = () => {
       navigate('/question?idPregunta=1');
+      localStorage.setItem('puntosPartidaActual', 0);
     }
     const handleClickJugarModo2 = () => {
       //navigate('/modo2');

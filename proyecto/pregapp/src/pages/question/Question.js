@@ -44,6 +44,12 @@ function Question(){
   const [success, setSuccess] = useState(false);
   const [isDisabledAnswer, setIsDisabledAnswer] = useState(false);
 
+  const handleExit = () => {
+    const puntosPartidaActual = 0;
+    localStorage.setItem('puntosPartidaActual', puntosPartidaActual);
+    navigate('/selectMode'); 
+  };
+
   const handleClickAnswer1  = (event) => {
 
     if(rightAnswer === event.target.id){
@@ -87,6 +93,8 @@ function Question(){
 
   const handleClickNext = () => {
     if(success){
+      const puntosPartidaActual = parseInt(localStorage.getItem('puntosPartidaActual')) + 20;
+      localStorage.setItem('puntosPartidaActual', puntosPartidaActual);
       const currentUser = localStorage.getItem('user');
       const userData = JSON.parse(currentUser);
       const allUsers = localStorage.getItem('users');
@@ -108,6 +116,8 @@ function Question(){
       setColorAnswer3('buttonAnswer');
       setColorAnswer4('buttonAnswer');
       setSuccess(false);
+    }else{
+      navigate('/finalPoints');
     }
  
   };
@@ -145,7 +155,7 @@ function Question(){
         
         <br/><br/>
         <div className="buttonContainer2">
-        <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'} />    
+        <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'}  onClick={handleExit}  />    
         <ButtonAdvance  valueButton={'Siguiente'} onClick={handleClickNext}/>
         </div>
         </div>
