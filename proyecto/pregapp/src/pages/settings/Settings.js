@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Settings.css';
+import { useLocation } from 'react-router-dom';
 import ImageLogo from '../../components/Image/ImageLogo';
 import Logo from '../../images/logo.png';
 import Music from '../../images/music.png';
@@ -7,6 +8,7 @@ import Sound from '../../images/sound.png';
 import DivGap4 from '../../components/divs/divGap4';
 import Slider from '../../components/Slider/Slider';
 import Button from '../../components/Button/Button';
+import ButtonBack from '../../components/Button/ButtonBack';
 import { useNavigate } from 'react-router-dom';
 
 function Settings() {
@@ -26,15 +28,16 @@ function Settings() {
     console.log(`Nuevo volumen de música: ${value}`);
   };
 
-  // Esto es un ejemplo para probar los componentes
-  const navigate = useNavigate();
-  const { user, password } = {user:'Usuario', password:'1234' }; 
+  const location = useLocation();
+  const navigate = useNavigate(); 
+  const { user, password } = location.state ||{} ;
 
   const handleClick = () => {
     navigate('/home', {state: {user, password}});
   }
 
-  return (
+  const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
+  return isLoggedIn? (
     <div className="settings">
       <header className="Profile-header">
         {/* Aquí podrías agregar más contenido si lo necesitas */}
@@ -68,7 +71,12 @@ function Settings() {
         </div>
       </DivGap4>
     </div>
-  );
+  ): (
+    <div>
+      <h1>acceso denegado</h1>
+      <ButtonBack  valueButton={'Volver'} onClick={handleClick}/>
+    </div>
+    );
 }
 
 export default Settings;

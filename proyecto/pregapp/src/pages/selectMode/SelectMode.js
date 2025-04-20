@@ -5,7 +5,7 @@ import DivLabelInput from '../../components/divs/divLabelInput';
 import { useNavigate } from 'react-router-dom';
 import ImageLogo from '../../components/Image/ImageLogo';
 import Logo from '../../images/logo.png';
-import Button from '../../components/Button/Button';
+import ButtonBack from '../../components/Button/ButtonBack';
 import '../../styles/buttons.css';
 import Title from '../../components/Text/Title';
 
@@ -32,9 +32,8 @@ function SelectMode() {
       navigate('/home', {state: {user: user, password: password}}); 
     }
     console.log("user:",user, "password",password);
-    return user !== undefined? (
-     
-  
+    const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
+    return isLoggedIn? (
       <div className='container'>
           <DivGap4>
             <br/><br/>
@@ -60,12 +59,17 @@ function SelectMode() {
           
           <br/><br/>
           <div className="buttonContainer">
-          <Button className="buttonBack" valueButton={'Volver'} onClick={handleExit}/>
+          <ButtonBack valueButton={'Volver'} onClick={handleExit}/>
           
           </div>
           <br/><br/>
       </div>
-    ):<h1>acceso denegado</h1>;
+    ): (
+      <div>
+        <h1>acceso denegado</h1>
+        <ButtonBack  valueButton={'Volver'} onClick={handleExit}/>
+      </div>
+      );
 }
 
 export default SelectMode;

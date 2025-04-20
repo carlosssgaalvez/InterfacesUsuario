@@ -1,6 +1,5 @@
 import React from 'react';
 import './Question.css';
-import Button from '../../components/Button/Button';
 import ImageLogo from '../../components/Image/ImageLogo';
 import Logo from '../../images/logo.png';
 import Title from '../../components/Text/Title';
@@ -10,7 +9,6 @@ import InputText from '../../components/Form/InputText';
 import '../../styles/inputs.css';
 import '../../styles/buttons.css';
 import '../../styles/globalStyles.css';
-import Label from '../../components/Text/Label';
 import { useNavigate } from 'react-router-dom';
 import ButtonAdvance from '../../components/Button/ButtonAdvance';
 import DivGap4 from '../../components/divs/divGap4';
@@ -20,9 +18,9 @@ import ButtonAnswer from '../../components/Button/ButtonAnswer';
 import { useLocation } from 'react-router-dom';
 
 function Question(){
-    const location = useLocation();
-    const navigate = useNavigate(); 
-    const { user, password } = location.state ||{} ;
+  const location = useLocation();
+  const navigate = useNavigate(); 
+  const { user, password } = location.state ||{} ;
 
   const handleExit = () => {
     navigate('/selectMode', {state: {user, password}}); 
@@ -35,7 +33,8 @@ function Question(){
     
         
   };
-  return (
+  const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
+  return isLoggedIn? (
     <div className="LogIn">
       <header className="LogIn-header">   
         <div className="container">
@@ -69,7 +68,7 @@ function Question(){
         </div>
         </header>
     </div>
-    );
+    ):<h1>acceso denegado</h1>;
 }
 
 export default Question;
