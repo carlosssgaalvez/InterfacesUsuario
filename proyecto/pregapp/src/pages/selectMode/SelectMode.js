@@ -7,6 +7,7 @@ import ImageLogo from '../../components/Image/ImageLogo';
 import Logo from '../../images/logo.png';
 import ButtonBack from '../../components/Button/ButtonBack';
 import '../../styles/buttons.css';
+import '../../styles/globalStyles.css';
 import Title from '../../components/Text/Title';
 import { useEffect, useState } from 'react';
 

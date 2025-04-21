@@ -34,15 +34,16 @@ function Profile() {
 
     const isLoggedIn = user !== undefined && user !== "" ;
     return isLoggedIn? (
-     <div className="Profile">
+     <div className="container">
       <header className="Profile-header">   
         
           <Image className={"imgProfile"} src={Profimg}/>
           <DivGap4>
             <Title className="title" valueText={user.username}/>
-            <Label className="labelText" forId={'nombre'} textValue={user.email}/>
+            <p className="labelText">{user.email}</p>
             <Title className="title" valueText={'Preguntas Acertadas'}/>
-            <Label className="labelText" forId={'aciertos'} textValue={user.points}/>
+            <p>{user.points}</p>
+           
            
           </DivGap4>
        

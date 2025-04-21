@@ -69,7 +69,7 @@ function FinalPoints(){
         <br/><br/>
         <div className="buttonContainer2">
         <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'}  onClick={handleExit}  />    
-        <ButtonAdvance  valueButton={'Volver a intentar'} onClick={handleClickNext}/>
+        <ButtonAdvance  valueButton={'Reintentar'} onClick={handleClickNext}/>
         </div>
         </div>
         </header>

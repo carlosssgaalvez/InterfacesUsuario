@@ -1,16 +1,4 @@
-.title {
-    font-size: 30px;
-    font-weight: bold;
-    color: #000000;
-    margin-top: 0px;
-}
 
-.container {
-    background-image: url('../../images/fondo_1.webp');
-    background-size: cover;
-    padding: 40px;
-    text-align: center;
-}
 
 .estiloTexto {
     font-size: 20px;

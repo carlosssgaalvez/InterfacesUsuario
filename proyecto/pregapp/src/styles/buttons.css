@@ -7,7 +7,7 @@
     height: 52px;
     border:#000000 0.3px solid;
     @media (max-width: 768px) {
-        width: 100px;
+        width: 130px;
         height: 40px;
         font-size: 20px;
     }
@@ -21,7 +21,7 @@
     height: 52px;
     border:#000000 0.3px solid;
     @media (max-width: 768px) {
-        width: 100px;
+        width: 130px;
         height: 40px;
         font-size: 20px;
     }
