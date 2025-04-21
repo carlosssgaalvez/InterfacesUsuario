@@ -56,7 +56,7 @@ function Register(){
     localStorage.setItem('users', JSON.stringify(storedUsers));
   
     alert('¡Registro exitoso!');
-    navigate('/login');
+    navigate('/Home', { state: { user: username, password } });
   };
   
  
