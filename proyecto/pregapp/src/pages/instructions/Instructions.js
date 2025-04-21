@@ -46,7 +46,7 @@ function Instructions() {
         <div className="buttonContainer">
         <ButtonBack  valueButton={'Volver'} onClick={handleClick}/>
         </div>
-    </div>
+     </div>
   ): (
     <div>
       <h1>Acceso denegado</h1>
