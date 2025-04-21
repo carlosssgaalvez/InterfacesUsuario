@@ -4,8 +4,7 @@ import Button from '../../components/Button/Button';
 import ImageLogo from '../../components/Image/ImageLogo';
 import Logo from '../../images/logo.png';
 import Title from '../../components/Text/Title';
-import PlainText from '../../components/Text/PlainText';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import InputText from '../../components/Form/InputText';
 import '../../styles/inputs.css';
 import '../../styles/buttons.css';
@@ -13,17 +12,10 @@ import Label from '../../components/Text/Label';
 import { useNavigate } from 'react-router-dom';
 import DivLabelInput from '../../components/divs/divLabelInput';
 import DivGap4 from '../../components/divs/divGap4';
-import { useLocation } from 'react-router-dom';
 
 
 function Register(){
-  // Esto es un ejemplo para probar los componentes
-  const handleClick = () => {
-    console.log("Button clicked!");
-  }
-
-  const navigate = useNavigate(); 
-  const location = useLocation();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
