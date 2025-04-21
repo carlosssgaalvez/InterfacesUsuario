@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Settings.css';
 import { useLocation } from 'react-router-dom';
 import ImageLogo from '../../components/Image/ImageLogo';
@@ -28,19 +28,26 @@ function Settings() {
     console.log(`Nuevo volumen de música: ${value}`);
   };
 
-  const location = useLocation();
-  const navigate = useNavigate(); 
-  const { user, password } = location.state ||{} ;
+  const navigate = useNavigate();
+    const [user, setUser] = useState('');
+    useEffect(() => {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      } else {
+        setUser(undefined); // or set it to an empty string or any other default value
+      }
+    },[]);
 
   const handleClick = () => {
-    navigate('/home', {state: {user, password}});
+    navigate('/home');
   }
 
   const handleAccessDenied = () => {
     navigate('/logIn');
   };
 
-  const isLoggedIn = user !== undefined && user !== "" && password !== undefined && password !== "";
+  const isLoggedIn = user !== undefined && user !== "";
   return isLoggedIn? (
     <div className="settings">
       <header className="Profile-header">
