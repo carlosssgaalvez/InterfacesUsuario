@@ -56,6 +56,10 @@ function Question(){
       setSuccess(true);
     }else{
       setColorAnswer1('buttonAnswerWrong');
+      
+      if (rightAnswer === questionOptions[1]) setColorAnswer2('buttonAnswerRight');
+      else if (rightAnswer === questionOptions[2]) setColorAnswer3('buttonAnswerRight');
+      else if (rightAnswer === questionOptions[3]) setColorAnswer4('buttonAnswerRight');
     }
     setIsDisabledAnswer(true);
   };
@@ -66,6 +70,9 @@ function Question(){
       setSuccess(true);
     }else{
       setColorAnswer2('buttonAnswerWrong');
+      if (rightAnswer === questionOptions[0]) setColorAnswer1('buttonAnswerRight');
+      else if (rightAnswer === questionOptions[2]) setColorAnswer3('buttonAnswerRight');
+      else if (rightAnswer === questionOptions[3]) setColorAnswer4('buttonAnswerRight');
     }
     setIsDisabledAnswer(true);
   };
@@ -76,6 +83,9 @@ function Question(){
       setSuccess(true);
     }else{
       setColorAnswer3('buttonAnswerWrong');
+      if (rightAnswer === questionOptions[0]) setColorAnswer1('buttonAnswerRight');
+      else if (rightAnswer === questionOptions[1]) setColorAnswer2('buttonAnswerRight');
+      else if (rightAnswer === questionOptions[3]) setColorAnswer4('buttonAnswerRight');
     }
     setIsDisabledAnswer(true);
   };
@@ -86,6 +96,9 @@ function Question(){
       setSuccess(true);
     }else{
       setColorAnswer4('buttonAnswerWrong');
+      if (rightAnswer === questionOptions[0]) setColorAnswer1('buttonAnswerRight');
+      else if (rightAnswer === questionOptions[1]) setColorAnswer2('buttonAnswerRight');
+      else if (rightAnswer === questionOptions[2]) setColorAnswer3('buttonAnswerRight');
     }
     setIsDisabledAnswer(true);
   };
@@ -132,7 +145,8 @@ function Question(){
         <div className="container">
         <DivGap4>
             <br/><br/><br/>
-            <QuestionText className={"pregunta"} forId={"pregunta1"} titleValue={"Pregunta 1"} textValue={questionText}/>
+           
+            <QuestionText className={"pregunta"} forId={`pregunta${idPregunta}`} titleValue={`Pregunta ${idPregunta}`} textValue={questionText}/>
             <br/>
           <DivLabelInput>
             <ButtonAnswer idButton={questionOptions[0]} className={colorAnswer1} valueButton={questionOptions[0]} onClick={handleClickAnswer1} isDisabled={isDisabledAnswer}/>
