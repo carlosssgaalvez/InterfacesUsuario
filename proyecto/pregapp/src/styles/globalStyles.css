@@ -24,6 +24,16 @@
     
 }
 
+.icon { /*sonido y musica de settings*/
+    width: 120px;     
+    height: auto;        
+    margin: 10px;
+    @media (max-width: 768px) {
+        width: 80px;
+        height: auto;  
+    }       
+}
+
 .title{
     font-size: 30px;
     font-weight: bold;

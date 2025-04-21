@@ -1,0 +1,26 @@
+/* Estilo del slider */
+.slider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+  
+.slider {
+    width: 200px;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 15px;
+    cursor: pointer;
+    appearance: none;  /* Eliminamos el estilo predeterminado del slider */
+}
+  
+/* boton del slider */
+.slider::-webkit-slider-thumb { /* Navegador Chrome y Safari */
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    cursor: pointer;
+}

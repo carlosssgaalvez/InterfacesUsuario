@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Settings.css';
-import { useLocation } from 'react-router-dom';
+import '../../styles/globalStyles.css';
+import '../../styles/sliders.css';
 import ImageLogo from '../../components/Image/ImageLogo';
 import Logo from '../../images/logo.png';
 import Music from '../../images/music.png';
@@ -39,7 +40,7 @@ function Settings() {
       }
     },[]);
 
-  const handleClick = () => {
+  const handleAdvance = () => {
     navigate('/home');
   }
 
@@ -49,37 +50,31 @@ function Settings() {
 
   const isLoggedIn = user !== undefined && user !== "";
   return isLoggedIn? (
-    <div className="settings">
-      <header className="Profile-header">
-        {/* Aquí podrías agregar más contenido si lo necesitas */}
-      </header>
-      
+    <div className='container'>
       <DivGap4>
         <br/><br/>
-      <ImageLogo className={"imgLogo"} src={Logo} />
+        <ImageLogo className={"imgLogo"} src={Logo}/>
         <div className="containerSettings">
-        <div className="control-row">
-          <img src={Sound} alt="Sound" className="logo" />
-          <Slider
-            min={0}
-            max={100}
-            value={soundValue}
-            onChange={handleSoundChange}
-          />
+          <div className="settings-row">
+            <img src={Sound} alt="Sound" className="icon" />
+            <Slider className={"slider"}
+              min={0}
+              max={100}
+              value={soundValue}
+              onChange={handleSoundChange}
+            />
+          </div>
+          <div className="settings-row">
+            <img src={Music} alt="Music" className="icon" />
+            <Slider
+              min={0}
+              max={100}
+              value={musicValue}
+              onChange={handleMusicChange}
+            />
+          </div>
         </div>
-        <div className="control-row">
-          <img src={Music} alt="Music" className="logo" />
-          <Slider
-            min={0}
-            max={100}
-            value={musicValue}
-            onChange={handleMusicChange}
-          />
-        </div>
-        <div className="control-row">
-          <Button className={"buttonAdvance2"} valueButton={'Guardar'} onClick={handleClick}/>
-        </div>
-        </div>
+        <Button className={"buttonAdvance"} valueButton={'Guardar'} onClick={handleAdvance}/>
       </DivGap4>
     </div>
   ): (
