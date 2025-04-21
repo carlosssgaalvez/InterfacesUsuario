@@ -59,15 +59,15 @@ function SelectMode() {
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
-            <ButtonMenu idButton={'button2'} valueButton={'MODO 2'} colorButton={'#C0C0C0'} onClick={handleClickJugarModo2}/>
+            <ButtonMenu idButton={'button2'} valueButton={'MODO WORDLE(...PROXIMAMENTE)'} colorButton={'#C0C0C0'} onClick={handleClickJugarModo2}/>
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
-            <ButtonMenu idButton={'button3'} valueButton={'MODO 3'} colorButton={'#007BFF'} onClick={handleClickJugarModo3}/>
+            <ButtonMenu idButton={'button3'} valueButton={'MODO MEMORIA(...PROXIMAMENTE)'} colorButton={'#007BFF'} onClick={handleClickJugarModo3}/>
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
-            <ButtonMenu idButton={'button4'} valueButton={'MODO 4'} colorButton={'#2ECC71'} onClick={handleClickJugarModo4}/>
+            <ButtonMenu idButton={'button4'} valueButton={'MODO ALEATORIO(...PROXIMAMENTE)'} colorButton={'#2ECC71'} onClick={handleClickJugarModo4}/>
               <br/><br/>
             </DivLabelInput>
             </DivGap4>
