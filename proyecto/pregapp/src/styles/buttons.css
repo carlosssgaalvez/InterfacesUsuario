@@ -12,6 +12,11 @@
         font-size: 20px;
     }
 }
+.buttonAdvance:hover {
+    box-shadow: #000000 0px 4px 4px 0px;
+    cursor: pointer;
+}
+
 .buttonBack {
     font-size: 25px;
     background-color: #E94E4E;
@@ -25,6 +30,10 @@
         height: 40px;
         font-size: 20px;
     }
+}
+.buttonBack:hover {
+    box-shadow: #000000 0px 4px 4px 0px;
+    cursor: pointer;
 }
 
 .buttonMenu {
@@ -40,33 +49,42 @@
         font-size: 16px;
     }
 }
+.buttonMenu:hover {
+    box-shadow: #000000 0px 4px 4px 0px;
+    cursor: pointer;
+}
 
 .buttonAnswer{
     width: 730px;
     height: 40px;
-border-radius: 24px;
-background: #FFF;
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-border: 0.3px solid #000000;
-@media (max-width: 768px) {
-    width: 243px;
-    height: 39px;
-    
+    border-radius: 24px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: 0.3px solid #000000;
+    @media (max-width: 768px) {
+        width: 243px;
+        height: 39px;
+        
+    }
 }
+.buttonAnswer:hover{
+    box-shadow: #000000 0px 4px 4px 0px;
+    cursor: pointer;
 }
 .buttonAnswerWrong{
     width: 730px;
     height: 40px;
-border-radius: 24px;
-background: #E94E4E;
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-border: 0.3px solid #000000;
-@media (max-width: 768px) {
-    width: 243px;
-    height: 39px;
-    
+    border-radius: 24px;
+    background: #E94E4E;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: 0.3px solid #000000;
+    @media (max-width: 768px) {
+        width: 243px;
+        height: 39px;
+        
+    }
 }
-}
+
 .buttonAnswerSelected{
     width: 730px;
     height: 40px;
@@ -119,3 +137,5 @@ border: 0.3px solid #000000;
     }
   
 }
+
+

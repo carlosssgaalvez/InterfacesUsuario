@@ -8,6 +8,10 @@
     background-color: transparent;
     border: none;
 }
+.textLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 .buttonContainer {
     display: flex;

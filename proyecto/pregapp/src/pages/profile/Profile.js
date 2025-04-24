@@ -40,7 +40,7 @@ function Profile() {
             <Title className="title" valueText={user.username}/>
             <p className="labelText">{user.email}</p>
             <Title className="title" valueText={'Preguntas Acertadas'}/>
-            <p>{user.points}</p>
+            <p>{user.points/20}</p>
            
            
           </DivGap4>
