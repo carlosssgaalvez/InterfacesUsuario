@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Settings.css';
 import '../../styles/globalStyles.css';
 import '../../styles/sliders.css';
@@ -11,10 +11,11 @@ import Slider from '../../components/Slider/Slider';
 import Button from '../../components/Button/Button';
 import ButtonBack from '../../components/Button/ButtonBack';
 import { useNavigate } from 'react-router-dom';
+import { AudioContext } from '../../components/AudioProvider/AudioContext';
 
 function Settings() {
   const [soundValue, setSoundValue] = useState(50);  // Estado para el volumen del sonido
-  const [musicValue, setMusicValue] = useState(50);  // Estado para el volumen de la música
+  const {musicVolume, setMusicVolume} = useContext(AudioContext);
 
   // Funciones para manejar el cambio de volumen
   const handleSoundChange = (value) => {
@@ -24,8 +25,7 @@ function Settings() {
   };
 
   const handleMusicChange = (value) => {
-    setMusicValue(value);
-    // Provisional para mostrar el valor en la consola
+    setMusicVolume(value / 100);
     console.log(`Nuevo volumen de música: ${value}`);
   };
 
@@ -36,7 +36,7 @@ function Settings() {
       if (storedUser) {
         setUser(JSON.parse(storedUser));
       } else {
-        setUser(undefined); // or set it to an empty string or any other default value
+        setUser(undefined);
       }
     },[]);
 
@@ -69,7 +69,7 @@ function Settings() {
             <Slider
               min={0}
               max={100}
-              value={musicValue}
+              value={musicVolume * 100}
               onChange={handleMusicChange}
             />
           </div>
