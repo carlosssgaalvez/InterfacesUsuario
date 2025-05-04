@@ -12,7 +12,7 @@ import QuestionText from '../../components/Text/QuestionText';
 import ButtonAnswer from '../../components/Button/ButtonAnswer';
 import PopupButton from '../../components/Button/PopupButton';
 import questionsData from '../../resources/questions.json';
-
+import '../../styles/text.css';
 function Question() {
   const location = useLocation();
   const navigate = useNavigate(); 
@@ -22,8 +22,7 @@ function Question() {
   const rightAnswer = question.respuesta_correcta;
   const questionOptions = question.opciones;
   const questionText = question.pregunta;
-  const [showFeedback, setShowFeedback] = useState(false);
-
+  const [puntos, setPuntos] = useState(null);
   const [user, setUser] = useState('');
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [colorAnswer1, setColorAnswer1] = useState('buttonAnswer');
@@ -42,51 +41,6 @@ function Question() {
     }
   }, []);
 
-  useEffect(() => {
-    if (showFeedback) {
-      
-      setTimeout(() => {
-        if (success) {
-          const puntos = parseInt(localStorage.getItem('puntosPartidaActual') || '0') + 20;
-          localStorage.setItem('puntosPartidaActual', puntos);
-  
-          const currentUser = JSON.parse(localStorage.getItem('user'));
-          const allUsersParsed = JSON.parse(localStorage.getItem('users')) || [];
-          const userIndex = allUsersParsed.findIndex(u => u.username === currentUser.username);
-          if (userIndex !== -1) {
-            allUsersParsed[userIndex].points += 20;
-            localStorage.setItem('users', JSON.stringify(allUsersParsed));
-          }
-          currentUser.points += 20;
-          localStorage.setItem('user', JSON.stringify(currentUser));
-  
-          alert('¡Respuesta correcta! Has ganado 20 puntos.');
-        } else {
-          alert('Respuesta incorrecta. 0 puntos.');
-        }
-  
-       
-        if (parseInt(idPregunta) < questionsData.length) {
-          navigate(`/question?idPregunta=${parseInt(idPregunta) + 1}`);
-        } else {
-          navigate('/finalPoints');
-        }
-  
-        setShowFeedback(false);
-      }, 0); 
-    }
-  }, [showFeedback]);
-  useEffect(() => {
-    setSelectedAnswer(null);
-    setColorAnswer1('buttonAnswer');
-    setColorAnswer2('buttonAnswer');
-    setColorAnswer3('buttonAnswer');
-    setColorAnswer4('buttonAnswer');
-    setIsDisabledAnswer(false);
-    setSuccess(false);
-    setShowFeedback(false); 
-  }, [idPregunta]);
-
   const handleExit = () => {
     localStorage.setItem('puntosPartidaActual', 0);
     navigate('/selectMode'); 
@@ -95,39 +49,50 @@ function Question() {
   const handleClickAnswer = (index) => {
     if (isDisabledAnswer) return;
     setSelectedAnswer(index);
-    setColorAnswer1(index === 0 ? 'buttonAnswerSelected' : 'buttonAnswer');
-    setColorAnswer2(index === 1 ? 'buttonAnswerSelected' : 'buttonAnswer');
-    setColorAnswer3(index === 2 ? 'buttonAnswerSelected' : 'buttonAnswer');
-    setColorAnswer4(index === 3 ? 'buttonAnswerSelected' : 'buttonAnswer');
+
+    if (questionOptions[index] === rightAnswer) {
+      setSuccess(true);
+      setPuntos(20);
+    }else{
+      setPuntos(0);
+    }
+
+    setColorAnswer1(index === 0? (questionOptions[index] === rightAnswer ? 'buttonAnswerRight' : 'buttonAnswerWrong') : 'buttonAnswerNotHover');
+    setColorAnswer2(index === 1? (questionOptions[index] === rightAnswer ? 'buttonAnswerRight' : 'buttonAnswerWrong') : 'buttonAnswerNotHover');
+    setColorAnswer3(index === 2? (questionOptions[index] === rightAnswer ? 'buttonAnswerRight' : 'buttonAnswerWrong') : 'buttonAnswerNotHover');
+    setColorAnswer4(index === 3? (questionOptions[index] === rightAnswer ? 'buttonAnswerRight' : 'buttonAnswerWrong') : 'buttonAnswerNotHover');
+ 
+    setIsDisabledAnswer(true);
   };
 
   const handleClickNext = () => {
+
     if (selectedAnswer === null) {
       alert('Selecciona una respuesta antes de continuar.');
       return;
     }
-  
-    const selectedText = questionOptions[selectedAnswer];
-    const isCorrect = selectedText === rightAnswer;
-  
-    const newColors = ['buttonAnswer', 'buttonAnswer', 'buttonAnswer', 'buttonAnswer'];
-    if (isCorrect) {
-      newColors[selectedAnswer] = 'buttonAnswerRight';
-    } else {
-      newColors[selectedAnswer] = 'buttonAnswerWrong';
-      const correctIndex = questionOptions.findIndex(opt => opt === rightAnswer);
-      newColors[correctIndex] = 'buttonAnswerRight';
+
+    if (success) {
+      const puntos = parseInt(localStorage.getItem('puntosPartidaActual') || '0') + 20;
+      localStorage.setItem('puntosPartidaActual', puntos);
+      user.points += 20;
+      localStorage.setItem('user', JSON.stringify(user));
     }
-  
-    setColorAnswer1(newColors[0]);
-    setColorAnswer2(newColors[1]);
-    setColorAnswer3(newColors[2]);
-    setColorAnswer4(newColors[3]);
-    setIsDisabledAnswer(true);
-  
     
-    setSuccess(isCorrect);
-    setShowFeedback(true);
+    setSelectedAnswer(null);
+    setColorAnswer1('buttonAnswer');
+    setColorAnswer2('buttonAnswer');
+    setColorAnswer3('buttonAnswer');
+    setColorAnswer4('buttonAnswer');
+    setIsDisabledAnswer(false);
+    setSuccess(false);
+    setPuntos(null);
+    if (parseInt(idPregunta) < questionsData.length) {
+      navigate(`/question?idPregunta=${parseInt(idPregunta) + 1}`);
+    } else {
+      navigate('/finalPoints');
+    }
+    
   };
 
   const handleAccessDenied = () => {
@@ -140,9 +105,10 @@ function Question() {
     <div>
       <header>   
         <div className="container">
+        
           <DivGap4>
             <br /><br /><br />
-            <QuestionText className={"pregunta"} forId={`pregunta${idPregunta}`} titleValue={`Pregunta ${idPregunta}`} textValue={questionText}/>
+            <QuestionText className={"pregunta"} forId={`pregunta${idPregunta}`} titleValue={`Pregunta ${idPregunta}`} textValue={questionText} points={puntos}/>
             <br/>
             <DivLabelInput>
               <ButtonAnswer idButton={questionOptions[0]} className={colorAnswer1} valueButton={questionOptions[0]} onClick={() => handleClickAnswer(0)} isDisabled={isDisabledAnswer}/>

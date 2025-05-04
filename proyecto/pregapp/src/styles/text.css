@@ -1,0 +1,12 @@
+.points {
+    font-weight: bold;
+    margin-left: 1rem;
+  }
+  
+  .points.red {
+    color: red;
+  }
+  
+  .points.green {
+    color: green;
+  }
