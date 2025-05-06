@@ -32,8 +32,8 @@ function SelectMode() {
       console.log("modo 2 seleccionado");
     }
     const handleClickJugarModo3 = () => {
-      //navigate('/modo3');
-      console.log("modo 3 seleccionado");
+      navigate('/memoryGame');
+      localStorage.setItem('puntosPartidaActual', 0);
     }
     const handleClickJugarModo4 = () => {
       //navigate('/modo4');
@@ -63,7 +63,7 @@ function SelectMode() {
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
-            <ButtonMenu idButton={'button3'} valueButton={'MODO MEMORIA(...PROXIMAMENTE)'} colorButton={'#007BFF'} onClick={handleClickJugarModo3}/>
+            <ButtonMenu idButton={'button3'} valueButton={'MODO MEMORIA'} colorButton={'#007BFF'} onClick={handleClickJugarModo3}/>
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>

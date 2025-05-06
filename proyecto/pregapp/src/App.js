@@ -9,6 +9,7 @@ import Question from './pages/question/Question.js';
 import SelectMode from './pages/selectMode/SelectMode.js';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FinalPoints from './pages/puntuacionFinal/FinalPoints';
+import MemoryGame from './pages/memoryGame/MemoryGame.js';
 
 function App() {
 
@@ -26,8 +27,9 @@ function App() {
               <Route path="/instructions" element={<Instructions />} />       {/* Página de instrucciones */}
               <Route path="/settings" element={<Settings />} />       {/* Página de configuración */}
               <Route path="/question" element={<Question />} />       {/* Página de preguntas */}
-              <Route path="/selectMode" element={<SelectMode />} />  
-              <Route path="/finalPoints" element={<FinalPoints />} />       {/* Página de selección de modo */}
+              <Route path="/selectMode" element={<SelectMode />} />  {/* Página de selección de modo */}
+              <Route path="/finalPoints" element={<FinalPoints />} />       {/* Página de puntuación final */}
+              <Route path="/memoryGame" element={<MemoryGame />} />       {/* Página de juego de memoria */}
             </Routes>
           </Router>
     </div>
