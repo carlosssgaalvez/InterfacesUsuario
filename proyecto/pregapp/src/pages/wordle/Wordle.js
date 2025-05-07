@@ -6,7 +6,7 @@ import Logo from '../../images/logo.png';
 import DivGap4 from '../../components/divs/divGap4';
 import ButtonBack from '../../components/Button/ButtonBack';
 import { useNavigate } from 'react-router-dom';
-
+import PopupButton from '../../components/Button/PopupButton';
 const WORD_LENGTH = 6;
 const MAX_ATTEMPTS = 6;
 const SECRET_WORD = 'PRUEBA';
@@ -21,6 +21,7 @@ function Wordle() {
   // sesion
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
+    localStorage.setItem('puntosPartidaActual', 0);
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     } else {
@@ -44,8 +45,11 @@ function Wordle() {
         setCurrentGuess('');
         if (currentGuess === SECRET_WORD) { 
           setMessage('¡Correcto!');
+          localStorage.setItem('puntosPartidaActual', 200);
+          navigate('/finalPoints?tipo=wordle&palabra=' + SECRET_WORD);
         } else if (guesses.length + 1 === MAX_ATTEMPTS) {
-          setMessage(`La palabra era: ${SECRET_WORD}`);
+          localStorage.setItem('puntosPartidaActual', 0);
+          navigate('/finalPoints?tipo=wordle&palabra=' + SECRET_WORD);
         }
       }
     } else if (/^[A-Z]$/.test(key) && currentGuess.length < WORD_LENGTH) {  //añadir letras
@@ -125,7 +129,7 @@ function Wordle() {
             </div>
           ))}
           <p>{message}</p>
-          <ButtonBack valueButton={'Volver'} onClick={handleExit}/>
+          <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'} onClick={handleExit} />
         </div>
         
       </DivGap4>
@@ -134,7 +138,7 @@ function Wordle() {
     <div>
       <h1>Acceso denegado</h1>
       <p>Por favor, inicie sesión para acceder a esta página.</p>
-      <ButtonBack valueButton={'Volver'} onClick={() => navigate('/logIn')} />
+    
     </div>
   );
 }

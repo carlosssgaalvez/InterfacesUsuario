@@ -6,12 +6,14 @@ import '../../styles/buttons.css';
 import '../../styles/globalStyles.css';
 import ButtonAdvance from '../../components/Button/ButtonAdvance';
 import DivGap4 from '../../components/divs/divGap4';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import PopupButton from '../../components/Button/PopupButton';
 import questionsData from '../../resources/questions.json';
-
 function FinalPoints(){
   const navigate = useNavigate();
+  const location = useLocation();
+  const tipo =  new URLSearchParams(location.search).get('tipo');
+  const palabra = new URLSearchParams(location.search).get('palabra');
   const puntosTotales = questionsData.length * 20;
   const [puntosPartidaActual, setPuntosPartidaActual] = useState(0);
   const [user, setUser] = useState('');
@@ -37,9 +39,13 @@ function FinalPoints(){
     navigate('/selectMode'); 
   };
 
-  const handleClickNext = () => {
+  const handleReintentar = () => {
     localStorage.setItem('puntosPartidaActual', 0);
-    navigate('/question?idPregunta=1');
+    if(tipo === 'wordle'){
+      navigate('/wordle');
+    }else{
+      navigate('/question?idPregunta=1');
+    }
   }
 
   const handleAccessDenied = () => {
@@ -53,23 +59,25 @@ function FinalPoints(){
         <div className="container">
         <DivGap4>
             <div className="questionBox" style={{ textAlign: 'center' }}>
-                <h2>¡FELICIDADES!</h2>
+              {puntosPartidaActual == 0? <h2 style={{ color: 'red' }}>¡PERDISTE!</h2> :
+                <h2>¡FELICIDADES!</h2>}
                 <p>Has ganado los siguientes puntos:</p>
             </div>
             <div className="questionBox" style={{ backgroundColor: 'black', color: 'lime', textAlign: 'center', fontSize: '2em', width: '120px' }}>
                 <p>{puntosPartidaActual}/{puntosTotales}</p>
             </div>
             <div className="questionBox" style={{ textAlign: 'center' }}>
-                <p>
-                    Has acertado el <span style={{ color: 'lime' }}>{puntosPartidaActual/puntosTotales*100}%</span> de las preguntas
-                </p>
+               
+                  {tipo ===  'wordle'? puntosPartidaActual == 0? <p> "La palabra era " + {palabra}  </p>: <p>Has acertado la palabra"  </p> : <p>Has acertado el <span style={{ color: 'lime' }}>{puntosPartidaActual/puntosTotales*100}%</span> de las preguntas</p>}
+                   
+              
             </div>
         </DivGap4>
         
         <br/><br/>
         <div className="buttonContainer2">
         <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'}  onClick={handleExit}  />    
-        <ButtonAdvance  valueButton={'Reintentar'} onClick={handleClickNext}/>
+        <ButtonAdvance  valueButton={'Reintentar'} onClick={handleReintentar}/>
         </div>
         </div>
         </header>
