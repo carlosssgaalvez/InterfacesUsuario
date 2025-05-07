@@ -7,23 +7,39 @@ import ButtonAdvance from '../../components/Button/ButtonAdvance';
 import PopupButton from '../../components/Button/PopupButton'; 
 import Image from '../../components/Image/Image';
 import CardBack from '../../images/cartaBack.png'; 
-import CardFront from '../../images/cartaFront.png';
+import card1 from '../../images/pajaro.png';
+import card2 from '../../images/elefante.png';
+import card3 from '../../images/tortuga.png';
+import card4 from '../../images/pez.png';
+import card5 from '../../images/tortuga.png';
 
 
-const cardSymbols = [1,2,3,4,5];
+const cardImages = [card1, card2, card3, card4, card5];
+const cardIds = [1, 2, 3, 4, 5]; // IDs de las cartas
 
 const initializeBoard = () => {
-  const duplicatedSymbols = [...cardSymbols, ...cardSymbols];
-  // Algoritmo de Fisher-Yates para barajar
-  for (let i = duplicatedSymbols.length - 1; i > 0; i--) {
+  // Asocia cada imagen con su cardId
+  const originalCards = cardImages.map((image, index) => ({
+    image,
+    cardId: cardIds[index],
+  }));
+
+  // Duplica las cartas (para hacer las parejas)
+  const duplicatedCards = [...originalCards, ...originalCards];
+
+  // Baraja las cartas
+  for (let i = duplicatedCards.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [duplicatedSymbols[i], duplicatedSymbols[j]] = [duplicatedSymbols[j], duplicatedSymbols[i]];
+    [duplicatedCards[i], duplicatedCards[j]] = [duplicatedCards[j], duplicatedCards[i]];
   }
-  return duplicatedSymbols.map((symbol, index) => ({
+
+  // Añade un ID único y las propiedades necesarias
+  return duplicatedCards.map((card, index) => ({
     id: index,
-    symbol: symbol,
-    isFlipped: false, 
-    isMatched: false, 
+    image: card.image,
+    cardId: card.cardId, // ID de pareja
+    isFlipped: false,
+    isMatched: false,
   }));
 };
 
@@ -52,7 +68,7 @@ function MemoryGame() {
       const card1 = cards[index1];
       const card2 = cards[index2];
 
-      if (card1.symbol === card2.symbol) {
+      if (card1.cardId === card2.cardId) {
         setCards(prevCards =>
           prevCards.map(card =>
             card.id === card1.id || card.id === card2.id
@@ -145,8 +161,7 @@ function MemoryGame() {
             >
               <div className="card-inner">
                 <div className="card-front">
-                  <Image className="card-front-image" src={CardFront} />
-                  {card.symbol}
+                  <Image className="card-front-image" src={card.image} />
                 </div>
                 <div className="card-back">
                   <Image className="card-back-image" src={CardBack} />
