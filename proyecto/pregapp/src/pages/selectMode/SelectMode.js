@@ -28,7 +28,7 @@ function SelectMode() {
       localStorage.setItem('puntosPartidaActual', 0);
     }
     const handleClickJugarModo2 = () => {
-      //navigate('/modo2');
+      navigate('/wordle');
       console.log("modo 2 seleccionado");
     }
     const handleClickJugarModo3 = () => {

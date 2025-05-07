@@ -10,6 +10,7 @@ import SelectMode from './pages/selectMode/SelectMode.js';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FinalPoints from './pages/puntuacionFinal/FinalPoints';
 import MemoryGame from './pages/memoryGame/MemoryGame.js';
+import Wordle from './pages/wordle/Wordle.js';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
               <Route path="/selectMode" element={<SelectMode />} />  {/* Página de selección de modo */}
               <Route path="/finalPoints" element={<FinalPoints />} />       {/* Página de puntuación final */}
               <Route path="/memoryGame" element={<MemoryGame />} />       {/* Página de juego de memoria */}
+              <Route path="/wordle" element={<Wordle />} />       {/* Página de juego wordle */}
             </Routes>
           </Router>
     </div>
