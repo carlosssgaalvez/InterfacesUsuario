@@ -24,3 +24,7 @@
     border-radius: 50%;
     cursor: pointer;
 }
+
+.slider:hover::-webkit-slider-thumb {
+    box-shadow: #000000 0px 4px 4px 0px;
+}
