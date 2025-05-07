@@ -46,7 +46,9 @@ function Wordle() {
         if (currentGuess === SECRET_WORD) { 
           setMessage('¡Correcto!');
           localStorage.setItem('puntosPartidaActual', 200);
-          navigate('/finalPoints?tipo=wordle&palabra=' + SECRET_WORD);
+          setTimeout(() => {
+            navigate('/finalPoints?tipo=wordle&palabra=' + SECRET_WORD);
+          }, 2000);
         } else if (guesses.length + 1 === MAX_ATTEMPTS) {
           localStorage.setItem('puntosPartidaActual', 0);
           navigate('/finalPoints?tipo=wordle&palabra=' + SECRET_WORD);
@@ -64,7 +66,7 @@ function Wordle() {
   });
 
   // Pintamos el recuadro una vez que enviamos la palabra
-  const renderSquare = (letter, index, guess) => {
+  const renderSquare = (letter, index, guess,isCorrectGuess) => {
     const upperSecret = SECRET_WORD.toUpperCase();
     const upperGuess = guess.toUpperCase();
     const secretArray = upperSecret.split('');
@@ -91,8 +93,8 @@ function Wordle() {
     } else { // Letras incorrectas en gris
       className += ' absent';
     }
-  
     return <div key={index} className={className}>{letter}</div>;
+    
   };
 
   const isLoggedIn = user !== undefined && user !== "";
@@ -114,9 +116,20 @@ function Wordle() {
             {/* Para mostrar lo el intento actual y lo que se escribe */}
           {guesses.length < MAX_ATTEMPTS && (
             <div className="word-row">
-              {Array.from({ length: WORD_LENGTH }).map((_, i) => (
-                <div key={i} className='square'>{currentGuess[i] || ''}</div>
-              ))}
+              
+              {Array.from({ length: WORD_LENGTH }).map((_, i) => {
+                 //<div key={i} className='square'>{currentGuess[i] || ''}</div>
+                const letter = currentGuess[i] || '';
+                const isFilled = i < currentGuess.length;
+                return (
+                  <div
+                    key={i}
+                    className={`square ${isFilled ? 'bounce' : ''}`}
+                  >
+                    {letter}
+                  </div>
+                );
+              })}
             </div>
           )}
 

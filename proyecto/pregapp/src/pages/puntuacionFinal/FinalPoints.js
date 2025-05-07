@@ -57,6 +57,7 @@ function FinalPoints(){
     <div>
       <header>   
         <div className="container">
+          <br/> <br/> <br/> <br/> <br/>
         <DivGap4>
             <div className="questionBox" style={{ textAlign: 'center' }}>
               {puntosPartidaActual == 0? <h2 style={{ color: 'red' }}>¡PERDISTE!</h2> :

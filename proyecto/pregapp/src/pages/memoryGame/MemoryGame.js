@@ -141,6 +141,7 @@ function MemoryGame() {
   const isLoggedIn = user !== undefined && user !== null;
 
   return isLoggedIn ? (
+    <div className="container">
     <div className="memory-game-container">
       <Title className="title" valueText="JUEGO DE MEMORIA" />
       <p className="moves-counter">Movimientos: {moves}</p>
@@ -180,6 +181,7 @@ function MemoryGame() {
             onClick={handleExit} 
           />
       </div>
+    </div>
     </div>
   ) : (
     <div>
