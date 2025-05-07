@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './MemoryGame.css'; 
 import Title from '../../components/Text/Title';
 import ButtonBack from '../../components/Button/ButtonBack';
-import Button from '../../components/Button/Button'; 
 import ButtonAdvance from '../../components/Button/ButtonAdvance';
 import PopupButton from '../../components/Button/PopupButton'; 
 import Image from '../../components/Image/Image';
