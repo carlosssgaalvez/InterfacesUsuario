@@ -27,6 +27,9 @@ function Wordle() {
       setUser(undefined);
     }
   }, []);
+  const handleExit = () => {
+    navigate('/home'); 
+  }
 
   // captar pulsaciones de teclas
   const handleKeyPress = (event) => {
@@ -121,9 +124,10 @@ function Wordle() {
               ))}
             </div>
           ))}
-
           <p>{message}</p>
+          <ButtonBack valueButton={'Volver'} onClick={handleExit}/>
         </div>
+        
       </DivGap4>
     </div>
   ) : (
