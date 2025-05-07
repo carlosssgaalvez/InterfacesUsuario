@@ -11,7 +11,7 @@ import card1 from '../../images/pajaro.png';
 import card2 from '../../images/elefante.png';
 import card3 from '../../images/tortuga.png';
 import card4 from '../../images/pez.png';
-import card5 from '../../images/tortuga.png';
+import card5 from '../../images/camaleon.png';
 
 
 const cardImages = [card1, card2, card3, card4, card5];
