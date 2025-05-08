@@ -55,11 +55,11 @@ function SelectMode() {
           <ImageLogo className={"imgLogo"} src={Logo}/>
             <Title className={"title"} valueText={"SELECCIONA MODO DE JUEGO"}/>
             <DivLabelInput>
-            <ButtonMenu idButton={'button1'} valueButton={'MODO PREGUNTAS'} colorButton={'#1ABC9C'} onClick={handleClickJugarModo1}/>
+            <ButtonMenu idButton={'button1'} valueButton={'MODO PREGUNTAS'} colorButton={'#C0C0C0'} onClick={handleClickJugarModo1}/>
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
-            <ButtonMenu idButton={'button2'} valueButton={'MODO WORDLE'} colorButton={'#C0C0C0'} onClick={handleClickJugarModo2}/>
+            <ButtonMenu idButton={'button2'} valueButton={'MODO WORDLE'} colorButton={'#1ABC9C'} onClick={handleClickJugarModo2}/>
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
