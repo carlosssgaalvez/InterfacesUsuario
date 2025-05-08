@@ -29,7 +29,7 @@ function Wordle() {
     }
   }, []);
   const handleExit = () => {
-    navigate('/home'); 
+    navigate('/selectMode'); 
   }
 
   // captar pulsaciones de teclas

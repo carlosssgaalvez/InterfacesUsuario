@@ -59,7 +59,7 @@ function SelectMode() {
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
-            <ButtonMenu idButton={'button2'} valueButton={'MODO WORDLE(...PROXIMAMENTE)'} colorButton={'#C0C0C0'} onClick={handleClickJugarModo2}/>
+            <ButtonMenu idButton={'button2'} valueButton={'MODO WORDLE'} colorButton={'#C0C0C0'} onClick={handleClickJugarModo2}/>
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
