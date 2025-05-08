@@ -9,6 +9,8 @@ import Logo from '../../images/logo.png';
 import ButtonBack from '../../components/Button/ButtonBack';
 import '../../styles/buttons.css';
 import PopupButton from '../../components/Button/PopupButton';
+import Title from '../../components/Text/Title';
+import AjustesImg from '../../images/ajustesImg.png';
 
 function Home() {
   const navigate = useNavigate();
@@ -47,7 +49,7 @@ function Home() {
         <DivGap4>
           <br/><br/>
         <ImageLogo className={"imgLogo"} src={Logo}/>
-          
+          <Title className={"title"} valueText={"MENÚ"}/>
           <DivLabelInput>
           <ButtonMenu idButton={'button1'} valueButton={'JUGAR'} colorButton={'#1ABC9C'} onClick={handleClickJugar}/>
             <br/><br/>
@@ -57,7 +59,7 @@ function Home() {
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
-          <ButtonMenu idButton={'button3'} valueButton={'AJUSTES'} colorButton={'#1ABC9C'} onClick={handleClickAjustes}/>
+          <ButtonMenu idButton={'button3'} valueButton={'AJUSTES'} colorButton={'#1ABC9C'} onClick={handleClickAjustes} imgButton={AjustesImg}/>
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
