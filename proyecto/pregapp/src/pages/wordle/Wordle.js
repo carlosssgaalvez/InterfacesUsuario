@@ -6,13 +6,24 @@ import Logo from '../../images/logo.png';
 import DivGap4 from '../../components/divs/divGap4';
 import { useNavigate } from 'react-router-dom';
 import PopupButton from '../../components/Button/PopupButton';
-const WORD_LENGTH = 6;
+
 const MAX_ATTEMPTS = 6;
-const SECRET_WORD = 'PRUEBA';
+const WORD_LIST = [
+  'PRUEBA', 'GATO', 'PLANETA', 'CIELO', 'LIMON', 'AVION',
+  'PERRO', 'CASA', 'ARBOL', 'NUBE', 'MAR', 'FUEGO', 'TIERRA', 'AGUA',
+  'SOL', 'LUNA', 'FLOR', 'RANA', 'COCHE', 'TREN', 'BARCO', 'MONTAÑA',
+  'LAGO', 'RIO', 'BOSQUE', 'DESIERTO', 'ISLA', 'VENTANA', 'PUERTA',
+  'LIBRO', 'LAPIZ', 'MESA', 'SILLA', 'ORDENADOR', 'TELEFONO', 'RELOJ',
+  'ZAPATO', 'CAMISA', 'PANTALON', 'SOMBRERO', 'CAMINO', 'CIUDAD',
+  'PUEBLO', 'COMIDA', 'FRUTA', 'QUESO', 'CAFE', 'LECHE', 'HIELO', 'NARANJA'
+];
+
 
 function Wordle() {
   const navigate = useNavigate();
   const [user, setUser] = useState('');
+  const [secretWord, setSecretWord] = useState('');
+  const [wordLength, setWordLength] = useState(0);
   const [guesses, setGuesses] = useState([]); // Lista de palabras intentadas
   const [currentGuess, setCurrentGuess] = useState(''); // Palabra actual
   const [message, setMessage] = useState('');
@@ -26,6 +37,11 @@ function Wordle() {
     } else {
       setUser(undefined);
     }
+
+    // Generar una palabra secreta aleatoria al cargar el componente
+    const randomWord = WORD_LIST[Math.floor(Math.random() * WORD_LIST.length)].toUpperCase();
+    setSecretWord(randomWord);
+    setWordLength(randomWord.length);
   }, []);
   const handleExit = () => {
     navigate('/selectMode'); 
@@ -39,21 +55,21 @@ function Wordle() {
     if (key === 'BACKSPACE') { // borrar
       setCurrentGuess(currentGuess.slice(0, -1));
     } else if (key === 'ENTER') { // enviar
-      if (currentGuess.length === WORD_LENGTH) {
+      if (currentGuess.length === wordLength) {
         setGuesses([...guesses, currentGuess]);
         setCurrentGuess('');
-        if (currentGuess === SECRET_WORD) { 
+        if (currentGuess === secretWord) { 
           setMessage('¡Correcto!');
           localStorage.setItem('puntosPartidaActual', 200);
           setTimeout(() => {
-            navigate('/finalPoints?tipo=wordle&palabra=' + SECRET_WORD);
+            navigate('/finalPoints?tipo=wordle&palabra=' + secretWord);
           }, 2000);
         } else if (guesses.length + 1 === MAX_ATTEMPTS) {
           localStorage.setItem('puntosPartidaActual', 0);
-          navigate('/finalPoints?tipo=wordle&palabra=' + SECRET_WORD);
+          navigate('/finalPoints?tipo=wordle&palabra=' + secretWord);
         }
       }
-    } else if (/^[A-Z]$/.test(key) && currentGuess.length < WORD_LENGTH) {  //añadir letras
+    } else if (/^[A-Z]$/.test(key) && currentGuess.length < wordLength) {  //añadir letras
       setCurrentGuess(currentGuess + key);
     }
   };
@@ -66,7 +82,7 @@ function Wordle() {
 
   // Pintamos el recuadro una vez que enviamos la palabra
   const renderSquare = (letter, index, guess,isCorrectGuess) => {
-    const upperSecret = SECRET_WORD.toUpperCase();
+    const upperSecret = secretWord.toUpperCase();
     const upperGuess = guess.toUpperCase();
     const secretArray = upperSecret.split('');
     const guessArray = upperGuess.split('');
@@ -116,7 +132,7 @@ function Wordle() {
           {guesses.length < MAX_ATTEMPTS && (
             <div className="word-row">
               
-              {Array.from({ length: WORD_LENGTH }).map((_, i) => {
+              {Array.from({ length: wordLength }).map((_, i) => {
                  //<div key={i} className='square'>{currentGuess[i] || ''}</div>
                 const letter = currentGuess[i] || '';
                 const isFilled = i < currentGuess.length;
@@ -135,7 +151,7 @@ function Wordle() {
             {/* Para mostrar los intentos restantes */}
           {Array.from({ length: MAX_ATTEMPTS - guesses.length - 1 }).map((_, i) => (
             <div key={i} className="word-row">
-              {Array.from({ length: WORD_LENGTH }).map((_, j) => (
+              {Array.from({ length: wordLength }).map((_, j) => (
                 <div key={j} className='square empty'></div>
               ))}
             </div>
