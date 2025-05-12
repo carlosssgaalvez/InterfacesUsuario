@@ -4,7 +4,6 @@ import '../../styles/globalStyles.css';
 import ImageLogo from '../../components/Image/ImageLogo';
 import Logo from '../../images/logo.png';
 import DivGap4 from '../../components/divs/divGap4';
-import ButtonBack from '../../components/Button/ButtonBack';
 import { useNavigate } from 'react-router-dom';
 import PopupButton from '../../components/Button/PopupButton';
 const WORD_LENGTH = 6;

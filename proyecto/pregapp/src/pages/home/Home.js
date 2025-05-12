@@ -13,6 +13,8 @@ import Title from '../../components/Text/Title';
 import AjustesImg from '../../images/ajustesImg.png';
 import JugarImg from '../../images/jugarImg.png';
 import PerfilImg from '../../images/perfil_sin_marca.png';
+import instruccionesImg from '../../images/instruccionesImg.png';
+
 
 function Home() {
   const navigate = useNavigate();
@@ -57,7 +59,7 @@ function Home() {
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
-          <ButtonMenu idButton={'button2'} valueButton={'INSTRUCCIONES'} colorButton={'#1ABC9C'} onClick={handleClickInstrucciones}/>
+          <ButtonMenu idButton={'button2'} valueButton={'INSTRUCCIONES'} colorButton={'#1ABC9C'} onClick={handleClickInstrucciones} imgButton={instruccionesImg}/>
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>

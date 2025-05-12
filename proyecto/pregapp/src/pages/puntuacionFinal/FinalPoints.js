@@ -60,7 +60,7 @@ function FinalPoints(){
           <br/> <br/> <br/> <br/> <br/>
         <DivGap4>
             <div className="questionBox" style={{ textAlign: 'center' }}>
-              {puntosPartidaActual == 0? <h2 style={{ color: 'red' }}>¡PERDISTE!</h2> :
+              {puntosPartidaActual === 0? <h2 style={{ color: 'red' }}>¡PERDISTE!</h2> :
                 <h2>¡FELICIDADES!</h2>}
                 <p>Has ganado los siguientes puntos:</p>
             </div>
@@ -69,7 +69,7 @@ function FinalPoints(){
             </div>
             <div className="questionBox" style={{ textAlign: 'center' }}>
                
-                  {tipo ===  'wordle'? puntosPartidaActual == 0? <p> "La palabra era " + {palabra}  </p>: <p>Has acertado la palabra"  </p> : <p>Has acertado el <span style={{ color: 'lime' }}>{puntosPartidaActual/puntosTotales*100}%</span> de las preguntas</p>}
+                  {tipo ===  'wordle'? puntosPartidaActual === 0? <p> "La palabra era " + {palabra}  </p>: <p>Has acertado la palabra"  </p> : <p>Has acertado el <span style={{ color: 'lime' }}>{puntosPartidaActual/puntosTotales*100}%</span> de las preguntas</p>}
                    
               
             </div>
