@@ -41,11 +41,13 @@ function InstructionsQuestions() {
       <div className=" container Instructions">
       <header className="instruction-header">   
           <ImageLogo className={"imgLogo"} src={imgLogo}/>
-            <Title className="title" valueText={'Como Jugar (Modo preguntas)'}/>
-            <PlainText className="plainText2" textValue={'En el menu selecciona jugar'}/>
-            <PlainText className="plainText2" textValue={'Selecciona el modo preguntas'}/>
-            <PlainText className="plainText2" textValue={'Selecciona la respuesta correcta y sumarás 20 puntos'}/>
-            <PlainText className="plainText2" textValue={'En caso de que tengas que terminar la partida no es necesario responder todas las preguntas, puedes pulsar salir y se contarán los puntos ganados hasta entonces'}/>
+          <Title className="title" valueText={'MODO PREGUNTAS:'}/>
+          <Title className="" valueText={'¿Cómo Jugar?'}/>
+          <PlainText className="plainText2" textValue={'En este modo se te presentarán preguntas de forma aleatoria.'}/>
+          <PlainText className="plainText2" textValue={'Cada pregunta tiene cuatro posibles respuestas, pero solo una es la correcta.'}/>
+          <PlainText className="plainText2" textValue={'Selecciona la opción que creas correcta para sumar 20 puntos.'}/>
+          <PlainText className="plainText2" textValue={'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'}/>
+          <br></br>
       </header>
         <div className="buttonContainer2">
             <ButtonBack  valueButton={'Volver'} onClick={handleClickBack}/>

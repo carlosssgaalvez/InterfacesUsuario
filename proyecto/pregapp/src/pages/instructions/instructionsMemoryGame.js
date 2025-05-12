@@ -41,8 +41,18 @@ function InstructionsMemoryGame() {
       <div className=" container Instructions">
       <header className="instruction-header">   
           <ImageLogo className={"imgLogo"} src={imgLogo}/>
-          <Title className="title" valueText={'Como Jugar (MEMORIA)'}/>
-          <PlainText className="plainText2" textValue={'Proximamente será posible jugar a este modo de juego'}/>
+
+          <Title className="title" valueText={'MODO MEMORIA:'}/>
+          <Title className="" valueText={'¿Cómo Jugar?'}/>
+          <PlainText className="plainText2" textValue={'Pon a prueba tu memoria encontrando todas las parejas de cartas iguales.'}/>
+          <PlainText className="plainText2" textValue={'Haz clic en una carta para verla.'}/>
+          <PlainText className="plainText2" textValue={'Selecciona otra carta para ver si coincide.'}/>
+          <PlainText className="plainText2" textValue={'Si son iguales, permanecerán boca arriba.'}/>
+          <PlainText className="plainText2" textValue={'Si no lo son, se darán la vuelta de nuevo tras unos segundos.'}/>
+          <PlainText className="plainText2" textValue={'Tu objetivo es encontrar todos los pares en el menor tiempo posible.'}/>
+          <PlainText className="plainText2" textValue={'¡Concéntrate y trata de completar el juego con el numero de movimientos posibles!'}/>
+          <br></br>
+
       </header>
         <div className="buttonContainer2">
             <ButtonBack  valueButton={'Volver'} onClick={handleClickBack}/>
