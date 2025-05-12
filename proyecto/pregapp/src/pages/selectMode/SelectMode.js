@@ -15,9 +15,9 @@ import QuestionsImg from '../../images/questionsImg.png';
 import WordleImg from '../../images/wordleImg.png';
 
 function SelectMode() {
-    const questionInstructions = true;
-    const wordleInstructions = true;
-    const memoryInstructions = true;
+  const [questionInstructions, setQuestionInstructions] = useState(true);
+  const [wordleInstructions, setWordleInstructions] = useState(true);
+  const [memoryInstructions, setMemoryInstructions] = useState(true);
 
     const navigate = useNavigate(); 
     const [user, setUser] = useState('');
@@ -28,6 +28,14 @@ function SelectMode() {
       } else {
         setUser(undefined); // or set it to an empty string or any other default value
       }
+
+      const mode1 = localStorage.getItem('checkedMode1');
+      const mode2 = localStorage.getItem('checkedMode2');
+      const mode3 = localStorage.getItem('checkedMode3');
+
+      setQuestionInstructions(!(mode1 === 'true'));
+      setWordleInstructions(!(mode2 === 'true'));
+      setMemoryInstructions(!(mode3 === 'true'));
     },[]);
 
     const handleClickJugarModo1 = () => {

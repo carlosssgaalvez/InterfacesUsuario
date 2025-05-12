@@ -22,6 +22,9 @@ function Settings() {
   const [soundValue, setSoundValue] = useState(50);  // Estado para el volumen del sonido
   const {musicVolume, setMusicVolume} = useContext(AudioContext);
   const [initialMusicVolume] = useState(musicVolume); // Guardo el volumen por si el usuario no guarda las modificaciones
+  const [checkedMode1, setCheckedMode1] = useState(false);
+  const [checkedMode2, setCheckedMode2] = useState(false);
+  const [checkedMode3, setCheckedMode3] = useState(false);
 
   // Funciones para manejar el cambio de volumen (Provisional)
   const handleSoundChange = (value) => {
@@ -43,11 +46,14 @@ function Settings() {
     } else {
       setUser(undefined);
     }
-  },[]);
+    const storedMode1 = localStorage.getItem('checkedMode1');
+    const storedMode2 = localStorage.getItem('checkedMode2');
+    const storedMode3 = localStorage.getItem('checkedMode3');
 
-  const [checkedMode1, setCheckedMode1] = useState(false);
-  const [checkedMode2, setCheckedMode2] = useState(false);
-  const [checkedMode3, setCheckedMode3] = useState(false);
+    if (storedMode1 !== null) setCheckedMode1(storedMode1 === 'true');
+    if (storedMode2 !== null) setCheckedMode2(storedMode2 === 'true');
+    if (storedMode3 !== null) setCheckedMode3(storedMode3 === 'true');
+  },[]);
 
   // Posiblles funciones
 
@@ -62,6 +68,9 @@ function Settings() {
   };
 
   const handleAdvance = () => {
+    localStorage.setItem('checkedMode1', checkedMode1);
+    localStorage.setItem('checkedMode2', checkedMode2);
+    localStorage.setItem('checkedMode3', checkedMode3);
     navigate('/home');
   }
 
