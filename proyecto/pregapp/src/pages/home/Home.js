@@ -11,6 +11,8 @@ import '../../styles/buttons.css';
 import PopupButton from '../../components/Button/PopupButton';
 import Title from '../../components/Text/Title';
 import AjustesImg from '../../images/ajustesImg.png';
+import JugarImg from '../../images/jugarImg.png';
+import PerfilImg from '../../images/perfil_sin_marca.png';
 
 function Home() {
   const navigate = useNavigate();
@@ -51,7 +53,7 @@ function Home() {
         <ImageLogo className={"imgLogo"} src={Logo}/>
           <Title className={"title"} valueText={"MENÚ"}/>
           <DivLabelInput>
-          <ButtonMenu idButton={'button1'} valueButton={'JUGAR'} colorButton={'#1ABC9C'} onClick={handleClickJugar}/>
+          <ButtonMenu idButton={'button1'} valueButton={'JUGAR'} colorButton={'#1ABC9C'} onClick={handleClickJugar} imgButton={JugarImg}/>
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
@@ -63,7 +65,7 @@ function Home() {
             <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
-          <ButtonMenu idButton={'button4'} valueButton={'PERFIL'} colorButton={'#1ABC9C'} onClick={handleClickPerfil}/>
+          <ButtonMenu idButton={'button4'} valueButton={'PERFIL'} colorButton={'#1ABC9C'} onClick={handleClickPerfil} imgButton={PerfilImg}/>
             <br/><br/>
           </DivLabelInput>
           </DivGap4>
