@@ -11,6 +11,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FinalPoints from './pages/puntuacionFinal/FinalPoints';
 import MemoryGame from './pages/memoryGame/MemoryGame.js';
 import Wordle from './pages/wordle/Wordle.js';
+import InstructionsQuestions from './pages/instructions/instructionsQuestions';
+import InstructionsWordle from './pages/instructions/instructionsWordle';
+import InstructionsMemoryGame from './pages/instructions/instructionsMemoryGame';
 
 function App() {
 
@@ -32,6 +35,9 @@ function App() {
               <Route path="/finalPoints" element={<FinalPoints />} />       {/* Página de puntuación final */}
               <Route path="/memoryGame" element={<MemoryGame />} />       {/* Página de juego de memoria */}
               <Route path="/wordle" element={<Wordle />} />       {/* Página de juego wordle */}
+              <Route path="/instructionsQuestions" element={<InstructionsQuestions />} />       {/* Página de instrucciones preguntas */}
+              <Route path="/instructionsWordle" element={<InstructionsWordle />} />       {/* Página de instrucciones wordle */}
+              <Route path="/instructionsMemoryGame" element={<InstructionsMemoryGame />} />       {/* Página de instrucciones juego de memoria */}
             </Routes>
           </Router>
     </div>

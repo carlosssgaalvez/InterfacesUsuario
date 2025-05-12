@@ -10,8 +10,14 @@ import '../../styles/buttons.css';
 import '../../styles/globalStyles.css';
 import Title from '../../components/Text/Title';
 import { useEffect, useState } from 'react';
+import MemoryGameImg from '../../images/memoryGameImg.png';
+import QuestionsImg from '../../images/questionsImg.png';
 
 function SelectMode() {
+    const questionInstructions = true;
+    const wordleInstructions = true;
+    const memoryInstructions = true;
+
     const navigate = useNavigate(); 
     const [user, setUser] = useState('');
     useEffect(() => {
@@ -24,16 +30,28 @@ function SelectMode() {
     },[]);
 
     const handleClickJugarModo1 = () => {
-      navigate('/question?idPregunta=1');
-      localStorage.setItem('puntosPartidaActual', 0);
+      if (questionInstructions) {
+        navigate('/instructionsQuestions');
+      }else {  
+        navigate('/question?idPregunta=1');
+        localStorage.setItem('puntosPartidaActual', 0);
+      }
     }
     const handleClickJugarModo2 = () => {
-      navigate('/wordle');
-      console.log("modo 2 seleccionado");
+      if (wordleInstructions) {
+        navigate('/instructionsWordle');
+      }else {
+        navigate('/wordle');
+        console.log("modo 2 seleccionado");
+      }
     }
     const handleClickJugarModo3 = () => {
-      navigate('/memoryGame');
-      localStorage.setItem('puntosPartidaActual', 0);
+      if (memoryInstructions) {
+        navigate('/instructionsMemoryGame');
+      }else {
+        navigate('/memoryGame');
+        localStorage.setItem('puntosPartidaActual', 0);
+      }
     }
     const handleClickJugarModo4 = () => {
       //navigate('/modo4');
@@ -55,7 +73,7 @@ function SelectMode() {
           <ImageLogo className={"imgLogo"} src={Logo}/>
             <Title className={"title"} valueText={"SELECCIONA MODO DE JUEGO"}/>
             <DivLabelInput>
-            <ButtonMenu idButton={'button1'} valueButton={'PREGUNTAS'} colorButton={'#C0C0C0'} onClick={handleClickJugarModo1}/>
+            <ButtonMenu idButton={'button1'} valueButton={'PREGUNTAS'} colorButton={'#C0C0C0'} onClick={handleClickJugarModo1} imgButton={QuestionsImg}/>
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
@@ -63,7 +81,7 @@ function SelectMode() {
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
-            <ButtonMenu idButton={'button3'} valueButton={'MEMORIA'} colorButton={'#007BFF'} onClick={handleClickJugarModo3}/>
+            <ButtonMenu idButton={'button3'} valueButton={'MEMORIA'} colorButton={'#007BFF'} onClick={handleClickJugarModo3} imgButton={MemoryGameImg}/>
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
