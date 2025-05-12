@@ -13,6 +13,10 @@ import ButtonBack from '../../components/Button/ButtonBack';
 import { useNavigate } from 'react-router-dom';
 import { AudioContext } from '../../components/AudioProvider/AudioContext';
 import PopupButton from '../../components/Button/PopupButton';
+import PlainText from '../../components/Text/PlainText';
+import CheckBox from '../../components/CheckBox/CheckBox';
+import Label from '../../components/Text/Label';
+import DivLabelInput from '../../components/divs/divLabelInput';
 
 function Settings() {
   const [soundValue, setSoundValue] = useState(50);  // Estado para el volumen del sonido
@@ -41,8 +45,22 @@ function Settings() {
     }
   },[]);
 
+  const [checkedMode1, setCheckedMode1] = useState(false);
+  const [checkedMode2, setCheckedMode2] = useState(false);
+  const [checkedMode3, setCheckedMode3] = useState(false);
 
   // Posiblles funciones
+
+  const handleCheckBoxChange1 = () => {
+    setCheckedMode1(!checkedMode1);
+  };
+  const handleCheckBoxChange2 = () => {
+    setCheckedMode2(!checkedMode2);
+  };
+  const handleCheckBoxChange3 = () => {
+    setCheckedMode3(!checkedMode3);
+  };
+
   const handleAdvance = () => {
     navigate('/home');
   }
@@ -82,6 +100,21 @@ function Settings() {
               value={musicVolume * 100}
               onChange={handleMusicChange}
             />
+          </div>
+          <div className="settings-container">
+            <PlainText className={"textSettings"} textValue={"Selecciona las instrucciones que desea saltar:"}/>
+            <DivLabelInput>
+              <CheckBox className="checkbox-style" id={"PREGUNTAS"} checked={checkedMode1} onChange={handleCheckBoxChange1}/>
+              <Label className="textSettings" forId={'PREGUNTAS'} textValue={'PREGUNTAS'}/>
+            </DivLabelInput>
+            <DivLabelInput>
+              <CheckBox className="checkbox-style" id={"WORDLE"} checked={checkedMode2} onChange={handleCheckBoxChange2}/>
+              <Label className="textSettings" forId={'WORDLE'} textValue={'WORDLE'}/>
+            </DivLabelInput>
+            <DivLabelInput>
+              <CheckBox className="checkbox-style" id={"MEMORY GAME"} checked={checkedMode3} onChange={handleCheckBoxChange3}/>
+              <Label className="textSettings" forId={'MEMORY GAME'} textValue={'MEMORY GAME'}/>
+            </DivLabelInput>
           </div>
         </div>
         <div className="buttonContainer2">

@@ -12,6 +12,7 @@ import Title from '../../components/Text/Title';
 import { useEffect, useState } from 'react';
 import MemoryGameImg from '../../images/memoryGameImg.png';
 import QuestionsImg from '../../images/questionsImg.png';
+import WordleImg from '../../images/wordleImg.png';
 
 function SelectMode() {
     const questionInstructions = true;
@@ -77,7 +78,7 @@ function SelectMode() {
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
-            <ButtonMenu idButton={'button2'} valueButton={'WORDLE'} colorButton={'#1ABC9C'} onClick={handleClickJugarModo2}/>
+            <ButtonMenu idButton={'button2'} valueButton={'WORDLE'} colorButton={'#1ABC9C'} onClick={handleClickJugarModo2} imgButton={WordleImg}/>
               <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
