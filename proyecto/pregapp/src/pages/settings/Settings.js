@@ -91,26 +91,7 @@ function Settings() {
       <DivGap4>
         <br/><br/>
         <ImageLogo className={"imgLogo"} src={Logo}/>
-        <div className="containerSettings">
-          <div className="settings-row">
-            <img src={Sound} alt="Sound" className="icon" />
-            <Slider className={"slider"}
-              min={0}
-              max={100}
-              value={soundValue}
-              onChange={handleSoundChange}
-            />
-          </div>
-          <div className="settings-row">
-            <img src={Music} alt="Music" className="icon" />
-            <Slider
-              min={0}
-              max={100}
-              value={musicVolume * 100}
-              onChange={handleMusicChange}
-            />
-          </div>
-          <div className="settings-container">
+        <div className="settings-container">
             <PlainText className={"textSettings"} textValue={"Selecciona las instrucciones que desea saltar:"}/>
             <DivLabelInput>
               <CheckBox className="checkbox-style" id={"PREGUNTAS"} checked={checkedMode1} onChange={handleCheckBoxChange1}/>
@@ -125,6 +106,26 @@ function Settings() {
               <Label className="textSettings" forId={'MEMORY GAME'} textValue={'MEMORY GAME'}/>
             </DivLabelInput>
           </div>
+        <div className="containerSettings">
+          <div className="settings-row">
+            <img src={Music} alt="Music" className="icon" />
+            <Slider
+              min={0}
+              max={100}
+              value={musicVolume * 100}
+              onChange={handleMusicChange}
+              
+            />
+               
+            <img src={Sound} alt="Sound" className="icon" />
+            <Slider className={"slider"}
+              min={0}
+              max={100}
+              value={soundValue}
+              onChange={handleSoundChange}
+            />
+          </div>
+          
         </div>
         <div className="buttonContainer2">
           <PopupButton valueButton={'No Guardar'} textValue={'¿Está seguro/a que NO quiere guardar la configuración?'} onClick={handleExit} />
