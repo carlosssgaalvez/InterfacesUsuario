@@ -12,7 +12,7 @@ import PopupButton from '../../components/Button/PopupButton';
 import Title from '../../components/Text/Title';
 import AjustesImg from '../../images/ajustesImg.png';
 import JugarImg from '../../images/jugarImg.png';
-import PerfilImg from '../../images/perfil_sin_marca.png';
+import PerfilImg from '../../images/perfilImg.png';
 import instruccionesImg from '../../images/instruccionesImg.png';
 
 

@@ -5,7 +5,7 @@ import '../../styles/inputs.css';
 import '../../styles/buttons.css';
 import '../../styles/globalStyles.css';
 import Title from '../../components/Text/Title';
-import Profimg from '../../images/perfil_sin_marca.png';
+import Profimg from '../../images/perfilImg.png';
 import Image from '../../components/Image/Image';
 import ButtonBack from '../../components/Button/ButtonBack';
 import DivGap4 from '../../components/divs/divGap4';
@@ -37,6 +37,7 @@ function Profile() {
         
           <Image className={"imgProfile"} src={Profimg}/>
           <DivGap4>
+          <br></br>
             <Title className="title" valueText={user.username}/>
             <p className="labelText">{user.email}</p>
             <Title className="title" valueText={'Preguntas Acertadas'}/>
