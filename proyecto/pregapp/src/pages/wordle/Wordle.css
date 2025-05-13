@@ -25,58 +25,28 @@
     color: #333;
     border-radius: 8px;
     transition: background-color 0.3s ease;
+    @media screen and (max-width: 480px) {
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+      
+    }
   }
   
   /* Estados de color */
   .correct {
     background-color: #6aaa64; /* Verde */
     color: white;
-    border: none;
-    width: 60px;
-    height: 60px;
-    border: 2px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
   }
   
   .present {
     background-color: #ff7b1d; /* Naranja */
     color: white;
-    border: none;
-    width: 60px;
-    height: 60px;
-    border: 2px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
   }
   
   .absent {
     background-color: #787c7e; /* Gris */
     color: white;
-    border: none;
-    width: 60px;
-    height: 60px;
-    border: 2px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
   }
   
   .empty {
@@ -95,6 +65,10 @@
   /* Título */
   .title {
     font-size: 36px;
+    @media screen and (max-width: 768px) {
+      font-size: 24px;
+      
+    }
   }
   
   @keyframes bounce {

@@ -110,24 +110,17 @@ function Question() {
         
           <DivGap4>
             <br /><br /><br />
-            <QuestionText className={"pregunta"} forId={`pregunta${idPregunta}`} titleValue={`Pregunta ${idPregunta}`} textValue={questionText} points={puntos}/>
+            <QuestionText forId={`pregunta${idPregunta}`} titleValue={`Pregunta ${idPregunta}`} textValue={questionText} points={puntos}/>
             <br/>
-            <DivLabelInput>
-              <ButtonAnswer idButton={questionOptions[0]} className={colorAnswer1} valueButton={questionOptions[0]} onClick={() => handleClickAnswer(0)} isDisabled={isDisabledAnswer}/>
-              <br/><br/>
-            </DivLabelInput>
-            <DivLabelInput>
-              <ButtonAnswer idButton={questionOptions[1]} className={colorAnswer2} valueButton={questionOptions[1]} onClick={() => handleClickAnswer(1)} isDisabled={isDisabledAnswer}/>
-              <br/><br/>
-            </DivLabelInput>
-            <DivLabelInput>
-              <ButtonAnswer idButton={questionOptions[2]} className={colorAnswer3} valueButton={questionOptions[2]} onClick={() => handleClickAnswer(2)} isDisabled={isDisabledAnswer}/>
-              <br/><br/>
-            </DivLabelInput>
-            <DivLabelInput>
-              <ButtonAnswer idButton={questionOptions[3]} className={colorAnswer4} valueButton={questionOptions[3]} onClick={() => handleClickAnswer(3)} isDisabled={isDisabledAnswer}/>
-              <br/><br/>
-            </DivLabelInput>
+    
+            <ButtonAnswer idButton={questionOptions[0]} className={colorAnswer1} valueButton={questionOptions[0]} onClick={() => handleClickAnswer(0)} isDisabled={isDisabledAnswer}/>
+    
+            <ButtonAnswer idButton={questionOptions[1]} className={colorAnswer2} valueButton={questionOptions[1]} onClick={() => handleClickAnswer(1)} isDisabled={isDisabledAnswer}/>
+            
+            <ButtonAnswer idButton={questionOptions[2]} className={colorAnswer3} valueButton={questionOptions[2]} onClick={() => handleClickAnswer(2)} isDisabled={isDisabledAnswer}/>
+        
+          
+            <ButtonAnswer idButton={questionOptions[3]} className={colorAnswer4} valueButton={questionOptions[3]} onClick={() => handleClickAnswer(3)} isDisabled={isDisabledAnswer}/>
           </DivGap4>
           <br/><br/>
           <div className="buttonContainer2">

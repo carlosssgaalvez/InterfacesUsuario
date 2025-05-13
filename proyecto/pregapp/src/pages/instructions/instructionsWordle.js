@@ -42,7 +42,7 @@ function InstructionsWordle() {
           <ImageLogo className={"imgLogo"} src={imgLogo}/>
 
           <Title className="title" valueText={'MODO WORDLE:'}/>
-          <Title className="" valueText={'¿Cómo Jugar?'}/>
+          <Title className="title" valueText={'¿Cómo Jugar?'}/>
           <PlainText className="plainText2" textValue={'Intenta adivinar la palabra secreta en 6 intentos o menos.'}/>
           <PlainText className="plainText2" textValue={'Cada vez que escribas una palabra y pulses Enter, las letras cambiarán de color para darte pistas:'}/>
           <PlainText className="plainText2" textValue={'· Verde: la letra está en la palabra y en la posición correcta.'}/>

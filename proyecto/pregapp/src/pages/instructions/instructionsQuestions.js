@@ -42,7 +42,7 @@ function InstructionsQuestions() {
       <header className="instruction-header">   
           <ImageLogo className={"imgLogo"} src={imgLogo}/>
           <Title className="title" valueText={'MODO PREGUNTAS:'}/>
-          <Title className="" valueText={'¿Cómo Jugar?'}/>
+          <Title className="title" valueText={'¿Cómo Jugar?'}/>
           <PlainText className="plainText2" textValue={'En este modo se te presentarán preguntas de forma aleatoria.'}/>
           <PlainText className="plainText2" textValue={'Cada pregunta tiene cuatro posibles respuestas, pero solo una es la correcta.'}/>
           <PlainText className="plainText2" textValue={'Selecciona la opción que creas correcta para sumar 20 puntos.'}/>

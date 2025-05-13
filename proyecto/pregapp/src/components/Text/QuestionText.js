@@ -1,7 +1,7 @@
 function QuestionText({className, forId, textValue, titleValue, points}) {
     return (
      
-        <label className={className} htmlFor={forId}>
+        <label className="label-for-questionBox" htmlFor={forId}>
         <div className="questionBox">
           <h2 className= {className}>{titleValue}</h2>
           <p className={className}>{textValue}</p>

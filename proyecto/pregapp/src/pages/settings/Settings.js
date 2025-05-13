@@ -106,29 +106,32 @@ function Settings() {
               <Label className="textSettings" forId={'MEMORY GAME'} textValue={'MEMORY GAME'}/>
             </DivLabelInput>
           </div>
-        <div className="containerSettings">
+        <div className="music-settings-container">
           <div className="settings-row">
-            <img src={Music} alt="Music" className="icon" />
-            <Slider
-              min={0}
-              max={100}
-              value={musicVolume * 100}
-              onChange={handleMusicChange}
-              
-            />
-               
-            <img src={Sound} alt="Sound" className="icon" />
-            <Slider className={"slider"}
-              min={0}
-              max={100}
-              value={soundValue}
-              onChange={handleSoundChange}
-            />
+            <div className='slider-container'>
+              <img src={Music} alt="Music" className="icon" />
+              <Slider
+                min={0}
+                max={100}
+                value={musicVolume * 100}
+                onChange={handleMusicChange}
+                
+              />
+            </div>
+            <div className='slider-container'>
+              <img src={Sound} alt="Sound" className="icon" />
+              <Slider className={"slider"}
+                min={0}
+                max={100}
+                value={soundValue}
+                onChange={handleSoundChange}
+              />
+            </div>
           </div>
           
         </div>
         <div className="buttonContainer2">
-          <PopupButton valueButton={'No Guardar'} textValue={'¿Está seguro/a que NO quiere guardar la configuración?'} onClick={handleExit} />
+          <PopupButton buttonBack={true} valueButton={'No Guardar'} textValue={'¿Está seguro/a que NO quiere guardar la configuración?'} onClick={handleExit} />
           <Button className={"buttonAdvance"} valueButton={'Guardar'} onClick={handleAdvance}/>
         </div>
       </DivGap4>

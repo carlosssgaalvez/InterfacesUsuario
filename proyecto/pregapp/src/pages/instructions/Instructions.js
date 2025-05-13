@@ -39,7 +39,7 @@ function Instructions() {
             <Title className={"title"} valueText={" kNowCat "}/>
             <PlainText className="plainText2" textValue={'¡Pon a prueba tu mente con nuestra colección de juegos de preguntas! Ejercita tu cerebro, amplía tus conocimientos y diviértete cada día.'}/>
 
-            <Title className="" valueText={'¿Cómo Jugar?'}/>
+            <Title className="title" valueText={'¿Cómo Jugar?'}/>
 
             <Title className="title" valueText={'· MODO PREGUNTAS:'}/>
             <PlainText className="plainText2" textValue={'En este modo se te presentarán preguntas de forma aleatoria.'}/>

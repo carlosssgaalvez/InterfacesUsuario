@@ -43,7 +43,7 @@ function InstructionsMemoryGame() {
           <ImageLogo className={"imgLogo"} src={imgLogo}/>
 
           <Title className="title" valueText={'MODO MEMORIA:'}/>
-          <Title className="" valueText={'¿Cómo Jugar?'}/>
+          <Title className="title" valueText={'¿Cómo Jugar?'}/>
           <PlainText className="plainText2" textValue={'Pon a prueba tu memoria encontrando todas las parejas de cartas iguales.'}/>
           <PlainText className="plainText2" textValue={'Haz clic en una carta para verla.'}/>
           <PlainText className="plainText2" textValue={'Selecciona otra carta para ver si coincide.'}/>
