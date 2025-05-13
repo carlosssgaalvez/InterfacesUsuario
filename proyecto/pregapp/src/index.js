@@ -11,7 +11,7 @@ root.render(
   <React.StrictMode>
     <AudioProvider>
       <App />
-    </AudioProvider>,
+    </AudioProvider>
   </React.StrictMode>
 );
 
