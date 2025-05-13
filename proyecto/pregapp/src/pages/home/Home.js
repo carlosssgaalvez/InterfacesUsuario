@@ -74,7 +74,7 @@ function Home() {
         
         <br/><br/>
         <div className="buttonContainer">
-          <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la aplicación?'} />
+          <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la aplicación?'} oneButton={false} buttonBack={true}/>
         </div>
         <br/><br/>
     </div>

@@ -31,6 +31,7 @@ function Question() {
   const [colorAnswer4, setColorAnswer4] = useState('buttonAnswer');
   const [isDisabledAnswer, setIsDisabledAnswer] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [questionAnswered, setQuestionAnswered] = useState(false);
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -56,6 +57,7 @@ function Question() {
     }else{
       setPuntos(0);
     }
+    setQuestionAnswered(true);
 
     setColorAnswer1(index === 0? (questionOptions[index] === rightAnswer ? 'buttonAnswerRight' : 'buttonAnswerWrong') : 'buttonAnswerNotHover');
     setColorAnswer2(index === 1? (questionOptions[index] === rightAnswer ? 'buttonAnswerRight' : 'buttonAnswerWrong') : 'buttonAnswerNotHover');
@@ -67,8 +69,7 @@ function Question() {
 
   const handleClickNext = () => {
 
-    if (selectedAnswer === null) {
-      alert('Selecciona una respuesta antes de continuar.');
+    if (!questionAnswered) {
       return;
     }
 
@@ -79,6 +80,7 @@ function Question() {
       localStorage.setItem('user', JSON.stringify(user));
     }
     
+    setQuestionAnswered(false);
     setSelectedAnswer(null);
     setColorAnswer1('buttonAnswer');
     setColorAnswer2('buttonAnswer');
@@ -129,8 +131,12 @@ function Question() {
           </DivGap4>
           <br/><br/>
           <div className="buttonContainer2">
-            <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'} onClick={handleExit} />
-            <ButtonAdvance valueButton={'Siguiente'} onClick={handleClickNext}/>
+            <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'} onClick={handleExit} oneButton={false} buttonBack={true}/>
+            {questionAnswered? (
+              <ButtonAdvance valueButton={'Siguiente'} onClick={handleClickNext}/>
+            ):(
+              <PopupButton valueButton={'Siguiente'} textValue={'Selecciona una respuesta antes de continuar.'} oneButton={true} buttonBack={false}/>
+            )}
           </div>
         </div>
       </header>

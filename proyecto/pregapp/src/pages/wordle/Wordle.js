@@ -157,7 +157,7 @@ function Wordle() {
             </div>
           ))}
           <p>{message}</p>
-          <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'} onClick={handleExit} />
+          <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'} onClick={handleExit} oneButton={false} buttonBack={true}/>
         </div>
         
       </DivGap4>

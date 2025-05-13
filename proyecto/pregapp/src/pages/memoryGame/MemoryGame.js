@@ -175,11 +175,13 @@ function MemoryGame() {
       )}
 
       <div className="buttonContainer buttonContainerMemory">
-         <PopupButton
-            valueButton={'Salir'}
-            textValue={'¿Está seguro/a que desea salir de la partida? Se perderá el progreso.'}
-            onClick={handleExit} 
-          />
+      <PopupButton 
+        valueButton={'Salir'} 
+        textValue={'¿Está seguro/a que desea salir de la partida?'} 
+        onClick={handleExit} 
+        oneButton={false} 
+        buttonBack={true}
+      />
       </div>
     </div>
     </div>
