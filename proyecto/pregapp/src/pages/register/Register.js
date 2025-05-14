@@ -128,7 +128,7 @@ function Register(){
 
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
     
-    const newUser = { email, username, password, points: 0 };
+    const newUser = { email, username, password, QuestionPoints: 0, WordlePoints: 0 };
     storedUsers.push(newUser);
    
     localStorage.setItem('users', JSON.stringify(storedUsers));
