@@ -122,11 +122,11 @@ function LogIn(){
           
           <DivLabelInput>
             <Label className="labelText" forId={'usuario'} textValue={'Usuario:'}/> 
-            <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"} value={userNameValue} onChange={handleChangeUserName}/><br/>
+            <InputText id={'usuario'} className={"inputText"} placeholder={""} value={userNameValue} onChange={handleChangeUserName}/><br/>
           </DivLabelInput>
           <DivLabelInput>
             <Label className="labelText" forId={'contrasenia'} textValue={'Contraseña:'}/>
-            <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"} value={passwordValue} onChange={handleChangePassword} type={"password"}/><br/>
+            <InputText id={'contrasenia'} className={"inputText"} placeholder={""} value={passwordValue} onChange={handleChangePassword} type={"password"}/><br/>
           </DivLabelInput>
           <DivLabelInput>
             <Label idFor={'linkButton'} className="labelText" textValue={'¿No tienes cuenta?, '}/>

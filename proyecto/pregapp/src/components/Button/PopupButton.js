@@ -36,7 +36,7 @@ function PopupButton ({valueButton,textValue,onClick, buttonBack, oneButton}) {
                     {/* Botón para cerrar el popup */}
                     {oneButton?(
                         <div className="buttonContainerPopup">
-                            <ButtonAdvance valueButton={"Aceptar"} onClick={closePopup}/>
+                            <ButtonAdvance valueButton={"Aceptar"} onClick={onClick?onClick: closePopup}/>
                         </div>
                     ):(
                         <div className="buttonContainerPopup">
