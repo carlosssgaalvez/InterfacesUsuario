@@ -12,6 +12,7 @@ import Label from '../../components/Text/Label';
 import { useNavigate } from 'react-router-dom';
 import DivLabelInput from '../../components/divs/divLabelInput';
 import DivGap4 from '../../components/divs/divGap4';
+import PopupButton from '../../components/Button/PopupButton';
 
 
 function Register(){
@@ -21,33 +22,117 @@ function Register(){
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [isCorrectAccount, setIsCorrectAccount] = useState(false);
+  const [popUpText, setPopUpText] = useState('Alguno de los campos está vacío');
 
   const handleExit = () => {
      navigate('/login'); 
   };
 
-  const handleAdvance = () => {
-    if (password !== confirmPassword) {
-      alert('Las contraseñas no coinciden');
-      return;
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+    if (event.target.value !== '' && username !== '' && password !== '' && confirmPassword !== '') {
+      if (password !== confirmPassword) {
+        setPopUpText('Las contraseñas no coinciden');
+        setIsCorrectAccount(false);
+      }else {
+        const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+    
+        const existingUser = storedUsers.find(user => user.username === username);
+        if (existingUser) {
+          setPopUpText('Ese nombre de usuario ya está registrado');
+          setIsCorrectAccount(false);
+        }else {
+          setPopUpText('¡Registro exitoso!');
+          setIsCorrectAccount(true);
+        }
+      }
+    }else {
+      setPopUpText('Alguno de los campos está vacío');
+      setIsCorrectAccount(false);
     }
-  
+  }
+
+  const handleChangeUserName = (event) => {
+    setUsername(event.target.value);
+    if (email !== '' && event.target.value !== '' && password !== '' && confirmPassword !== '') {
+      if (password !== confirmPassword) {
+        setPopUpText('Las contraseñas no coinciden');
+        setIsCorrectAccount(false);
+      }else {
+        const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+    
+        const existingUser = storedUsers.find(user => user.username === event.target.value);
+        if (existingUser) {
+          setPopUpText('Ese nombre de usuario ya está registrado');
+          setIsCorrectAccount(false);
+        }else {
+          setPopUpText('¡Registro exitoso!');
+          setIsCorrectAccount(true);
+        }
+      }
+    }else {
+      setPopUpText('Alguno de los campos está vacío');
+      setIsCorrectAccount(false);
+    }
+  }
+
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
+    if (email !== '' && username !== '' && event.target.value !== '' && confirmPassword !== '') {
+      if (event.target.value !== confirmPassword) {
+        setPopUpText('Las contraseñas no coinciden');
+        setIsCorrectAccount(false);
+      }else {
+        const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+    
+        const existingUser = storedUsers.find(user => user.username === username);
+        if (existingUser) {
+          setPopUpText('Ese nombre de usuario ya está registrado');
+          setIsCorrectAccount(false);
+        }else {
+          setPopUpText('¡Registro exitoso!');
+          setIsCorrectAccount(true);
+        }
+      }
+    }else {
+      setPopUpText('Alguno de los campos está vacío');
+      setIsCorrectAccount(false);
+    }
+  }
+  const handleChangeConfirmPassword = (event) => {
+    setConfirmPassword(event.target.value);
+    if (email !== '' && username !== '' && password !== '' && event.target.value !== '') {
+      if (password !== event.target.value) {
+        setPopUpText('Las contraseñas no coinciden');
+        setIsCorrectAccount(false);
+      }else {
+        const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+    
+        const existingUser = storedUsers.find(user => user.username === username);
+        if (existingUser) {
+          setPopUpText('Ese nombre de usuario ya está registrado');
+          setIsCorrectAccount(false);
+        }else {
+          setPopUpText('¡Registro exitoso!');
+          setIsCorrectAccount(true);
+        }
+      }
+    }else {
+      setPopUpText('Alguno de los campos está vacío');
+      setIsCorrectAccount(false);
+    }
+  }
+
+  const handleAdvance = () => {
 
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-  
-    const existingUser = storedUsers.find(user => user.username === username);
-    if (existingUser) {
-      alert('Ese nombre de usuario ya está registrado');
-      return;
-    }
-  
-
+    
     const newUser = { email, username, password, points: 0 };
     storedUsers.push(newUser);
    
     localStorage.setItem('users', JSON.stringify(storedUsers));
-  
-    alert('¡Registro exitoso!');
+
     navigate('/');
     // navigate('/home', { state: { user: username, password } });
   };
@@ -65,26 +150,29 @@ function Register(){
        
           <DivLabelInput>
             <Label className="labelText" forId={'correo'} textValue={'Email:'}/> 
-            <InputText id={'correo'} value={email} onChange={e => setEmail(e.target.value)} className={"inputText"} placeholder={"Escribe tu correo electrónico"} type={"text"}/><br/>
+            <InputText id={'correo'} value={email} onChange={handleChangeEmail} className={"inputText"} placeholder={""} type={"text"}/><br/>
           </DivLabelInput>
           <DivLabelInput>
             <Label className="labelText" forId={'usuario'} textValue={'Usuario:'}/> 
-            <InputText id={'usuario'} value={username} onChange={e => setUsername(e.target.value)} className={"inputText"} placeholder={"Escribe tu usuario"} type={"text"}/><br/>
+            <InputText id={'usuario'} value={username} onChange={handleChangeUserName} className={"inputText"} placeholder={""} type={"text"}/><br/>
           </DivLabelInput>
           <DivLabelInput>
             <Label className="labelText" forId={'contrasenia'} textValue={'Contraseña:'}/>
-            <InputText id={'contrasenia'} value={password} onChange={e => setPassword(e.target.value)} className={"inputText"} placeholder={"Escribe tu contraseña"} type={"password"}/><br/>
+            <InputText id={'contrasenia'} value={password} onChange={handleChangePassword} className={"inputText"} placeholder={""} type={"password"}/><br/>
           </DivLabelInput>
           <DivLabelInput>
             <Label className="labelText" forId={'contrasenia2'} textValue={'Contraseña:'}/>
-            <InputText id={'contrasenia2'} value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} className={"inputText"} placeholder={"Repite tu contraseña"} type={"password"}/><br/>
+            <InputText id={'contrasenia2'} value={confirmPassword} onChange={handleChangeConfirmPassword} className={"inputText"} placeholder={""} type={"password"}/><br/>
           </DivLabelInput>
         </DivGap4>
         <br/><br/>
         <div className="buttonContainer">
         <Button className="buttonBack" valueButton={'Volver'} onClick={handleExit}/>
-        <Button className={"buttonAdvance"} valueButton={'Confirmar'} onClick={handleAdvance}/>
-        
+        {isCorrectAccount? (
+          <PopupButton valueButton={'Confirmar'} textValue={popUpText} onClick={handleAdvance} oneButton={true}/>
+        ):(
+          <PopupButton valueButton={'Confirmar'} textValue={popUpText} oneButton={true}/>
+        )}
         </div>
         </div>
         </header>

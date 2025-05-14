@@ -22,7 +22,7 @@ function PopupButton ({valueButton,textValue,onClick, buttonBack, oneButton}) {
     return (
         <div className="popup">
             {/* Botón para abrir el popup */}
-            {valueButton == 'Salir' || buttonBack?(
+            {valueButton === 'Salir' || buttonBack?(
                 <ButtonBack valueButton={valueButton} onClick={openPopup}/>
             ):(
                 <ButtonAdvance valueButton={valueButton} onClick={openPopup}/>
@@ -36,7 +36,7 @@ function PopupButton ({valueButton,textValue,onClick, buttonBack, oneButton}) {
                     {/* Botón para cerrar el popup */}
                     {oneButton?(
                         <div className="buttonContainerPopup">
-                            <ButtonAdvance valueButton={"Aceptar"} onClick={closePopup}/>
+                            <ButtonAdvance valueButton={"Aceptar"} onClick={onClick?onClick: closePopup}/>
                         </div>
                     ):(
                         <div className="buttonContainerPopup">

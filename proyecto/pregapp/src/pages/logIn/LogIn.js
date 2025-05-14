@@ -14,26 +14,82 @@ import { useNavigate } from 'react-router-dom';
 import ButtonAdvance from '../../components/Button/ButtonAdvance';
 import DivGap4 from '../../components/divs/divGap4';
 import DivLabelInput from '../../components/divs/divLabelInput';
+import PopupButton from '../../components/Button/PopupButton';
+
 function LogIn(){
   // Esto es un ejemplo para probar los componentes
   const navigate = useNavigate();
 
-  const [userNameValue, setInputValueUserName] = useState('');
- 
-  const handleChangeUserName = (event) => {
-    setInputValueUserName(event.target.value);
-  }
+  const [isCorrectAccount, setIsCorrectAccount] = useState(false);
+  const [popUpText, setPopUpText] = useState('Alguno de los campos está vacío');
 
+  const [userNameValue, setInputValueUserName] = useState('');
   const [passwordValue, setInputValuePassword] = useState(''); 
+  
   const handleChangePassword = (event) => {
     setInputValuePassword(event.target.value);
+    
+    if(userNameValue !== '' && event.target.value !== ''){
+      const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+      if(storedUsers.length === 0){
+        setPopUpText('No hay usuarios registrados, por favor registrate primero');
+        setIsCorrectAccount(false);
+      }
+      
+      // Buscar el usuario con el nombre y contraseña correctos
+      const matchedUser = storedUsers.find(
+        user => user.username === userNameValue && user.password === event.target.value
+      );
+      localStorage.setItem('user', JSON.stringify(matchedUser));
+      if (matchedUser) {
+        setPopUpText('');
+        setIsCorrectAccount(true);
+      }else{
+        setPopUpText('Usuario o contraseña incorrectos');
+        setIsCorrectAccount(false);
+      }
+    }else{
+      setPopUpText('Alguno de los campos está vacío');
+      setIsCorrectAccount(false);
+    }
   };
+  const handleChangeUserName = (event) => {
+    setInputValueUserName(event.target.value);
+
+    if(passwordValue !== '' && event.target.value !== ''){
+      const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+      if(storedUsers.length === 0){
+        setPopUpText('No hay usuarios registrados, por favor registrate primero');
+        setIsCorrectAccount(false);
+      }
+      
+      // Buscar el usuario con el nombre y contraseña correctos
+      const matchedUser = storedUsers.find(
+        user => user.username === event.target.value && user.password === passwordValue
+      );
+      localStorage.setItem('user', JSON.stringify(matchedUser));
+      if (matchedUser) {
+        setPopUpText('');
+        setIsCorrectAccount(true);
+      }else{
+        setPopUpText('Usuario o contraseña incorrectos');
+        setIsCorrectAccount(false);
+      }
+    }else{
+      setPopUpText('Alguno de los campos está vacío');
+      setIsCorrectAccount(false);
+    }
+  }
+
 
   const handleClick = () => {
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
 
     if(storedUsers.length === 0){
-      alert('No hay usuarios registrados, por favor registrate primero');
+      setPopUpText('No hay usuarios registrados, por favor registrate primero');
+      setIsCorrectAccount(false);
       return;
     }
     // Buscar el usuario con el nombre y contraseña correctos
@@ -44,7 +100,8 @@ function LogIn(){
     if (matchedUser) {
       navigate('/home');
     } else {
-      alert('Usuario o contraseña incorrectos');
+      setPopUpText('Usuario o contraseña incorrectos');
+      setIsCorrectAccount(false);
     }
   };
 
@@ -65,11 +122,11 @@ function LogIn(){
           
           <DivLabelInput>
             <Label className="labelText" forId={'usuario'} textValue={'Usuario:'}/> 
-            <InputText id={'usuario'} className={"inputText"} placeholder={"Escribe tu usuario"} value={userNameValue} onChange={handleChangeUserName}/><br/>
+            <InputText id={'usuario'} className={"inputText"} placeholder={""} value={userNameValue} onChange={handleChangeUserName}/><br/>
           </DivLabelInput>
           <DivLabelInput>
             <Label className="labelText" forId={'contrasenia'} textValue={'Contraseña:'}/>
-            <InputText id={'contrasenia'} className={"inputText"} placeholder={"Escribe tu contraseña"} value={passwordValue} onChange={handleChangePassword} type={"password"}/><br/>
+            <InputText id={'contrasenia'} className={"inputText"} placeholder={""} value={passwordValue} onChange={handleChangePassword} type={"password"}/><br/>
           </DivLabelInput>
           <DivLabelInput>
             <Label idFor={'linkButton'} className="labelText" textValue={'¿No tienes cuenta?, '}/>
@@ -79,7 +136,11 @@ function LogIn(){
         
         <br/>
         <div className="buttonContainer">
-        <ButtonAdvance  valueButton={'Iniciar sesión'} onClick={handleClick}/>
+        {isCorrectAccount? (
+          <ButtonAdvance  valueButton={'Iniciar sesión'} onClick={handleClick}/>
+        ):(
+          <PopupButton valueButton={'Iniciar sesión'} textValue={popUpText} oneButton={true}/>
+        )}
         </div>
         </div>
         </header>
