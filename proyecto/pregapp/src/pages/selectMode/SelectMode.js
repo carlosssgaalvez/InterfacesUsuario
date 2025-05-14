@@ -78,33 +78,26 @@ function SelectMode() {
     return isLoggedIn? (
       <div className='container'>
           <DivGap4>
-            <br/><br/>
           <ImageLogo className={"imgLogo"} src={Logo}/>
             <Title className={"title"} valueText={"SELECCIONA MODO DE JUEGO"}/>
             <DivLabelInput>
             <ButtonMenu idButton={'button1'} valueButton={'PREGUNTAS'} colorButton={'#C0C0C0'} onClick={handleClickJugarModo1} imgButton={QuestionsImg}/>
-              <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
             <ButtonMenu idButton={'button2'} valueButton={'WORDLE'} colorButton={'#1ABC9C'} onClick={handleClickJugarModo2} imgButton={WordleImg}/>
-              <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
             <ButtonMenu idButton={'button3'} valueButton={'MEMORIA'} colorButton={'#007BFF'} onClick={handleClickJugarModo3} imgButton={MemoryGameImg}/>
-              <br/><br/>
             </DivLabelInput>
             <DivLabelInput>
             <ButtonMenu idButton={'button4'} valueButton={'MODO ALEATORIO(...PROXIMAMENTE)'} colorButton={'#2ECC71'} onClick={handleClickJugarModo4}/>
-              <br/><br/>
             </DivLabelInput>
             </DivGap4>
           
-          <br/><br/>
           <div className="buttonContainer">
           <ButtonBack valueButton={'Volver'} onClick={handleExit}/>
           
           </div>
-          <br/><br/>
       </div>
     ): (
       <div>

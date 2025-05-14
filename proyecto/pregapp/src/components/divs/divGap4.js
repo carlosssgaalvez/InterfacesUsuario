@@ -4,7 +4,7 @@ function DivGap4({ children }) {
   const style = {
     display: "flex",
     flexDirection: "column",
-    gap: "20px",
+    gap: "10px",
     alignItems: "center",
   };
 

@@ -35,6 +35,22 @@ function InstructionsMemoryGame() {
     const handleAccessDenied = () => {
       navigate('/logIn');
     };
+    useEffect(() => {
+      document.documentElement.classList.add('page-scrollable');
+      document.body.classList.add('page-scrollable');
+      const rootElement = document.getElementById('root');
+      if (rootElement) {
+        rootElement.classList.add('page-scrollable');
+      }
+    
+      return () => {
+        document.documentElement.classList.remove('page-scrollable');
+        document.body.classList.remove('page-scrollable');
+        if (rootElement) {
+          rootElement.classList.remove('page-scrollable');
+        }
+      };
+    }, []);
 
     const isLoggedIn = user !== undefined && user !== "";
     return isLoggedIn? (
@@ -51,7 +67,6 @@ function InstructionsMemoryGame() {
           <PlainText className="plainText2" textValue={'Si no lo son, se darán la vuelta de nuevo tras unos segundos.'}/>
           <PlainText className="plainText2" textValue={'Tu objetivo es encontrar todos los pares en el menor tiempo posible.'}/>
           <PlainText className="plainText2" textValue={'¡Concéntrate y trata de completar el juego con el numero de movimientos posibles!'}/>
-          <br></br>
 
       </header>
         <div className="buttonContainer2">

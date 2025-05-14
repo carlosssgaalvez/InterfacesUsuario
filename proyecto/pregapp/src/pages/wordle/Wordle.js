@@ -46,6 +46,22 @@ function Wordle() {
   const handleExit = () => {
     navigate('/selectMode'); 
   }
+    useEffect(() => {
+      document.documentElement.classList.add('page-scrollable');
+      document.body.classList.add('page-scrollable');
+      const rootElement = document.getElementById('root');
+      if (rootElement) {
+        rootElement.classList.add('page-scrollable');
+      }
+
+      return () => {
+        document.documentElement.classList.remove('page-scrollable');
+        document.body.classList.remove('page-scrollable');
+        if (rootElement) {
+          rootElement.classList.remove('page-scrollable');
+        }
+      };
+    }, []);
 
   // captar pulsaciones de teclas
   const handleKeyPress = (event) => {

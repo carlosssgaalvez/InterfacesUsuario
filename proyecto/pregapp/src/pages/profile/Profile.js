@@ -32,6 +32,7 @@ function Profile() {
     const handleAccessDenied = () => {
       navigate('/logIn');
     };
+ 
 
     const isLoggedIn = user !== undefined && user !== "" ;
     return isLoggedIn? (
@@ -39,25 +40,23 @@ function Profile() {
       <header className="Profile-header">   
         
           <Image className={"imgProfile"} src={Profimg}/>
-            <br/><br/><br/>
             <Title className="title" valueText={user.username}/>
             <PlainText className="profileText2" textValue={user.email}/>
-            <br/><br/>
+
             <Title className="title" valueText={'Puntos Totales'}/>
             <PlainText className="profileText2" textValue={user.QuestionPoints + user.WordlePoints }/>
-            <br/><br/>
+
             <div className="divisor">
             <div className="line">
             <Title className="title" valueText={'Preguntas Acertadas'}/>
             <PlainText className="profileText2" textValue={user.QuestionPoints/20}/>
             </div>
-            <br/><br/>
+
             <div className="line">
             <Title className="title" valueText={'Wordles Acertados'}/>
             <PlainText className="profileText2" textValue={user.WordlePoints/200}/>
             </div>
             </div>
-            <br/><br/> 
           
        
       </header>

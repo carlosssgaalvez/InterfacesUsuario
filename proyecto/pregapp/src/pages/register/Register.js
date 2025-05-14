@@ -144,7 +144,6 @@ function Register(){
     
         <div className="container">
         <DivGap4>
-          <br/><br/>
         <ImageLogo className={"imgLogo"} src={Logo}/>
         <Title className="title" valueText={'REGISTRATE'}/>
        
@@ -165,7 +164,6 @@ function Register(){
             <InputText id={'contrasenia2'} value={confirmPassword} onChange={handleChangeConfirmPassword} className={"inputText"} placeholder={""} type={"password"}/><br/>
           </DivLabelInput>
         </DivGap4>
-        <br/><br/>
         <div className="buttonContainer">
         <Button className="buttonBack" valueButton={'Volver'} onClick={handleExit}/>
         {isCorrectAccount? (

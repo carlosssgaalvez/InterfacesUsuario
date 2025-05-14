@@ -85,6 +85,21 @@
     background-repeat: no-repeat;
     background-position: center;
     min-height: 100vh; /* Esto asegura que cubre toda la pantalla */
-    padding: 40px;
+    padding: 20px;
     text-align: center;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; 
+  margin: 0;
+  padding: 0;
+}
+html.page-scrollable,
+body.page-scrollable,
+#root.page-scrollable {
+  overflow: auto;
 }

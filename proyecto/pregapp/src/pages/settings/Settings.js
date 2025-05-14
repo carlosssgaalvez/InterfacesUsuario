@@ -55,6 +55,23 @@ function Settings() {
     if (storedMode3 !== null) setCheckedMode3(storedMode3 === 'true');
   },[]);
 
+  useEffect(() => {
+    document.documentElement.classList.add('page-scrollable');
+    document.body.classList.add('page-scrollable');
+    const rootElement = document.getElementById('root');
+    if (rootElement) {
+      rootElement.classList.add('page-scrollable');
+    }
+
+    return () => {
+      document.documentElement.classList.remove('page-scrollable');
+      document.body.classList.remove('page-scrollable');
+      if (rootElement) {
+        rootElement.classList.remove('page-scrollable');
+      }
+    };
+  }, []);
+
   // Posiblles funciones
 
   const handleCheckBoxChange1 = () => {
@@ -88,54 +105,53 @@ function Settings() {
   const isLoggedIn = user !== undefined && user !== "";
   return isLoggedIn? (
     <div className='container'>
-      <DivGap4>
-        <br/><br/>
-        <ImageLogo className={"imgLogo"} src={Logo}/>
-        <div className="settings-container">
-            <PlainText className={"textSettings"} textValue={"Selecciona las instrucciones que desea saltar:"}/>
-            <DivLabelInput>
-              <CheckBox className="checkbox-style" id={"PREGUNTAS"} checked={checkedMode1} onChange={handleCheckBoxChange1}/>
-              <Label className="textSettings" forId={'PREGUNTAS'} textValue={'PREGUNTAS'}/>
-            </DivLabelInput>
-            <DivLabelInput>
-              <CheckBox className="checkbox-style" id={"WORDLE"} checked={checkedMode2} onChange={handleCheckBoxChange2}/>
-              <Label className="textSettings" forId={'WORDLE'} textValue={'WORDLE'}/>
-            </DivLabelInput>
-            <DivLabelInput>
-              <CheckBox className="checkbox-style" id={"MEMORY GAME"} checked={checkedMode3} onChange={handleCheckBoxChange3}/>
-              <Label className="textSettings" forId={'MEMORY GAME'} textValue={'MEMORY GAME'}/>
-            </DivLabelInput>
-          </div>
-        <div className="music-settings-container">
-          <div className="settings-row">
-            <div className='slider-container'>
-              <img src={Music} alt="Music" className="icon" />
-              <Slider
-                min={0}
-                max={100}
-                value={musicVolume * 100}
-                onChange={handleMusicChange}
-                
-              />
+        <DivGap4>
+          <ImageLogo className={"imgLogo"} src={Logo}/>
+          <div className="settings-container">
+              <PlainText className={"textSettings"} textValue={"Selecciona las instrucciones que desea saltar:"}/>
+              <DivLabelInput>
+                <CheckBox className="checkbox-style" id={"PREGUNTAS"} checked={checkedMode1} onChange={handleCheckBoxChange1}/>
+                <Label className="textSettings" forId={'PREGUNTAS'} textValue={'PREGUNTAS'}/>
+              </DivLabelInput>
+              <DivLabelInput>
+                <CheckBox className="checkbox-style" id={"WORDLE"} checked={checkedMode2} onChange={handleCheckBoxChange2}/>
+                <Label className="textSettings" forId={'WORDLE'} textValue={'WORDLE'}/>
+              </DivLabelInput>
+              <DivLabelInput>
+                <CheckBox className="checkbox-style" id={"MEMORY GAME"} checked={checkedMode3} onChange={handleCheckBoxChange3}/>
+                <Label className="textSettings" forId={'MEMORY GAME'} textValue={'MEMORY GAME'}/>
+              </DivLabelInput>
             </div>
-            <div className='slider-container'>
-              <img src={Sound} alt="Sound" className="icon" />
-              <Slider className={"slider"}
-                min={0}
-                max={100}
-                value={soundValue}
-                onChange={handleSoundChange}
-              />
+          <div className="music-settings-container">
+            <div className="settings-row">
+              <div className='slider-container'>
+                <img src={Music} alt="Music" className="icon" />
+                <Slider
+                  min={0}
+                  max={100}
+                  value={musicVolume * 100}
+                  onChange={handleMusicChange}
+                  
+                />
+              </div>
+              <div className='slider-container'>
+                <img src={Sound} alt="Sound" className="icon" />
+                <Slider className={"slider"}
+                  min={0}
+                  max={100}
+                  value={soundValue}
+                  onChange={handleSoundChange}
+                />
+              </div>
             </div>
+            
           </div>
-          
-        </div>
-        <div className="buttonContainer2">
-          <PopupButton buttonBack={true} valueButton={'No Guardar'} textValue={'¿Está seguro/a que NO quiere guardar la configuración?'} onClick={handleExit} />
-          <Button className={"buttonAdvance"} valueButton={'Guardar'} onClick={handleAdvance}/>
-        </div>
-      </DivGap4>
-    </div>
+          <div className="buttonContainer2">
+            <PopupButton buttonBack={true} valueButton={'No Guardar'} textValue={'¿Está seguro/a que NO quiere guardar la configuración?'} onClick={handleExit} />
+            <Button className={"buttonAdvance"} valueButton={'Guardar'} onClick={handleAdvance}/>
+          </div>
+        </DivGap4>
+z    </div>
   ): (
     <div>
       <h1>Acceso denegado</h1>

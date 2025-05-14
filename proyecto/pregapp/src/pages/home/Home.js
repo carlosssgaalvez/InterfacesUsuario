@@ -8,6 +8,7 @@ import ImageLogo from '../../components/Image/ImageLogo';
 import Logo from '../../images/logo.png';
 import ButtonBack from '../../components/Button/ButtonBack';
 import '../../styles/buttons.css';
+import '../../pages/home/Home.css';
 import PopupButton from '../../components/Button/PopupButton';
 import Title from '../../components/Text/Title';
 import AjustesImg from '../../images/ajustesImg.png';
@@ -50,33 +51,26 @@ function Home() {
    
 
     <div className='container'>
-        <DivGap4>
-          <br/><br/>
-        <ImageLogo className={"imgLogo"} src={Logo}/>
+        <DivGap4 className="gapHome">
+          <ImageLogo className={"imgLogo"} src={Logo}/>
           <Title className={"title"} valueText={"MENÚ"}/>
           <DivLabelInput>
           <ButtonMenu idButton={'button1'} valueButton={'JUGAR'} colorButton={'#1ABC9C'} onClick={handleClickJugar} imgButton={JugarImg}/>
-            <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
           <ButtonMenu idButton={'button2'} valueButton={'INSTRUCCIONES'} colorButton={'#1ABC9C'} onClick={handleClickInstrucciones} imgButton={instruccionesImg}/>
-            <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
           <ButtonMenu idButton={'button3'} valueButton={'AJUSTES'} colorButton={'#1ABC9C'} onClick={handleClickAjustes} imgButton={AjustesImg}/>
-            <br/><br/>
           </DivLabelInput>
           <DivLabelInput>
           <ButtonMenu idButton={'button4'} valueButton={'PERFIL'} colorButton={'#1ABC9C'} onClick={handleClickPerfil} imgButton={PerfilImg}/>
-            <br/><br/>
           </DivLabelInput>
-          </DivGap4>
+        </DivGap4>
         
-        <br/><br/>
         <div className="buttonContainer">
           <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la aplicación?'} oneButton={false} buttonBack={true}/>
         </div>
-        <br/><br/>
     </div>
   ): (
     <div>
