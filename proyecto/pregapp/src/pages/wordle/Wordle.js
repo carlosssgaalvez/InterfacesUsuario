@@ -61,11 +61,20 @@ function Wordle() {
         if (currentGuess === secretWord) { 
           setMessage('¡Correcto!');
           localStorage.setItem('puntosPartidaActual', 200);
+          user.WordlePoints += 200;
+          localStorage.setItem('user', JSON.stringify(user));
+          const allUsers = localStorage.getItem('users');
+          const allUsersParsed = JSON.parse(allUsers) || [];
+          const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
+          allUsersParsed[userIndex].WordlePoints += 200;
+          localStorage.setItem('users', JSON.stringify(allUsersParsed));
+          console.log(user);
           setTimeout(() => {
             navigate('/finalPoints?tipo=wordle&palabra=' + secretWord);
           }, 2000);
         } else if (guesses.length + 1 === MAX_ATTEMPTS) {
           localStorage.setItem('puntosPartidaActual', 0);
+          console.log(user);
           navigate('/finalPoints?tipo=wordle&palabra=' + secretWord);
         }
       }

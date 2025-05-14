@@ -69,7 +69,7 @@ function FinalPoints(){
             </div>
             <div className="divWithBorder" style={{ textAlign: 'center' }}>
                
-                  {tipo ===  'wordle'? puntosPartidaActual === 0? <p> "La palabra era " + {palabra}  </p>: <p>Has acertado la palabra"  </p> : <p>Has acertado el <span style={{ color: 'lime' }}>{puntosPartidaActual/puntosTotales*100}%</span> de las preguntas</p>}
+                  {tipo ===  'wordle'? puntosPartidaActual === 0? <p> "La palabra era " + {palabra}  </p>: <p>"Has acertado la palabra"  </p> : <p>Has acertado el <span style={{ color: 'lime' }}>{puntosPartidaActual/puntosTotales*100}%</span> de las preguntas</p>}
                    
               
             </div>

@@ -74,10 +74,16 @@ function Question() {
     }
 
     if (success) {
+
       const puntos = parseInt(localStorage.getItem('puntosPartidaActual') || '0') + 20;
       localStorage.setItem('puntosPartidaActual', puntos);
-      user.points += 20;
+      user.QuestionPoints += 20;
       localStorage.setItem('user', JSON.stringify(user));
+      const allUsers = localStorage.getItem('users');
+      const allUsersParsed = JSON.parse(allUsers) || [];
+      const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
+      allUsersParsed[userIndex].QuestionPoints += 20;
+      localStorage.setItem('users', JSON.stringify(allUsersParsed));
     }
     
     setQuestionAnswered(false);

@@ -8,7 +8,8 @@ import Title from '../../components/Text/Title';
 import Profimg from '../../images/perfilImg.png';
 import Image from '../../components/Image/Image';
 import ButtonBack from '../../components/Button/ButtonBack';
-import DivGap4 from '../../components/divs/divGap4';
+import PlainText from '../../components/Text/PlainText';
+
 
 
 function Profile() {
@@ -16,8 +17,10 @@ function Profile() {
     const [user, setUser] = useState('');
       useEffect(() => {
         const storedUser = localStorage.getItem('user');
+        console.log(storedUser, 'storedUser');
         if (storedUser) {
           setUser(JSON.parse(storedUser));
+          console.log(user);
         } else {
           setUser(undefined); // or set it to an empty string or any other default value
         }
@@ -36,15 +39,26 @@ function Profile() {
       <header className="Profile-header">   
         
           <Image className={"imgProfile"} src={Profimg}/>
-          <DivGap4>
-          <br></br>
+            <br/><br/><br/>
             <Title className="title" valueText={user.username}/>
-            <p className="labelText">{user.email}</p>
+            <PlainText className="profileText2" textValue={user.email}/>
+            <br/><br/>
+            <Title className="title" valueText={'Puntos Totales'}/>
+            <PlainText className="profileText2" textValue={user.QuestionPoints + user.WordlePoints }/>
+            <br/><br/>
+            <div className="divisor">
+            <div className="line">
             <Title className="title" valueText={'Preguntas Acertadas'}/>
-            <p>{user.points/20}</p>
-           
-           
-          </DivGap4>
+            <PlainText className="profileText2" textValue={user.QuestionPoints/20}/>
+            </div>
+            <br/><br/>
+            <div className="line">
+            <Title className="title" valueText={'Wordles Acertados'}/>
+            <PlainText className="profileText2" textValue={user.WordlePoints/200}/>
+            </div>
+            </div>
+            <br/><br/> 
+          
        
       </header>
         <div className="buttonContainer">

@@ -64,7 +64,7 @@ function Instructions() {
             <PlainText className="plainText2" textValue={'Si no lo son, se darán la vuelta de nuevo tras unos segundos.'}/>
             <PlainText className="plainText2" textValue={'Tu objetivo es encontrar todos los pares en el menor tiempo posible.'}/>
             <PlainText className="plainText2" textValue={'¡Concéntrate y trata de completar el juego con el numero de movimientos posibles!'}/>
-
+            <br/>
       </header>
         <div className="buttonContainer">
         <ButtonBack  valueButton={'Volver'} onClick={handleClick}/>
