@@ -28,15 +28,15 @@ function SelectMode() {
       } else {
         setUser(undefined); // or set it to an empty string or any other default value
       }
-
-      const mode1 = localStorage.getItem('checkedMode1');
-      const mode2 = localStorage.getItem('checkedMode2');
-      const mode3 = localStorage.getItem('checkedMode3');
-
-      setQuestionInstructions(!(mode1 === 'true'));
-      setWordleInstructions(!(mode2 === 'true'));
-      setMemoryInstructions(!(mode3 === 'true'));
     },[]);
+
+  useEffect(() => {
+    if (user) {
+      setQuestionInstructions(!user.checkedMode1);
+      setWordleInstructions(!user.checkedMode2);
+      setMemoryInstructions(!user.checkedMode3);
+    }
+  }, [user]);
 
     const handleClickJugarModo1 = () => {
       if (questionInstructions) {

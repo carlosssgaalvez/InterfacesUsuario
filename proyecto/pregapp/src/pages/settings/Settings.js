@@ -46,14 +46,15 @@ function Settings() {
     } else {
       setUser(undefined);
     }
-    const storedMode1 = localStorage.getItem('checkedMode1');
-    const storedMode2 = localStorage.getItem('checkedMode2');
-    const storedMode3 = localStorage.getItem('checkedMode3');
-
-    if (storedMode1 !== null) setCheckedMode1(storedMode1 === 'true');
-    if (storedMode2 !== null) setCheckedMode2(storedMode2 === 'true');
-    if (storedMode3 !== null) setCheckedMode3(storedMode3 === 'true');
   },[]);
+
+  useEffect(() => {
+    if (user) {
+      setCheckedMode1(user.checkedMode1);
+      setCheckedMode2(user.checkedMode2);
+      setCheckedMode3(user.checkedMode3);
+    }
+  }, [user]);
 
   useEffect(() => {
     document.documentElement.classList.add('page-scrollable');
@@ -85,9 +86,21 @@ function Settings() {
   };
 
   const handleAdvance = () => {
-    localStorage.setItem('checkedMode1', checkedMode1);
-    localStorage.setItem('checkedMode2', checkedMode2);
-    localStorage.setItem('checkedMode3', checkedMode3);
+    user.checkedMode1 = checkedMode1;
+    user.checkedMode2 = checkedMode2;
+    user.checkedMode3 = checkedMode3;
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
+    const allUsers = localStorage.getItem('users');
+    const allUsersParsed = JSON.parse(allUsers) || [];
+    const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
+    allUsersParsed[userIndex].checkedMode1 = checkedMode1;
+    allUsersParsed[userIndex].checkedMode2 = checkedMode2;
+    allUsersParsed[userIndex].checkedMode3 = checkedMode3;
+    localStorage.setItem('users', JSON.stringify(allUsersParsed));
+    // localStorage.setItem('checkedMode1', checkedMode1);
+    // localStorage.setItem('checkedMode2', checkedMode2);
+    // localStorage.setItem('checkedMode3', checkedMode3);
     navigate('/home');
   }
 
@@ -151,7 +164,7 @@ function Settings() {
             <Button className={"buttonAdvance"} valueButton={'Guardar'} onClick={handleAdvance}/>
           </div>
         </DivGap4>
-z    </div>
+    </div>
   ): (
     <div>
       <h1>Acceso denegado</h1>
