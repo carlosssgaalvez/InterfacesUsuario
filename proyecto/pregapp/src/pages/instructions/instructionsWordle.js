@@ -10,9 +10,12 @@ import ButtonBack from '../../components/Button/ButtonBack';
 import ImageLogo from '../../components/Image/ImageLogo';
 import Title from '../../components/Text/Title';
 import ButtonAdvance from '../../components/Button/ButtonAdvance';
+import CheckBox from '../../components/CheckBox/CheckBox';
+import Label from '../../components/Text/Label';
+import DivLabelInput from '../../components/divs/divLabelInput';
 
 function InstructionsWordle() {
-  
+    const [checkedMode2, setCheckedMode2] = useState(false);
     const navigate = useNavigate(); 
     const [user, setUser] = useState('');
      useEffect(() => {
@@ -23,13 +26,40 @@ function InstructionsWordle() {
          setUser(undefined); // or set it to an empty string or any other default value
        }
      },[]);
+
+    useEffect(() => {
+      if (user) {
+        setCheckedMode2(user.checkedMode2);
+      }
+    }, [user]);
+
     const handleClickBack = () => {
+      user.checkedMode2 = checkedMode2;
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
+      const allUsers = localStorage.getItem('users');
+      const allUsersParsed = JSON.parse(allUsers) || [];
+      const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
+      allUsersParsed[userIndex].checkedMode2 = checkedMode2;
+      localStorage.setItem('users', JSON.stringify(allUsersParsed));
       navigate('/selectMode');
     }
 
     const handleClickNext = () => {
+        user.checkedMode2 = checkedMode2;
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('user', JSON.stringify(user));
+        const allUsers = localStorage.getItem('users');
+        const allUsersParsed = JSON.parse(allUsers) || [];
+        const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
+        allUsersParsed[userIndex].checkedMode2 = checkedMode2;
+        localStorage.setItem('users', JSON.stringify(allUsersParsed));
         navigate('/wordle');
     }
+
+    const handleCheckBoxChange2 = () => {
+      setCheckedMode2(!checkedMode2);
+    };
 
     const handleAccessDenied = () => {
       navigate('/logIn');
@@ -68,6 +98,12 @@ function InstructionsWordle() {
           <br></br>
 
       </header>
+        <div className="checkbox-container">
+              <DivLabelInput>
+                <CheckBox className="checkbox-style" id={"WORDLE GAME"} checked={checkedMode2} onChange={handleCheckBoxChange2}/>
+                <Label className="textSettings" forId={'WORLDE GAME'} textValue={'No volver a mostrar instrucciones'}/>
+              </DivLabelInput>
+        </div>
         <div className="buttonContainer2">
             <ButtonBack  valueButton={'Volver'} onClick={handleClickBack}/>
             <ButtonAdvance valueButton={'Siguiente'} onClick={handleClickNext}/>
