@@ -43,6 +43,23 @@ function InstructionsQuestions() {
             setCheckedMode1(user.checkedMode1);
           }
     }, [user]);
+
+    useEffect(() => {
+      document.documentElement.classList.add('page-scrollable');
+      document.body.classList.add('page-scrollable');
+      const rootElement = document.getElementById('root');
+      if (rootElement) {
+        rootElement.classList.add('page-scrollable');
+      }
+    
+      return () => {
+        document.documentElement.classList.remove('page-scrollable');
+        document.body.classList.remove('page-scrollable');
+        if (rootElement) {
+          rootElement.classList.remove('page-scrollable');
+        }
+      };
+    }, []);    
     
     const handleCheckBoxChange1 = () => {
       setCheckedMode1(!checkedMode1);
