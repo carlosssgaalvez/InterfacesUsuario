@@ -13,6 +13,8 @@ import ButtonAnswer from '../../components/Button/ButtonAnswer';
 import PopupButton from '../../components/Button/PopupButton';
 import questionsData from '../../resources/questions.json';
 import '../../styles/text.css';
+import Title from '../../components/Text/Title';
+
 function Question() {
   const location = useLocation();
   const navigate = useNavigate(); 
@@ -116,6 +118,7 @@ function Question() {
         
           <DivGap4>
             <br /><br /><br />
+            <Title className={"title"} valueText={"JUEGO DE PREGUNTAS"}/>
             <QuestionText forId={`pregunta${idPregunta}`} titleValue={`Pregunta ${idPregunta}`} textValue={questionText} points={puntos}/>
             <br/>
     

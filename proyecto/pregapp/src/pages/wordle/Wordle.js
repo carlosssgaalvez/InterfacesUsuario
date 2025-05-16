@@ -6,6 +6,7 @@ import Logo from '../../images/logo.png';
 import DivGap4 from '../../components/divs/divGap4';
 import { useNavigate } from 'react-router-dom';
 import PopupButton from '../../components/Button/PopupButton';
+import Title from '../../components/Text/Title';
 
 const MAX_ATTEMPTS = 6;
 const WORD_LIST = [
@@ -143,7 +144,7 @@ function Wordle() {
       <DivGap4>
         <br /><br />
         <ImageLogo className={"imgLogo"} src={Logo} />
-        <h1 className='title'>Wordle</h1>
+        <Title className={"title"} valueText={"WORDLE"}/>
         <div className="game-container">
             
             {/* Para renderizar los intentos hechos (colorearlos) */}

@@ -10,9 +10,12 @@ import ButtonBack from '../../components/Button/ButtonBack';
 import ImageLogo from '../../components/Image/ImageLogo';
 import Title from '../../components/Text/Title';
 import ButtonAdvance from '../../components/Button/ButtonAdvance';
+import CheckBox from '../../components/CheckBox/CheckBox';
+import Label from '../../components/Text/Label';
+import DivLabelInput from '../../components/divs/divLabelInput';
 
 function InstructionsQuestions() {
-  
+    const [checkedMode1, setCheckedMode1] = useState(false);
     const navigate = useNavigate(); 
     const [user, setUser] = useState('');
      useEffect(() => {
@@ -24,10 +27,53 @@ function InstructionsQuestions() {
        }
      },[]);
     const handleClickBack = () => {
+      user.checkedMode1 = checkedMode1;
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
+      const allUsers = localStorage.getItem('users');
+      const allUsersParsed = JSON.parse(allUsers) || [];
+      const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
+      allUsersParsed[userIndex].checkedMode1 = checkedMode1;
+      localStorage.setItem('users', JSON.stringify(allUsersParsed));
       navigate('/selectMode');
     }
 
+    useEffect(() => {
+          if (user) {
+            setCheckedMode1(user.checkedMode1);
+          }
+    }, [user]);
+
+    useEffect(() => {
+      document.documentElement.classList.add('page-scrollable');
+      document.body.classList.add('page-scrollable');
+      const rootElement = document.getElementById('root');
+      if (rootElement) {
+        rootElement.classList.add('page-scrollable');
+      }
+    
+      return () => {
+        document.documentElement.classList.remove('page-scrollable');
+        document.body.classList.remove('page-scrollable');
+        if (rootElement) {
+          rootElement.classList.remove('page-scrollable');
+        }
+      };
+    }, []);    
+    
+    const handleCheckBoxChange1 = () => {
+      setCheckedMode1(!checkedMode1);
+    };
+
     const handleClickNext = () => {
+      user.checkedMode1 = checkedMode1;
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
+      const allUsers = localStorage.getItem('users');
+      const allUsersParsed = JSON.parse(allUsers) || [];
+      const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
+      allUsersParsed[userIndex].checkedMode1 = checkedMode1;
+      localStorage.setItem('users', JSON.stringify(allUsersParsed));
       navigate('/question?idPregunta=1');
       localStorage.setItem('puntosPartidaActual', 0);
     }
@@ -49,6 +95,12 @@ function InstructionsQuestions() {
           <PlainText className="plainText2" textValue={'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'}/>
           <br></br>
       </header>
+        <div className="checkbox-container">
+              <DivLabelInput>
+                <CheckBox className="checkbox-style" id={"QUESTION GAME"} checked={checkedMode1} onChange={handleCheckBoxChange1}/>
+                <Label className="textSettings" forId={'QUESTION GAME'} textValue={'No volver a mostrar instrucciones'}/>
+              </DivLabelInput>
+        </div>
         <div className="buttonContainer2">
             <ButtonBack  valueButton={'Volver'} onClick={handleClickBack}/>
             <ButtonAdvance valueButton={'Siguiente'} onClick={handleClickNext}/>

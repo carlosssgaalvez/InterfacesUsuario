@@ -10,9 +10,13 @@ import ButtonBack from '../../components/Button/ButtonBack';
 import ImageLogo from '../../components/Image/ImageLogo';
 import Title from '../../components/Text/Title';
 import ButtonAdvance from '../../components/Button/ButtonAdvance';
+import CheckBox from '../../components/CheckBox/CheckBox';
+import Label from '../../components/Text/Label';
+import DivLabelInput from '../../components/divs/divLabelInput';
 
 function InstructionsMemoryGame() {
   
+    const [checkedMode3, setCheckedMode3] = useState(false);
     const navigate = useNavigate(); 
     const [user, setUser] = useState('');
      useEffect(() => {
@@ -23,11 +27,38 @@ function InstructionsMemoryGame() {
          setUser(undefined); // or set it to an empty string or any other default value
        }
      },[]);
+
     const handleClickBack = () => {
+        user.checkedMode3 = checkedMode3;
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('user', JSON.stringify(user));
+        const allUsers = localStorage.getItem('users');
+        const allUsersParsed = JSON.parse(allUsers) || [];
+        const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
+        allUsersParsed[userIndex].checkedMode3 = checkedMode3;
+        localStorage.setItem('users', JSON.stringify(allUsersParsed));
       navigate('/selectMode');
     }
 
+    useEffect(() => {
+      if (user) {
+        setCheckedMode3(user.checkedMode3);
+      }
+    }, [user]);
+
+    const handleCheckBoxChange3 = () => {
+      setCheckedMode3(!checkedMode3);
+    };
+    
     const handleClickNext = () => {
+        user.checkedMode3 = checkedMode3;
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('user', JSON.stringify(user));
+        const allUsers = localStorage.getItem('users');
+        const allUsersParsed = JSON.parse(allUsers) || [];
+        const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
+        allUsersParsed[userIndex].checkedMode3 = checkedMode3;
+        localStorage.setItem('users', JSON.stringify(allUsersParsed));
         navigate('/memoryGame');
         localStorage.setItem('puntosPartidaActual', 0);
     }
@@ -54,6 +85,12 @@ function InstructionsMemoryGame() {
           <PlainText className="plainText2" textValue={'¡Concéntrate y trata de completar el juego con el numero de movimientos posibles!'}/>
           <br></br>
       </header>
+        <div className="checkbox-container">
+              <DivLabelInput>
+                <CheckBox className="checkbox-style" id={"MEMORY GAME"} checked={checkedMode3} onChange={handleCheckBoxChange3}/>
+                <Label className="textSettings" forId={'MEMORY GAME'} textValue={'No volver a mostrar instrucciones'}/>
+              </DivLabelInput>
+        </div>
         <div className="buttonContainer2">
             <ButtonBack  valueButton={'Volver'} onClick={handleClickBack}/>
             <ButtonAdvance valueButton={'Siguiente'} onClick={handleClickNext}/>
