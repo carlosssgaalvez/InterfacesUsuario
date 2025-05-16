@@ -11,7 +11,7 @@ import ImageLogo from '../../components/Image/ImageLogo';
 import Title from '../../components/Text/Title';
 import ButtonAdvance from '../../components/Button/ButtonAdvance';
 
-function InstructionsWordle() {
+function InstructionsChain() {
   
     const navigate = useNavigate(); 
     const [user, setUser] = useState('');
@@ -28,27 +28,26 @@ function InstructionsWordle() {
     }
 
     const handleClickNext = () => {
-        navigate('/wordle');
+        navigate('/chain');
     }
 
     const handleAccessDenied = () => {
       navigate('/logIn');
     };
     
+
     const isLoggedIn = user !== undefined && user !== "";
     return isLoggedIn? (
       <div className=" container Instructions">
       <header className="instruction-header">   
           <ImageLogo className={"imgLogo"} src={imgLogo}/>
 
-          <Title className="title" valueText={'MODO WORDLE:'}/>
+          <Title className="title" valueText={'MODO CADENA:'}/>
           <Title className="title" valueText={'¿Cómo Jugar?'}/>
-          <PlainText className="plainText2" textValue={'Intenta adivinar la palabra secreta en 6 intentos o menos.'}/>
-          <PlainText className="plainText2" textValue={'Cada vez que escribas una palabra y pulses Enter, las letras cambiarán de color para darte pistas:'}/>
-          <PlainText className="plainText2" textValue={'· Verde: la letra está en la palabra y en la posición correcta.'}/>
-          <PlainText className="plainText2" textValue={'· Naranja: la letra está en la palabra pero en otra posición.'}/>
-          <PlainText className="plainText2" textValue={'· Gris: la letra no está en la palabra.'}/>
-          <PlainText className="plainText2" textValue={'Si adivinas la palabra, ganas 200 puntos.'}/>
+          <PlainText className="plainText2" textValue={'Al principio se te da una palabra aleatoria.'}/>
+          <PlainText className="plainText2" textValue={'Tienes 6 segundos para escribir otra palabra que empiece por la misma letra.'}/>
+          <PlainText className="plainText2" textValue={'Por cada palabra que escribas se te darán puntos y se reiniciará el tiempo.'}/>
+          <PlainText className="plainText2" textValue={'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'}/>
           <br></br>
 
       </header>
@@ -66,4 +65,4 @@ function InstructionsWordle() {
     );
  
 }
-export default InstructionsWordle;
+export default InstructionsChain;

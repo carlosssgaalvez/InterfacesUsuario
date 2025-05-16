@@ -13,11 +13,14 @@ import { useEffect, useState } from 'react';
 import MemoryGameImg from '../../images/memoryGameImg.png';
 import QuestionsImg from '../../images/questionsImg.png';
 import WordleImg from '../../images/wordleImg.png';
+import CadenaImg from '../../images/cadenalmg.png';
 
 function SelectMode() {
   const [questionInstructions, setQuestionInstructions] = useState(true);
   const [wordleInstructions, setWordleInstructions] = useState(true);
   const [memoryInstructions, setMemoryInstructions] = useState(true);
+  const [chainInstructions, setChainInstructions] = useState(true);
+  
 
     const navigate = useNavigate(); 
     const [user, setUser] = useState('');
@@ -32,10 +35,12 @@ function SelectMode() {
       const mode1 = localStorage.getItem('checkedMode1');
       const mode2 = localStorage.getItem('checkedMode2');
       const mode3 = localStorage.getItem('checkedMode3');
+      const mode4 = localStorage.getItem('checkedMode4');
 
       setQuestionInstructions(!(mode1 === 'true'));
       setWordleInstructions(!(mode2 === 'true'));
       setMemoryInstructions(!(mode3 === 'true'));
+      setChainInstructions(!(mode4 === 'true'));
     },[]);
 
     const handleClickJugarModo1 = () => {
@@ -63,8 +68,12 @@ function SelectMode() {
       }
     }
     const handleClickJugarModo4 = () => {
-      //navigate('/modo4');
-      console.log("modo 4 seleccionado");
+      if (chainInstructions) {
+        navigate('/instructionsChain');
+      }else {
+        navigate('/chain');
+        localStorage.setItem('puntosPartidaActual', 0);
+      }
     }
     const handleExit = () => {
       navigate('/home'); 
@@ -90,7 +99,7 @@ function SelectMode() {
             <ButtonMenu idButton={'button3'} valueButton={'MEMORIA'} colorButton={'#007BFF'} onClick={handleClickJugarModo3} imgButton={MemoryGameImg}/>
             </DivLabelInput>
             <DivLabelInput>
-            <ButtonMenu idButton={'button4'} valueButton={'MODO ALEATORIO(...PROXIMAMENTE)'} colorButton={'#2ECC71'} onClick={handleClickJugarModo4}/>
+            <ButtonMenu idButton={'button4'} valueButton={'CADENA'} colorButton={'#2ECC71'} onClick={handleClickJugarModo4} imgButton={CadenaImg}/>
             </DivLabelInput>
             </DivGap4>
           

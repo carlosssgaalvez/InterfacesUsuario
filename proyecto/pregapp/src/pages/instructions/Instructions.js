@@ -56,12 +56,14 @@ function Instructions() {
             <PlainText className="plainText2" textValue={'¡Pon a prueba tu mente con nuestra colección de juegos de preguntas! Ejercita tu cerebro, amplía tus conocimientos y diviértete cada día.'}/>
 
             <Title className="title" valueText={'¿Cómo Jugar?'}/>
-
+            <br/>
+            
             <Title className="title" valueText={'· MODO PREGUNTAS:'}/>
             <PlainText className="plainText2" textValue={'En este modo se te presentarán preguntas de forma aleatoria.'}/>
             <PlainText className="plainText2" textValue={'Cada pregunta tiene cuatro posibles respuestas, pero solo una es la correcta.'}/>
             <PlainText className="plainText2" textValue={'Selecciona la opción que creas correcta para sumar 20 puntos.'}/>
             <PlainText className="plainText2" textValue={'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'}/>
+            <br/>
 
             <Title className="title" valueText={'· MODO WORDLE:'}/>
             <PlainText className="plainText2" textValue={'Intenta adivinar la palabra secreta en 6 intentos o menos.'}/>
@@ -70,7 +72,7 @@ function Instructions() {
             <PlainText className="plainText2" textValue={'· Naranja: la letra está en la palabra pero en otra posición.'}/>
             <PlainText className="plainText2" textValue={'· Gris: la letra no está en la palabra.'}/>
             <PlainText className="plainText2" textValue={'Si adivinas la palabra, ganas 200 puntos.'}/>
-
+            <br/>
 
             <Title className="title" valueText={'· MODO MEMORIA:'}/>
             <PlainText className="plainText2" textValue={'Pon a prueba tu memoria encontrando todas las parejas de cartas iguales.'}/>
@@ -80,6 +82,13 @@ function Instructions() {
             <PlainText className="plainText2" textValue={'Si no lo son, se darán la vuelta de nuevo tras unos segundos.'}/>
             <PlainText className="plainText2" textValue={'Tu objetivo es encontrar todos los pares en el menor tiempo posible.'}/>
             <PlainText className="plainText2" textValue={'¡Concéntrate y trata de completar el juego con el numero de movimientos posibles!'}/>
+            <br/>
+
+            <Title className="title" valueText={'MODO CADENA:'}/>
+            <PlainText className="plainText2" textValue={'Al principio se te da una palabra aleatoria.'}/>
+            <PlainText className="plainText2" textValue={'Tienes 6 segundos para escribir otra palabra que empiece por la misma letra.'}/>
+            <PlainText className="plainText2" textValue={'Por cada palabra que escribas se te darán puntos y se reiniciará el tiempo.'}/>
+            <PlainText className="plainText2" textValue={'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'}/>
             <br/>
       </header>
         <div className="buttonContainer">

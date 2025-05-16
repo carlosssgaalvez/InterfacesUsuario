@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import DivLabelInput from '../../components/divs/divLabelInput';
 import DivGap4 from '../../components/divs/divGap4';
 import PopupButton from '../../components/Button/PopupButton';
+import MemoryGame from '../memoryGame/MemoryGame';
 
 
 function Register(){
@@ -128,7 +129,7 @@ function Register(){
 
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
     
-    const newUser = { email, username, password, QuestionPoints: 0, WordlePoints: 0 };
+    const newUser = { email, username, password, QuestionPoints: 0, WordlePoints: 0,MemoryGameMoves:0, ChainPoints: 0, ChainLength: 0 };
     storedUsers.push(newUser);
    
     localStorage.setItem('users', JSON.stringify(storedUsers));

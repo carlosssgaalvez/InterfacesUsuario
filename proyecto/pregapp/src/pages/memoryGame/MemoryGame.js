@@ -104,6 +104,14 @@ function MemoryGame() {
       // const score = calculateScore(moves); // Necesitarías definir calculateScore
       // updateUserScore(score); // Necesitarías definir updateUserScore para actualizar localStorage
       console.log(`Juego terminado en ${moves} movimientos!`);
+      const allUsers = localStorage.getItem('users');
+      const allUsersParsed = JSON.parse(allUsers) || [];
+      const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
+       if(user.MemoryGameMoves < moves){
+            user.MemoryGameMoves = moves;
+            allUsersParsed[userIndex].MemoryGameMoves = moves;
+            localStorage.setItem('user', JSON.stringify(user));
+          }
     }
   }, [cards, moves]);
 

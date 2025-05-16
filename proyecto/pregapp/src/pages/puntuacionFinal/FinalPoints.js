@@ -43,6 +43,8 @@ function FinalPoints(){
     localStorage.setItem('puntosPartidaActual', 0);
     if(tipo === 'wordle'){
       navigate('/wordle');
+    }else if(tipo === 'chain'){
+      navigate('/chain');
     }else{
       navigate('/question?idPregunta=1');
     }
@@ -68,6 +70,7 @@ function FinalPoints(){
                 <p>{puntosPartidaActual}/{puntosTotales}</p>
             </div>
             <div className="divWithBorder" style={{ textAlign: 'center' }}>
+               
                
                   {tipo ===  'wordle'? puntosPartidaActual === 0? <p> "La palabra era " + {palabra}  </p>: <p>"Has acertado la palabra"  </p> : <p>Has acertado el <span style={{ color: 'lime' }}>{puntosPartidaActual/puntosTotales*100}%</span> de las preguntas</p>}
                    

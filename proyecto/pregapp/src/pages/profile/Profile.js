@@ -44,8 +44,8 @@ function Profile() {
             <PlainText className="profileText2" textValue={user.email}/>
 
             <Title className="title" valueText={'Puntos Totales'}/>
-            <PlainText className="profileText2" textValue={user.QuestionPoints + user.WordlePoints }/>
-
+            <PlainText className="profileText2" textValue={user.QuestionPoints + user.WordlePoints + user.ChainPoints}/>
+            <br/><br/>
             <div className="divisor">
             <div className="line">
             <Title className="title" valueText={'Preguntas Acertadas'}/>
@@ -56,7 +56,22 @@ function Profile() {
             <Title className="title" valueText={'Wordles Acertados'}/>
             <PlainText className="profileText2" textValue={user.WordlePoints/200}/>
             </div>
+            
             </div>
+            <br/><br/>
+            <div className="divisor">
+            <div className="line">
+            <Title className="title" valueText={'Menos movimientos en Memoria'}/>
+            <PlainText className="profileText2" textValue={user.MemoryGameMoves}/>
+            </div>
+
+            <div className="line">
+            <Title className="title" valueText={'Más palabras seguidas en Cadena'}/>
+            <PlainText className="profileText2" textValue={user.ChainLength}/>
+            </div>
+          </div>
+            
+          <br/>
           
        
       </header>

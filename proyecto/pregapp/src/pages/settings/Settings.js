@@ -25,6 +25,7 @@ function Settings() {
   const [checkedMode1, setCheckedMode1] = useState(false);
   const [checkedMode2, setCheckedMode2] = useState(false);
   const [checkedMode3, setCheckedMode3] = useState(false);
+  const [checkedMode4, setCheckedMode4] = useState(false);
 
   // Funciones para manejar el cambio de volumen (Provisional)
   const handleSoundChange = (value) => {
@@ -49,10 +50,12 @@ function Settings() {
     const storedMode1 = localStorage.getItem('checkedMode1');
     const storedMode2 = localStorage.getItem('checkedMode2');
     const storedMode3 = localStorage.getItem('checkedMode3');
+    const storedMode4 = localStorage.getItem('checkedMode4');
 
     if (storedMode1 !== null) setCheckedMode1(storedMode1 === 'true');
     if (storedMode2 !== null) setCheckedMode2(storedMode2 === 'true');
     if (storedMode3 !== null) setCheckedMode3(storedMode3 === 'true');
+    if (storedMode4 !== null) setCheckedMode4(storedMode4 === 'true');
   },[]);
 
   useEffect(() => {
@@ -83,11 +86,16 @@ function Settings() {
   const handleCheckBoxChange3 = () => {
     setCheckedMode3(!checkedMode3);
   };
+  const handleCheckBoxChange4 = () => {
+    setCheckedMode4(!checkedMode4);
+  };
 
   const handleAdvance = () => {
     localStorage.setItem('checkedMode1', checkedMode1);
     localStorage.setItem('checkedMode2', checkedMode2);
     localStorage.setItem('checkedMode3', checkedMode3);
+    localStorage.setItem('checkedMode4', checkedMode4);
+    
     navigate('/home');
   }
 
@@ -119,7 +127,11 @@ function Settings() {
               </DivLabelInput>
               <DivLabelInput>
                 <CheckBox className="checkbox-style" id={"MEMORY GAME"} checked={checkedMode3} onChange={handleCheckBoxChange3}/>
-                <Label className="textSettings" forId={'MEMORY GAME'} textValue={'MEMORY GAME'}/>
+                <Label className="textSettings" forId={'MEMORY GAME'} textValue={'MEMORIA'}/>
+              </DivLabelInput>
+              <DivLabelInput>
+                <CheckBox className="checkbox-style" id={"CADENA"} checked={checkedMode4} onChange={handleCheckBoxChange4}/>
+                <Label className="textSettings" forId={'CADENA'} textValue={'CADENA'}/>
               </DivLabelInput>
             </div>
           <div className="music-settings-container">
@@ -151,7 +163,7 @@ function Settings() {
             <Button className={"buttonAdvance"} valueButton={'Guardar'} onClick={handleAdvance}/>
           </div>
         </DivGap4>
-z    </div>
+    </div>
   ): (
     <div>
       <h1>Acceso denegado</h1>
