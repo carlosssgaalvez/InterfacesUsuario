@@ -66,6 +66,7 @@ function Settings() {
       setCheckedMode1(user.checkedMode1);
       setCheckedMode2(user.checkedMode2);
       setCheckedMode3(user.checkedMode3);
+      setCheckedMode4(user.checkedMode4);
     }
   }, [user]);
 

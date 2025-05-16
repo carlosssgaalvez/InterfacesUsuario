@@ -50,6 +50,7 @@ function SelectMode() {
       setQuestionInstructions(!user.checkedMode1);
       setWordleInstructions(!user.checkedMode2);
       setMemoryInstructions(!user.checkedMode3);
+      setChainInstructions(!user.checkedMode4);
     }
   }, [user]);
 

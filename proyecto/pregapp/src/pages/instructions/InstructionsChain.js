@@ -10,9 +10,12 @@ import ButtonBack from '../../components/Button/ButtonBack';
 import ImageLogo from '../../components/Image/ImageLogo';
 import Title from '../../components/Text/Title';
 import ButtonAdvance from '../../components/Button/ButtonAdvance';
+import CheckBox from '../../components/CheckBox/CheckBox';
+import Label from '../../components/Text/Label';
+import DivLabelInput from '../../components/divs/divLabelInput';
 
 function InstructionsChain() {
-  
+    const [checkedMode4, setCheckedMode4] = useState(false);
     const navigate = useNavigate(); 
     const [user, setUser] = useState('');
      useEffect(() => {
@@ -34,6 +37,9 @@ function InstructionsChain() {
     const handleAccessDenied = () => {
       navigate('/logIn');
     };
+    const handleCheckBoxChange4 = () => {
+      setCheckedMode4(!checkedMode4);
+    };
     
 
     const isLoggedIn = user !== undefined && user !== "";
@@ -51,6 +57,12 @@ function InstructionsChain() {
           <br></br>
 
       </header>
+      <div className="checkbox-container">
+              <DivLabelInput>
+                <CheckBox className="checkbox-style" id={"CADENA"} checked={checkedMode4} onChange={handleCheckBoxChange4}/>
+                <Label className="textSettings" forId={'CADENA'} textValue={'No volver a mostrar instrucciones'}/>
+              </DivLabelInput>
+        </div>
         <div className="buttonContainer2">
             <ButtonBack  valueButton={'Volver'} onClick={handleClickBack}/>
             <ButtonAdvance valueButton={'Siguiente'} onClick={handleClickNext}/>
