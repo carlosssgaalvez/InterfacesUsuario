@@ -1,6 +1,13 @@
 import React from 'react';
 
-function ButtonMenu({idButton, valueButton, colorButton, onClick, imgButton}) {
+function ButtonMenu({ idButton, valueButton, colorButton, onClick, imgButton, ariaLabel }) {
+
+    const speak = (text) => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utterance);
+    };
+
     return (
         <button
             id={idButton}
@@ -9,10 +16,12 @@ function ButtonMenu({idButton, valueButton, colorButton, onClick, imgButton}) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '10px'  // Espacio entre texto e imagen
+                gap: '10px',
             }}
             className="buttonMenu"
             onClick={onClick}
+            aria-label={ariaLabel}
+            onFocus={() => speak(ariaLabel)} // Hablar al hacer foco
         >
             <span>{valueButton}</span>
             {imgButton && (
