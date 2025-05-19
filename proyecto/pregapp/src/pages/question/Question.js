@@ -7,7 +7,6 @@ import '../../styles/globalStyles.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ButtonAdvance from '../../components/Button/ButtonAdvance';
 import DivGap4 from '../../components/divs/divGap4';
-import DivLabelInput from '../../components/divs/divLabelInput';
 import QuestionText from '../../components/Text/QuestionText';
 import ButtonAnswer from '../../components/Button/ButtonAnswer';
 import PopupButton from '../../components/Button/PopupButton';
@@ -26,7 +25,7 @@ function Question() {
   const questionText = question.pregunta;
   const [puntos, setPuntos] = useState(null);
   const [user, setUser] = useState('');
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [setSelectedAnswer] = useState(null);
   const [colorAnswer1, setColorAnswer1] = useState('buttonAnswer');
   const [colorAnswer2, setColorAnswer2] = useState('buttonAnswer');
   const [colorAnswer3, setColorAnswer3] = useState('buttonAnswer');
