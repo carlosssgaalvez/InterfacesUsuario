@@ -27,11 +27,33 @@ function InstructionsChain() {
        }
      },[]);
     const handleClickBack = () => {
+      user.checkedMode4 = checkedMode4;
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
+      const allUsers = localStorage.getItem('users');
+      const allUsersParsed = JSON.parse(allUsers) || [];
+      const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
+      allUsersParsed[userIndex].checkedMode4 = checkedMode4;
+      localStorage.setItem('users', JSON.stringify(allUsersParsed));
       navigate('/selectMode');
     }
 
+    useEffect(() => {
+      if (user) {
+        setCheckedMode4(user.checkedMode4);
+      }
+    }, [user]);
+
     const handleClickNext = () => {
-        navigate('/chain');
+      user.checkedMode4 = checkedMode4;
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
+      const allUsers = localStorage.getItem('users');
+      const allUsersParsed = JSON.parse(allUsers) || [];
+      const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
+      allUsersParsed[userIndex].checkedMode4 = checkedMode4;
+      localStorage.setItem('users', JSON.stringify(allUsersParsed));
+      navigate('/chain');
     }
 
     const handleAccessDenied = () => {

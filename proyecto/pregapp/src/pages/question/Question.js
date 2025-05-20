@@ -25,7 +25,6 @@ function Question() {
   const questionText = question.pregunta;
   const [puntos, setPuntos] = useState(null);
   const [user, setUser] = useState('');
-  const [setSelectedAnswer] = useState(null);
   const [colorAnswer1, setColorAnswer1] = useState('buttonAnswer');
   const [colorAnswer2, setColorAnswer2] = useState('buttonAnswer');
   const [colorAnswer3, setColorAnswer3] = useState('buttonAnswer');
@@ -50,7 +49,7 @@ function Question() {
 
   const handleClickAnswer = (index) => {
     if (isDisabledAnswer) return;
-    setSelectedAnswer(index);
+
 
     if (questionOptions[index] === rightAnswer) {
       setSuccess(true);
@@ -88,7 +87,7 @@ function Question() {
     }
     
     setQuestionAnswered(false);
-    setSelectedAnswer(null);
+
     setColorAnswer1('buttonAnswer');
     setColorAnswer2('buttonAnswer');
     setColorAnswer3('buttonAnswer');
