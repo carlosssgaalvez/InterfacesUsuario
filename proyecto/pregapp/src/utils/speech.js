@@ -12,3 +12,8 @@ export const speakIfTabbing = (text) => {
     speak(text);
   }
 };
+
+export const announceAnswerResult = (isCorrect) => {
+  const text = isCorrect ? 'Correcto' : 'Incorrecto';
+  speakIfTabbing(text);
+};

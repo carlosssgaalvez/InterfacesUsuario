@@ -13,6 +13,7 @@ import PopupButton from '../../components/Button/PopupButton';
 import questionsData from '../../resources/questions.json';
 import '../../styles/text.css';
 import Title from '../../components/Text/Title';
+import { announceAnswerResult } from '../../utils/speech';
 
 function Question() {
   const location = useLocation();
@@ -50,8 +51,9 @@ function Question() {
   const handleClickAnswer = (index) => {
     if (isDisabledAnswer) return;
 
+    const isCorrect = questionOptions[index] === rightAnswer;
 
-    if (questionOptions[index] === rightAnswer) {
+    if (isCorrect) {
       setSuccess(true);
       setPuntos(20);
     }else{
@@ -65,6 +67,8 @@ function Question() {
     setColorAnswer4(index === 3? (questionOptions[index] === rightAnswer ? 'buttonAnswerRight' : 'buttonAnswerWrong') : 'buttonAnswerNotHover');
  
     setIsDisabledAnswer(true);
+
+    return isCorrect;
   };
 
   const handleClickNext = () => {
@@ -120,14 +124,53 @@ function Question() {
             <QuestionText forId={`pregunta${idPregunta}`} titleValue={`Pregunta ${idPregunta}`} textValue={questionText} points={puntos}/>
             <br/>
     
-            <ButtonAnswer idButton={questionOptions[0]} className={colorAnswer1} valueButton={questionOptions[0]} onClick={() => handleClickAnswer(0)} isDisabled={isDisabledAnswer}/>
-    
-            <ButtonAnswer idButton={questionOptions[1]} className={colorAnswer2} valueButton={questionOptions[1]} onClick={() => handleClickAnswer(1)} isDisabled={isDisabledAnswer}/>
-            
-            <ButtonAnswer idButton={questionOptions[2]} className={colorAnswer3} valueButton={questionOptions[2]} onClick={() => handleClickAnswer(2)} isDisabled={isDisabledAnswer}/>
-        
-          
-            <ButtonAnswer idButton={questionOptions[3]} className={colorAnswer4} valueButton={questionOptions[3]} onClick={() => handleClickAnswer(3)} isDisabled={isDisabledAnswer}/>
+            <ButtonAnswer
+              idButton={questionOptions[0]}
+              className={colorAnswer1}
+              valueButton={questionOptions[0]}
+              onClick={() => {
+                const isCorrect = handleClickAnswer(0);
+                if (isCorrect !== null) announceAnswerResult(isCorrect);
+              }}
+              isDisabled={isDisabledAnswer}
+              isCorrect={questionOptions[0] === rightAnswer}
+            />
+
+            <ButtonAnswer
+              idButton={questionOptions[1]}
+              className={colorAnswer2}
+              valueButton={questionOptions[1]}
+              onClick={() => {
+                const isCorrect = handleClickAnswer(1);
+                if (isCorrect !== null) announceAnswerResult(isCorrect);
+              }}
+              isDisabled={isDisabledAnswer}
+              isCorrect={questionOptions[1] === rightAnswer}
+            />
+
+            <ButtonAnswer
+              idButton={questionOptions[2]}
+              className={colorAnswer3}
+              valueButton={questionOptions[2]}
+              onClick={() => {
+                const isCorrect = handleClickAnswer(2);
+                if (isCorrect !== null) announceAnswerResult(isCorrect);
+              }}
+              isDisabled={isDisabledAnswer}
+              isCorrect={questionOptions[2] === rightAnswer}
+            />
+
+            <ButtonAnswer
+              idButton={questionOptions[3]}
+              className={colorAnswer4}
+              valueButton={questionOptions[3]}
+              onClick={() => {
+                const isCorrect = handleClickAnswer(3);
+                if (isCorrect !== null) announceAnswerResult(isCorrect);
+              }}
+              isDisabled={isDisabledAnswer}
+              isCorrect={questionOptions[3] === rightAnswer}
+            />
           </DivGap4>
           <br/><br/>
           <div className="buttonContainer2">
