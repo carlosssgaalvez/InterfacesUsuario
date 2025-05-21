@@ -152,11 +152,11 @@ function MemoryGame() {
     <div className="container">
     <div className="memory-game-container">
       <Title className="title" valueText="JUEGO DE MEMORIA" />
-      <p className="moves-counter">Movimientos: {moves}</p>
+      <h2 className="moves-counter">Movimientos: {moves}</h2>
 
       {gameOver ? (
         <div className="game-over">
-          <h2>¡Has ganado!</h2>
+          <h2>¡Felicidades, has ganado!</h2>
           <p>Completaste el juego en {moves} movimientos.</p>
           <ButtonAdvance  valueButton={'Reintentar'} onClick={handlePlayAgain}/>
         </div>
