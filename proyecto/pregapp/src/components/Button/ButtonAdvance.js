@@ -1,8 +1,14 @@
 import React from 'react';
 import '../../styles/buttons.css';
+import { speakIfTabbing } from '../../utils/speech';
+
 function ButtonBack({idButton,valueButton, onClick}) {
+    const handleFocus = () => {
+        speakIfTabbing(valueButton);
+    };
+
     return (
-        <button id={idButton} className={"buttonAdvance"} onClick={onClick}>{valueButton}</button>
+        <button id={idButton} className={"buttonAdvance"} onClick={onClick} onFocus={handleFocus}>{valueButton}</button>
     );
 }
 

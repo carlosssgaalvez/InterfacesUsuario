@@ -55,16 +55,16 @@ function Home() {
           <ImageLogo className={"imgLogo"} src={Logo}/>
           <Title className={"title"} valueText={"MENÚ"}/>
           <DivLabelInput>
-          <ButtonMenu idButton={'button1'} valueButton={'JUGAR'} ariaLabel={'Botón Jugar'} colorButton={'#1ABC9C'} onClick={handleClickJugar} imgButton={JugarImg}/>
+          <ButtonMenu idButton={'button1'} valueButton={'JUGAR'} colorButton={'#1ABC9C'} onClick={handleClickJugar} imgButton={JugarImg}/>
           </DivLabelInput>
           <DivLabelInput>
-          <ButtonMenu idButton={'button2'} valueButton={'INSTRUCCIONES'} ariaLabel={'Botón Instrucciones'} colorButton={'#1ABC9C'} onClick={handleClickInstrucciones} imgButton={instruccionesImg}/>
+          <ButtonMenu idButton={'button2'} valueButton={'INSTRUCCIONES'} colorButton={'#1ABC9C'} onClick={handleClickInstrucciones} imgButton={instruccionesImg}/>
           </DivLabelInput>
           <DivLabelInput>
-          <ButtonMenu idButton={'button3'} valueButton={'AJUSTES'} ariaLabel={'Botón Ajustes'} colorButton={'#1ABC9C'} onClick={handleClickAjustes} imgButton={AjustesImg}/>
+          <ButtonMenu idButton={'button3'} valueButton={'AJUSTES'} colorButton={'#1ABC9C'} onClick={handleClickAjustes} imgButton={AjustesImg}/>
           </DivLabelInput>
           <DivLabelInput>
-          <ButtonMenu idButton={'button4'} valueButton={'PERFIL'} ariaLabel={'Botón Perfil'} colorButton={'#1ABC9C'} onClick={handleClickPerfil} imgButton={PerfilImg}/>
+          <ButtonMenu idButton={'button4'} valueButton={'PERFIL'} colorButton={'#1ABC9C'} onClick={handleClickPerfil} imgButton={PerfilImg}/>
           </DivLabelInput>
         </DivGap4>
         
