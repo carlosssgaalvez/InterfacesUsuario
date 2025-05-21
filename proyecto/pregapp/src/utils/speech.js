@@ -1,7 +1,14 @@
 export const speak = (text) => {
-  if (!window.speechSynthesis) return;
+  const isTabbing = document.body.classList.contains('user-is-tabbing');
+  if (!window.speechSynthesis || !isTabbing) return;
 
   const utterance = new SpeechSynthesisUtterance(text);
-  speechSynthesis.cancel(); // cancela la lectura anterior si hay una en curso
+  speechSynthesis.cancel();
   speechSynthesis.speak(utterance);
+};
+
+export const speakIfTabbing = (text) => {
+  if (document.body.classList.contains('user-is-tabbing')) {
+    speak(text);
+  }
 };

@@ -1,11 +1,11 @@
 import React from 'react';
+import { speakIfTabbing } from '../../utils/speech';
+
 
 function ButtonMenu({ idButton, valueButton, colorButton, onClick, imgButton, ariaLabel }) {
 
-    const speak = (text) => {
-        const utterance = new SpeechSynthesisUtterance(text);
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.speak(utterance);
+    const handleFocus = () => {
+        speakIfTabbing(ariaLabel || valueButton);
     };
 
     return (
@@ -21,7 +21,7 @@ function ButtonMenu({ idButton, valueButton, colorButton, onClick, imgButton, ar
             className="buttonMenu"
             onClick={onClick}
             aria-label={ariaLabel}
-            onFocus={() => speak(ariaLabel)} // Hablar al hacer foco
+            onFocus={handleFocus} // Hablar al hacer foco con el tab
         >
             <span>{valueButton}</span>
             {imgButton && (

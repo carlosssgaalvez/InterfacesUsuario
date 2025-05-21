@@ -3,16 +3,11 @@ import ButtonBack from './ButtonBack';
 import ButtonAdvance from './ButtonAdvance';
 import '../../styles/buttons.css';
 import { useNavigate } from 'react-router-dom';
+import { speakIfTabbing } from '../../utils/speech';
 
 function PopupButton({ valueButton, textValue, onClick, buttonBack, oneButton }) {
     const [isPopupOpen, setPopupOpen] = useState(false);
     const navigate = useNavigate();
-
-    const speak = (text) => {
-        const utterance = new SpeechSynthesisUtterance(text);
-        window.speechSynthesis.cancel(); // Cancelar cualquier lectura anterior
-        window.speechSynthesis.speak(utterance);
-    };
 
     const openPopup = () => {
         setPopupOpen(true);
@@ -35,14 +30,14 @@ function PopupButton({ valueButton, textValue, onClick, buttonBack, oneButton })
                     valueButton={valueButton}
                     onClick={openPopup}
                     aria-label={valueButton}
-                    onFocus={() => speak(valueButton)}
+                    onFocus={() => speakIfTabbing(valueButton)}
                 />
             ) : (
                 <ButtonAdvance
                     valueButton={valueButton}
                     onClick={openPopup}
                     aria-label={valueButton}
-                    onFocus={() => speak(valueButton)}
+                    onFocus={() => speakIfTabbing(valueButton)}
                 />
             )}
 
@@ -54,7 +49,7 @@ function PopupButton({ valueButton, textValue, onClick, buttonBack, oneButton })
                             className="h1-popup"
                             tabIndex="0"
                             aria-label={textValue}
-                            onFocus={() => speak(textValue)}
+                            onFocus={() => speakIfTabbing(textValue)}
                         >
                             {textValue}
                         </h1>
@@ -66,7 +61,7 @@ function PopupButton({ valueButton, textValue, onClick, buttonBack, oneButton })
                                     valueButton={"Aceptar"}
                                     onClick={onClick ? onClick : closePopup}
                                     aria-label="Aceptar"
-                                    onFocus={() => speak("Aceptar")}
+                                    onFocus={() => speakIfTabbing("Aceptar")}
                                 />
                             </div>
                         ) : (
@@ -75,13 +70,13 @@ function PopupButton({ valueButton, textValue, onClick, buttonBack, oneButton })
                                     valueButton={"No"}
                                     onClick={closePopup}
                                     aria-label="No"
-                                    onFocus={() => speak("No")}
+                                    onFocus={() => speakIfTabbing("No")}
                                 />
                                 <ButtonBack
                                     valueButton={"Sí"}
                                     onClick={onClick ? onClick : handleExit}
                                     aria-label="Sí"
-                                    onFocus={() => speak("Sí")}
+                                    onFocus={() => speakIfTabbing("Sí")}
                                 />
                             </div>
                         )}

@@ -5,6 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AudioProvider } from './components/AudioProvider/AudioContext';
 
+// Detectar si el usuario navega con teclado (Ciegos)
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Tab') {
+    document.body.classList.add('user-is-tabbing');
+  }
+});
+
+document.addEventListener('mousedown', () => {
+  document.body.classList.remove('user-is-tabbing');
+});
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
