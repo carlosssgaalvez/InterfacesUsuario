@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import './Chain.css';
 import '../../styles/globalStyles.css';
 import '../../styles/buttons.css'
@@ -10,6 +10,7 @@ import Logo from "../../images/logo.png";
 import PopupButton from "../../components/Button/PopupButton";
 import { useNavigate } from 'react-router-dom';
 import ButtonBack from "../../components/Button/ButtonBack";
+import InputTextChainMode from "../../components/Form/InputTextChainMode";
 
 export default function WordChainGame() {
   const WORD_LIST = [
@@ -27,8 +28,22 @@ export default function WordChainGame() {
   const [currentInput, setCurrentInput] = useState("");
   const [user, setUser] = useState('');
   const [error, setError] = useState("");
-  const [timeLeft, setTimeLeft] = useState(5);
+  const [timeLeft, setTimeLeft] = useState(8);
   const [gameOver, setGameOver] = useState(false);
+  const inputRef = useRef(null);
+
+  // Establece el componente en el que se enfoca la pagina nada mas iniciarse
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, 50); // Espera breve para asegurar que el input esté montado
+
+    return () => clearTimeout(timer); // Limpieza del timeout
+  }, []);
+
+
 
   // Temporizador
   useEffect(() => {
@@ -63,6 +78,7 @@ export default function WordChainGame() {
           setTimeout(() => {
             navigate('/finalPoints?tipo=chain');
           }, 2000);
+          
     }
 
     const timer = setTimeout(() => {
@@ -88,10 +104,15 @@ export default function WordChainGame() {
     } else {
       setWords([...words, newWord]);
       setError("");
-      setTimeLeft(6); // Reinicia el temporizador
+      setTimeLeft(9); // Reinicia el temporizador
     }
 
     setCurrentInput("");
+
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  
   };
   const handleExit = () => {
     navigate('/selectMode'); 
@@ -111,12 +132,13 @@ export default function WordChainGame() {
       <h3>Tiempo restante: {timeLeft}s</h3>
       <br/>
      <div className="inputContainer">
-      <InputText
+      <InputTextChainMode
         type="text"
         value={currentInput}
         onChange={(e) => setCurrentInput(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
         disabled={gameOver}
+        ref={inputRef}
       />
       <Button onClick={handleSubmit} className={"buttonChain"}  disabled={gameOver} valueButton={"Enviar"}>"Enviar"</Button>
       </div>
