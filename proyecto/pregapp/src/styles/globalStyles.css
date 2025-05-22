@@ -136,3 +136,10 @@ body.page-scrollable,
 .checkbox-style:hover {
     background-color: #e0e0e0;
 }
+
+p.puntuacion {
+    font-size: 20px;
+    color: #11D41E;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

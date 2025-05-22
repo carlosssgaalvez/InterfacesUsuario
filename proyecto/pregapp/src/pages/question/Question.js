@@ -121,9 +121,9 @@ function Question() {
           <DivGap4>
             <br /><br /><br />
             <Title className={"title"} valueText={"JUEGO DE PREGUNTAS"}/>
-            <QuestionText forId={'pregunta'} titleValue={`Pregunta ${idPregunta}`} textValue={questionText} points={puntos}/>
+            <QuestionText forId={'puntos'} titleValue={`Pregunta ${idPregunta}`} textValue={questionText} points={puntos}/>
             <br/>
-    
+            <input type='hidden' id='puntos' value={puntos} />
             <ButtonAnswer
               idButton={questionOptions[0]}
               className={colorAnswer1}

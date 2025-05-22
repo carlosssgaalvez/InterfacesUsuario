@@ -15,6 +15,7 @@ import ButtonAdvance from '../../components/Button/ButtonAdvance';
 import DivGap4 from '../../components/divs/divGap4';
 import DivLabelInput from '../../components/divs/divLabelInput';
 import PopupButton from '../../components/Button/PopupButton';
+import PlainText from '../../components/Text/PlainText';
 
 function LogIn(){
   // Esto es un ejemplo para probar los componentes
@@ -129,8 +130,8 @@ function LogIn(){
             <InputText id={'contrasenia'} className={"inputText"} placeholder={""} value={passwordValue} onChange={handleChangePassword} type={"password"}/><br/>
           </DivLabelInput>
           <DivLabelInput>
-            <Label idFor={'linkButton'} className="labelText" textValue={'¿No tienes cuenta?, '} />
-            <Button id={'linkButton'} className="textLink" valueButton={'regístrate aquí'} onClick={handleClickTextLink}/>
+            <PlainText className={'plaintext'} textValue={'¿No tienes cuenta?, '}/>
+            <Button idButton={'linkButton'} className="textLink" valueButton={'regístrate aquí'} onClick={handleClickTextLink}/>
           </DivLabelInput>
           </DivGap4>
         

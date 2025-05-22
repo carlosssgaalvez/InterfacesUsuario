@@ -42,7 +42,23 @@ export default function WordChainGame() {
 
     return () => clearTimeout(timer); // Limpieza del timeout
   }, []);
-
+  
+      useEffect(() => {
+        document.documentElement.classList.add('page-scrollable');
+        document.body.classList.add('page-scrollable');
+        const rootElement = document.getElementById('root');
+        if (rootElement) {
+          rootElement.classList.add('page-scrollable');
+        }
+      
+        return () => {
+          document.documentElement.classList.remove('page-scrollable');
+          document.body.classList.remove('page-scrollable');
+            if (rootElement) {
+              rootElement.classList.remove('page-scrollable');
+            }
+        };
+      }, []);
 
 
   // Temporizador
@@ -124,15 +140,17 @@ export default function WordChainGame() {
   const palabra = words[words.length - 1];
   const isLoggedIn = user !== undefined && user !== "";
   return isLoggedIn? (
+    <nav className="navBar">
     <div className="container">
-      
       <ImageLogo className={"imgLogo"} src={Logo}/>
       <Title valueText={"Cadena de Palabras"}></Title>
-      <h3>Última palabra: <strong>{palabra.toUpperCase()}</strong></h3>
-      <h3>Tiempo restante: {timeLeft}s</h3>
+      <h2>Última palabra: <strong>{palabra.toUpperCase()}</strong></h2>
+      <p>Tiempo restante: {timeLeft}s</p>
       <br/>
      <div className="inputContainer">
+      <label htmlFor="wordChainInput">Escribe la siguiente palabra:</label> 
       <InputTextChainMode
+        id="wordChainInput"
         type="text"
         value={currentInput}
         onChange={(e) => setCurrentInput(e.target.value)}
@@ -154,6 +172,7 @@ export default function WordChainGame() {
       <br/><br/><br/>
       <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'} onClick={handleExit} oneButton={false} buttonBack={true}/>
     </div>
+    </nav>
   ): (
       <div>
         <h1>Acceso denegado</h1>

@@ -66,13 +66,13 @@ function FinalPoints(){
                 <h1>¡FELICIDADES!</h1>}
                 <p>Has ganado los siguientes puntos:</p>
             </div>
-            <div className="divWithBorder" style={{ backgroundColor: 'black', color: 'lime', textAlign: 'center', fontSize: '2em', width: '120px' }}>
-                <p>{puntosPartidaActual}/{puntosTotales}</p>
+            <div className="divWithBorder" style={{ backgroundColor: 'black', textAlign: 'center', fontSize: '2em', width: '120px' }}>
+                <p className='puntuacion'>{puntosPartidaActual}/{puntosTotales}</p>
             </div>
             <div className="divWithBorder" style={{ textAlign: 'center' }}>
                
                
-                  {tipo ===  'wordle'? puntosPartidaActual === 0? <p> "La palabra era " + {palabra}  </p>: <p>"Has acertado la palabra"  </p> : <p>Has acertado el <span style={{ color: 'lime' }}>{puntosPartidaActual/puntosTotales*100}%</span> de las preguntas</p>}
+                  {tipo ===  'wordle'? puntosPartidaActual === 0? <p> "La palabra era " + {palabra}  </p>: <p>"Has acertado la palabra"  </p> : <p className='percentage'>Has acertado el <span>{puntosPartidaActual/puntosTotales*100}%</span> de las preguntas</p>}
                    
               
             </div>

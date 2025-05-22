@@ -55,7 +55,7 @@ function Profile() {
      <div className="container">
       <header className="Profile-header">   
         
-          <Image className={"imgProfile"} src={Profimg}/>
+          <Image className={"imgProfile"} alt={'imagen'}src={Profimg}/>
             <Title className="title" valueText={user.username}/>
             <Subtitle className="profileText2" valueText={user.email}/>
 

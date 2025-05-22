@@ -1,12 +1,13 @@
 
-
-
-
 .textLink {
     font-size: 20px;
-    color: #00968f;
+    color: #0000ff;
     background-color: transparent;
     border: none;
+}
+p{
+    font-size: 20px;
+    color: #000000;
 }
 .textLink:hover {
     text-decoration: underline;

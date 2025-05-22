@@ -2,7 +2,7 @@ import React from 'react';
 import '../../styles/buttons.css';
 import { speakIfTabbing } from '../../utils/speech';
 
-function ButtonBack({idButton,valueButton, onClick}) {
+function ButtonAdvance({idButton,valueButton, onClick}) {
     const handleFocus = () => {
         speakIfTabbing(valueButton);
     };
@@ -12,4 +12,4 @@ function ButtonBack({idButton,valueButton, onClick}) {
     );
 }
 
-export default ButtonBack;
+export default ButtonAdvance;

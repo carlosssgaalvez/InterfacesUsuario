@@ -149,6 +149,7 @@ function MemoryGame() {
   const isLoggedIn = user !== undefined && user !== null;
 
   return isLoggedIn ? (
+    <nav className="nav">
     <div className="container">
     <div className="memory-game-container">
       <Title className="title" valueText="JUEGO DE MEMORIA" />
@@ -193,6 +194,7 @@ function MemoryGame() {
       </div>
     </div>
     </div>
+    </nav>
   ) : (
     <div>
       <h1>Acceso denegado</h1>

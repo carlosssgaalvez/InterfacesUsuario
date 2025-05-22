@@ -8,7 +8,7 @@ function DivGap4({ children }) {
     alignItems: "center",
   };
 
-  return <div style={style}>{children}</div>;
+  return <nav><div style={style}>{children}</div> </nav>;
 }
 
 export default DivGap4;
