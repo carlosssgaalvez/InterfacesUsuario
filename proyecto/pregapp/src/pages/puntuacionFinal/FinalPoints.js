@@ -63,7 +63,7 @@ function FinalPoints(){
         <DivGap4>
             <div className="divWithBorder" style={{ textAlign: 'center' }}>
               {puntosPartidaActual === 0? <h2 style={{ color: 'red' }}>¡PERDISTE!</h2> :
-                <h2>¡FELICIDADES!</h2>}
+                <h1>¡FELICIDADES!</h1>}
                 <p>Has ganado los siguientes puntos:</p>
             </div>
             <div className="divWithBorder" style={{ backgroundColor: 'black', color: 'lime', textAlign: 'center', fontSize: '2em', width: '120px' }}>

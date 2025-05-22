@@ -8,7 +8,7 @@ import Title from '../../components/Text/Title';
 import Profimg from '../../images/perfilImg.png';
 import Image from '../../components/Image/Image';
 import ButtonBack from '../../components/Button/ButtonBack';
-import PlainText from '../../components/Text/PlainText';
+import Subtitle from '../../components/Text/Subtitle';
 
 
 
@@ -57,20 +57,20 @@ function Profile() {
         
           <Image className={"imgProfile"} src={Profimg}/>
             <Title className="title" valueText={user.username}/>
-            <PlainText className="profileText2" textValue={user.email}/>
+            <Subtitle className="profileText2" valueText={user.email}/>
 
             <Title className="title" valueText={'Puntos Totales'}/>
-            <PlainText className="profileText2" textValue={user.QuestionPoints + user.WordlePoints + user.ChainPoints}/>
+            <Subtitle className="profileText2" valueText={user.QuestionPoints + user.WordlePoints + user.ChainPoints}/>
             <br/><br/>
             <div className="divisor">
             <div className="line">
             <Title className="title" valueText={'Preguntas Acertadas'}/>
-            <PlainText className="profileText2" textValue={user.QuestionPoints/20}/>
+            <Subtitle className="profileText2" valueText={user.QuestionPoints/20}/>
             </div>
 
             <div className="line">
             <Title className="title" valueText={'Wordles Acertados'}/>
-            <PlainText className="profileText2" textValue={user.WordlePoints/200}/>
+            <Subtitle className="profileText2" valueText={user.WordlePoints/200}/>
             </div>
             
             </div>
@@ -78,12 +78,12 @@ function Profile() {
             <div className="divisor">
             <div className="line">
             <Title className="title" valueText={'Menos movimientos en Memoria'}/>
-            <PlainText className="profileText2" textValue={user.MemoryGameMoves}/>
+            <Subtitle className="profileText2" valueText={user.MemoryGameMoves}/>
             </div>
 
             <div className="line">
             <Title className="title" valueText={'Más palabras seguidas en Cadena'}/>
-            <PlainText className="profileText2" textValue={user.ChainLength}/>
+            <Subtitle className="profileText2" valueText={user.ChainLength}/>
             </div>
           </div>
             

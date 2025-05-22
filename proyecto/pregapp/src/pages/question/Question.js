@@ -121,7 +121,7 @@ function Question() {
           <DivGap4>
             <br /><br /><br />
             <Title className={"title"} valueText={"JUEGO DE PREGUNTAS"}/>
-            <QuestionText forId={`pregunta${idPregunta}`} titleValue={`Pregunta ${idPregunta}`} textValue={questionText} points={puntos}/>
+            <QuestionText forId={'pregunta'} titleValue={`Pregunta ${idPregunta}`} textValue={questionText} points={puntos}/>
             <br/>
     
             <ButtonAnswer
@@ -176,7 +176,7 @@ function Question() {
           <div className="buttonContainer2">
             <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'} onClick={handleExit} oneButton={false} buttonBack={true}/>
             {questionAnswered? (
-              <ButtonAdvance valueButton={'Siguiente'} onClick={handleClickNext}/>
+              <ButtonAdvance idButton={'pregunta'} valueButton={'Siguiente'} onClick={handleClickNext}/>
             ):(
               <PopupButton valueButton={'Siguiente'} textValue={'Selecciona una respuesta antes de continuar.'} oneButton={true} buttonBack={false}/>
             )}

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-function Slider({ label, min, max, value, onChange }) {
+function Slider({ id, min, max, value, onChange }) {
   return (
     <div className="slider-container">
-      <label>{label}</label>
       <input
+        id={id}
         type="range"
         min={min}
         max={max}
@@ -12,7 +12,7 @@ function Slider({ label, min, max, value, onChange }) {
         onChange={(e) => onChange(e.target.value)}  // Cuando el usuario mueve el slider, actualiza el valor
         className="slider"
       />
-      <span>{value}</span> {/* Mostrar el valor actual del slider */}
+      <label htmlFor={id} >{value}</label> {/* Mostrar el valor actual del slider */}
     </div>
   );
 }
