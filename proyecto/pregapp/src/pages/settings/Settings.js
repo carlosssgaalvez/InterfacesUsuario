@@ -13,10 +13,11 @@ import ButtonBack from '../../components/Button/ButtonBack';
 import { useNavigate } from 'react-router-dom';
 import { AudioContext } from '../../components/AudioProvider/AudioContext';
 import PopupButton from '../../components/Button/PopupButton';
-import PlainText from '../../components/Text/PlainText';
+import Subtitle from '../../components/Text/Subtitle';
 import CheckBox from '../../components/CheckBox/CheckBox';
 import Label from '../../components/Text/Label';
 import DivLabelInput from '../../components/divs/divLabelInput';
+import Title from '../../components/Text/Title';
 
 function Settings() {
   const [soundValue, setSoundValue] = useState(50);  // Estado para el volumen del sonido
@@ -140,8 +141,9 @@ function Settings() {
     <div className='container'>
         <DivGap4>
           <ImageLogo className={"imgLogo"} src={Logo}/>
+          <Title className="title" valueText={'Configuración'}/>
           <div className="settings-container">
-              <PlainText className={"textSettings"} textValue={"Selecciona las instrucciones que desea saltar:"}/>
+              <Subtitle className={"textSettings"} valueText={"Selecciona las instrucciones que desea saltar:"}/>
               <DivLabelInput>
                 <CheckBox className="checkbox-style" id={"PREGUNTAS"} checked={checkedMode1} onChange={handleCheckBoxChange1}/>
                 <Label className="textSettings" forId={'PREGUNTAS'} textValue={'PREGUNTAS'}/>
@@ -163,7 +165,8 @@ function Settings() {
             <div className="settings-row">
               <div className='slider-container'>
                 <img src={Music} alt="Music" className="icon" />
-                <Slider
+                <Slider 
+                  id={"MUSICA"}
                   min={0}
                   max={100}
                   value={musicVolume * 100}
@@ -174,6 +177,7 @@ function Settings() {
               <div className='slider-container'>
                 <img src={Sound} alt="Sound" className="icon" />
                 <Slider className={"slider"}
+                  id={"SONIDO"}
                   min={0}
                   max={100}
                   value={soundValue}

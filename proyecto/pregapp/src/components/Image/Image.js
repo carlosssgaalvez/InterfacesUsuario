@@ -1,6 +1,6 @@
-function Image({className, src, visivilityImg}) {
+function Image({className, src, visivilityImg,alt}) {
     return (
-        <img className={className} src={src} alt="imagen" style={{ visibility: visivilityImg }} ></img>
+        <img className={className} src={src} alt={alt} style={{ visibility: visivilityImg }} ></img>
     );
   }
   

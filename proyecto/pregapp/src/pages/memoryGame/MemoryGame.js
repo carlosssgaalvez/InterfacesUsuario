@@ -170,10 +170,10 @@ function MemoryGame() {
             >
               <div className="card-inner">
                 <div className="card-front">
-                  <Image className="card-front-image" src={card.image} />
+                  <Image className="card-front-image"  alt={`front${card.id}`} src={card.image} />
                 </div>
                 <div className="card-back">
-                  <Image className="card-back-image" src={CardBack} />
+                  <Image className="card-back-image" alt={`back${card.id}`} src={CardBack} />
                   
                 </div>
               </div>
