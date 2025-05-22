@@ -7,7 +7,13 @@ export const AudioProvider = ({ children }) => {
     const [musicVolume, setMusicVolume] = useState(0.15); // tiene que estar entre 0 y 1
     const [isPlaying, setIsPlaying] = useState(false);
   
-  const startMusic = () => {
+  
+
+  // Esperamos iteracción del usuario para iniciar la música, porque sino los navegadores lo bloquean
+  useEffect(() => {
+    if (isPlaying) return;
+
+    const startMusic = () => {
     const audio = new Audio('/thinking-music.mp3');
     audio.loop = true;
     audio.volume = musicVolume;
@@ -18,11 +24,7 @@ export const AudioProvider = ({ children }) => {
     });
 
     setIsPlaying(true);
-  };
-
-  // Esperamos iteracción del usuario para iniciar la música, porque sino los navegadores lo bloquean
-  useEffect(() => {
-    if (isPlaying) return;
+    };
 
     // Esperar la interacción del usuario (un clic en la página)
     const handleUserInteraction = () => {
@@ -35,7 +37,7 @@ export const AudioProvider = ({ children }) => {
     return () => {
       window.removeEventListener('click', handleUserInteraction);
     };
-  }, [isPlaying]);
+  }, [isPlaying, musicVolume]);
 
   // Actualizar si se cambia desde settings
   useEffect(() => {
