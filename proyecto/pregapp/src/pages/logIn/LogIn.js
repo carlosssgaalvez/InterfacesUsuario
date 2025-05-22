@@ -129,8 +129,8 @@ function LogIn(){
             <InputText id={'contrasenia'} className={"inputText"} placeholder={""} value={passwordValue} onChange={handleChangePassword} type={"password"}/><br/>
           </DivLabelInput>
           <DivLabelInput>
-            <Label idFor={'linkButton'} className="labelText" textValue={'¿No tienes cuenta?, '}/>
-            <Button id={'linkButton'} className="textLink" valueButton={'registrate aquí'} onClick={handleClickTextLink}/>
+            <Label idFor={'linkButton'} className="labelText" textValue={'¿No tienes cuenta?, '} />
+            <Button id={'linkButton'} className="textLink" valueButton={'regístrate aquí'} onClick={handleClickTextLink}/>
           </DivLabelInput>
           </DivGap4>
         
