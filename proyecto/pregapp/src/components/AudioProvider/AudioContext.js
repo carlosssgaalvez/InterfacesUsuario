@@ -4,7 +4,7 @@ export const AudioContext = createContext();
 
 export const AudioProvider = ({ children }) => {
     const audioRef = useRef(null);
-    const [musicVolume, setMusicVolume] = useState(0.5); // tiene que estar entre 0 y 1
+    const [musicVolume, setMusicVolume] = useState(0.15); // tiene que estar entre 0 y 1
     const [isPlaying, setIsPlaying] = useState(false);
   
   const startMusic = () => {
