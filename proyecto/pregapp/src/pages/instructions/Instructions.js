@@ -53,46 +53,68 @@ function Instructions() {
           <ImageLogo className={"imgLogo"} src={imgLogo}/>
 
             <Title className={"title"} valueText={" kNowCat "}/>
-            <PlainText className="plainText2" textValue={'¡Pon a prueba tu mente con nuestra colección de juegos de preguntas! Ejercita tu cerebro, amplía tus conocimientos y diviértete cada día.'}/>
+            <PlainText className="plainText2" textValue={'¡Pon a prueba tu mente con nuestra colección de juegos de preguntas! Ejercita tu cerebro, amplía tus conocimientos y diviértete cada día.'} speakOnFocus/>
 
-            <Title className="title" valueText={'¿Cómo Jugar?'}/>
+            <Title className="title" valueText={'¿Cómo Jugar?'} speakOnFocus/>
             <br/>
             
-            <Title className="title" valueText={'· MODO PREGUNTAS:'}/>
-            <PlainText className="plainText2" textValue={'En este modo se te presentarán preguntas de forma aleatoria.'}/>
-            <PlainText className="plainText2" textValue={'Cada pregunta tiene cuatro posibles respuestas, pero solo una es la correcta.'}/>
-            <PlainText className="plainText2" textValue={'Selecciona la opción que creas correcta para sumar 20 puntos.'}/>
-            <PlainText className="plainText2" textValue={'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'}/>
+            <Title className="title" valueText={'· MODO PREGUNTAS:'} speakOnFocus/>
+            <PlainText
+              speakOnFocus
+              className="plainText2"
+              textValue={
+                'En este modo se te presentarán preguntas de forma aleatoria.\n' +
+                'Cada pregunta tiene cuatro posibles respuestas, pero solo una es la correcta.\n' +
+                'Selecciona la opción que creas correcta para sumar 20 puntos.\n' +
+                'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'
+              }
+/>
+
             <br/>
 
-            <Title className="title" valueText={'· MODO WORDLE:'}/>
-            <PlainText className="plainText2" textValue={'Intenta adivinar la palabra secreta en 6 intentos o menos.'}/>
-            <PlainText className="plainText2" textValue={'Cada vez que escribas una palabra y pulses Enter, las letras cambiarán de color para darte pistas:'}/>
-            <PlainText className="plainText2" textValue={'· Verde: la letra está en la palabra y en la posición correcta.'}/>
-            <PlainText className="plainText2" textValue={'· Naranja: la letra está en la palabra pero en otra posición.'}/>
-            <PlainText className="plainText2" textValue={'· Gris: la letra no está en la palabra.'}/>
-            <PlainText className="plainText2" textValue={'Si adivinas la palabra, ganas 200 puntos.'}/>
+            <Title className="title" valueText={'· MODO WORDLE:'} speakOnFocus/>
+            <PlainText 
+              speakOnFocus
+              className="plainText2" 
+              textValue={
+                'Intenta adivinar la palabra secreta en 6 intentos o menos.\n' +
+                'Cada vez que escribas una palabra y pulses Enter, las letras cambiarán de color para darte pistas:\n' +
+                '· Verde: la letra está en la palabra y en la posición correcta.\n' +
+                '· Naranja: la letra está en la palabra pero en otra posición.\n' +
+                '· Gris: la letra no está en la palabra.\n' +
+                'Si adivinas la palabra, ganas 200 puntos.'
+                }/>
             <br/>
 
-            <Title className="title" valueText={'· MODO MEMORIA:'}/>
-            <PlainText className="plainText2" textValue={'Pon a prueba tu memoria encontrando todas las parejas de cartas iguales.'}/>
-            <PlainText className="plainText2" textValue={'Haz clic en una carta para verla.'}/>
-            <PlainText className="plainText2" textValue={'Selecciona otra carta para ver si coincide.'}/>
-            <PlainText className="plainText2" textValue={'Si son iguales, permanecerán boca arriba.'}/>
-            <PlainText className="plainText2" textValue={'Si no lo son, se darán la vuelta de nuevo tras unos segundos.'}/>
-            <PlainText className="plainText2" textValue={'Tu objetivo es encontrar todos los pares en el menor tiempo posible.'}/>
-            <PlainText className="plainText2" textValue={'¡Concéntrate y trata de completar el juego con el numero de movimientos posibles!'}/>
+            <Title className="title" valueText={'· MODO MEMORIA:'} speakOnFocus/>
+            <PlainText 
+              speakOnFocus
+              className="plainText2" 
+              textValue={
+                'Pon a prueba tu memoria encontrando todas las parejas de cartas iguales.\n' +
+                'Haz clic en una carta para verla.\n' +
+                'Selecciona otra carta para ver si coincide.\n' +
+                'Si son iguales, permanecerán boca arriba.\n' +
+                'Si no lo son, se darán la vuelta de nuevo tras unos segundos.\n' +
+                'Tu objetivo es encontrar todos los pares en el menor tiempo posible.\n' +
+                '¡Concéntrate y trata de completar el juego con el menor numero de movimientos posibles!'
+                }/>
             <br/>
 
-            <Title className="title" valueText={'MODO CADENA:'}/>
-            <PlainText className="plainText2" textValue={'Al principio se te da una palabra aleatoria.'}/>
-            <PlainText className="plainText2" textValue={'Tienes 6 segundos para escribir otra palabra que empiece por la misma letra.'}/>
-            <PlainText className="plainText2" textValue={'Por cada palabra que escribas se te darán puntos y se reiniciará el tiempo.'}/>
-            <PlainText className="plainText2" textValue={'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'}/>
+            <Title className="title" valueText={'MODO CADENA:'} speakOnFocus/>
+            <PlainText 
+              speakOnFocus  
+              className="plainText2" 
+              textValue={
+                'Al principio se te da una palabra aleatoria.\n' +
+                'Tienes 6 segundos para escribir otra palabra que empiece por la misma letra.\n' +
+                'Por cada palabra que escribas se te darán puntos y se reiniciará el tiempo.\n' +
+                'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'
+                }/>
             <br/>
       </header>
         <div className="buttonContainer">
-        <ButtonBack  valueButton={'Volver'} onClick={handleClick}/>
+        <ButtonBack  valueButton={'Volver'} onClick={handleClick}/> 
         </div>
      </div>
   ): (
