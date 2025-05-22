@@ -11,11 +11,13 @@ function InputText({ id, placeholder, value, onChange,type, disabled }) {
     value={value} 
     type={type}  
     onFocus={() => {
+        if (id === 'correo') speakIfTabbing('Introduce email');
         if (id === 'usuario') speakIfTabbing('Introduce usuario');
         if (id === 'contrasenia') speakIfTabbing('Introduce contraseña');
+        if (id === 'contrasenia2') speakIfTabbing('Repite contraseña');
     }}
     />
   );
 }
 
-export default InputText;
+export default InputText;   

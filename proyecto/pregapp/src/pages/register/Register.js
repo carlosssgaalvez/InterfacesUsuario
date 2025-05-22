@@ -13,7 +13,6 @@ import { useNavigate } from 'react-router-dom';
 import DivLabelInput from '../../components/divs/divLabelInput';
 import DivGap4 from '../../components/divs/divGap4';
 import PopupButton from '../../components/Button/PopupButton';
-import MemoryGame from '../memoryGame/MemoryGame';
 
 
 function Register(){
