@@ -89,19 +89,23 @@ function InstructionsWordle() {
           <ImageLogo className={"imgLogo"} src={imgLogo}/>
 
           <Title className="title" valueText={'MODO WORDLE:'}/>
-          <Title className="title" valueText={'¿Cómo Jugar?'}/>
-          <PlainText className="plainText2" textValue={'Intenta adivinar la palabra secreta en 6 intentos o menos.'}/>
-          <PlainText className="plainText2" textValue={'Cada vez que escribas una palabra y pulses Enter, las letras cambiarán de color para darte pistas:'}/>
-          <PlainText className="plainText2" textValue={'· Verde: la letra está en la palabra y en la posición correcta.'}/>
-          <PlainText className="plainText2" textValue={'· Naranja: la letra está en la palabra pero en otra posición.'}/>
-          <PlainText className="plainText2" textValue={'· Gris: la letra no está en la palabra.'}/>
-          <PlainText className="plainText2" textValue={'Si adivinas la palabra, ganas 200 puntos.'}/>
+          <Title className="title" valueText={'¿Cómo Jugar?'} speakOnFocus/>
+          <PlainText 
+            speakOnFocus
+            className="plainText2" 
+            textValue={
+              'Intenta adivinar la palabra secreta en 6 intentos o menos.\n' +
+              'Cada vez que escribas una palabra y pulses Enter, las letras cambiarán de color para darte pistas:\n' +
+              '· Verde: la letra está en la palabra y en la posición correcta.\n' +
+              '· Naranja: la letra está en la palabra pero en otra posición.\n' +
+              '· Gris: la letra no está en la palabra.\n' +
+              'Si adivinas la palabra, ganas 200 puntos.'
+              }/>
           <br></br>
-
       </header>
         <div className="checkbox-container">
               <DivLabelInput>
-                <CheckBox className="checkbox-style" id={"WORDLE GAME"} checked={checkedMode2} onChange={handleCheckBoxChange2}/>
+                <CheckBox className="checkbox-style" id={"WORDLE GAME"} checked={checkedMode2} onChange={handleCheckBoxChange2} labelText="No volver a mostrar instrucciones"/>
                 <Label className="textSettings" forId={'WORLDE GAME'} textValue={'No volver a mostrar instrucciones'}/>
               </DivLabelInput>
         </div>
