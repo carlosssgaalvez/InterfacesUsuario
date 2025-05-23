@@ -88,17 +88,21 @@ function InstructionsQuestions() {
       <header className="instruction-header">   
           <ImageLogo className={"imgLogo"} src={imgLogo}/>
           <Title className="title" valueText={'MODO PREGUNTAS:'}/>
-          <Title className="title" valueText={'¿Cómo Jugar?'}/>
-          <PlainText className="plainText2" textValue={'En este modo se te presentarán preguntas de forma aleatoria.'}/>
-          <PlainText className="plainText2" textValue={'Cada pregunta tiene cuatro posibles respuestas, pero solo una es la correcta.'}/>
-          <PlainText className="plainText2" textValue={'Selecciona la opción que creas correcta para sumar 20 puntos.'}/>
-          <PlainText className="plainText2" textValue={'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'}/>
-          <br></br>
+          <Title className="title" valueText={'¿Cómo Jugar?'} speakOnFocus/>
+          <PlainText
+            speakOnFocus 
+            className="plainText2" 
+            textValue={
+              'En este modo se te presentarán preguntas de forma aleatoria.\n' +
+              'Cada pregunta tiene cuatro posibles respuestas, pero solo una es la correcta.\n' +
+              'Selecciona la opción que creas correcta para sumar 20 puntos.\n' +
+              'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.\n'
+            }/>
       </header>
         <div className="checkbox-container">
               <DivLabelInput>
-                <CheckBox className="checkbox-style" id={"QUESTION GAME"} checked={checkedMode1} onChange={handleCheckBoxChange1}/>
-                <Label className="textSettings" forId={'QUESTION GAME'} textValue={'No volver a mostrar instrucciones'}/>
+                <CheckBox className="checkbox-style" id={"questionGame"} checked={checkedMode1} onChange={handleCheckBoxChange1} labelText="No volver a mostrar instrucciones"/>
+                <Label className="textSettings" forId={'questionGame'} textValue={'No volver a mostrar instrucciones'}/>
               </DivLabelInput>
         </div>
         <div className="buttonContainer2">
