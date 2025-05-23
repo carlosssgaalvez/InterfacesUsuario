@@ -137,19 +137,19 @@ function Settings() {
           <div className="settings-container">
               <Subtitle className={"textSettings"} valueText={"Selecciona las instrucciones que desea saltar:"} speakOnFocus/>
               <DivLabelInput>
-                <CheckBox className="checkbox-style" id={"PREGUNTAS"} checked={checkedMode1} onChange={handleCheckBoxChange1}/>
+                <CheckBox className="checkbox-style" id={"PREGUNTAS"} checked={checkedMode1} onChange={handleCheckBoxChange1} labelText= "Modo Preguntas"/>
                 <Label className="textSettings" forId={'PREGUNTAS'} textValue={'PREGUNTAS'}/>
               </DivLabelInput>
               <DivLabelInput>
-                <CheckBox className="checkbox-style" id={"WORDLE"} checked={checkedMode2} onChange={handleCheckBoxChange2}/>
+                <CheckBox className="checkbox-style" id={"WORDLE"} checked={checkedMode2} onChange={handleCheckBoxChange2} labelText="Modo Wordle"/>
                 <Label className="textSettings" forId={'WORDLE'} textValue={'WORDLE'}/>
               </DivLabelInput>
               <DivLabelInput>
-                <CheckBox className="checkbox-style" id={"MEMORY GAME"} checked={checkedMode3} onChange={handleCheckBoxChange3}/>
+                <CheckBox className="checkbox-style" id={"MEMORY GAME"} checked={checkedMode3} onChange={handleCheckBoxChange3} labelText="Modo Memoria"/>
                 <Label className="textSettings" forId={'MEMORY GAME'} textValue={'MEMORIA'}/>
               </DivLabelInput>
               <DivLabelInput>
-                <CheckBox className="checkbox-style" id={"CADENA"} checked={checkedMode4} onChange={handleCheckBoxChange4}/>
+                <CheckBox className="checkbox-style" id={"CADENA"} checked={checkedMode4} onChange={handleCheckBoxChange4} labelText="ModoCadena"/>
                 <Label className="textSettings" forId={'CADENA'} textValue={'CADENA'}/>
               </DivLabelInput>
             </div>
