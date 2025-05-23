@@ -154,20 +154,17 @@ function Settings() {
               </DivLabelInput>
             </div>
           <div className="music-settings-container">
-            <div className="settings-row">
-              <div className='slider-container'>
-                <img src={Music} alt="Music" className="icon" />
-                <Slider 
-                  id={"MUSICA"}
-                  min={0}
-                  max={100}
-                  value={musicVolume * 100}
-                  onChange={handleMusicChange}
-                  
-                />
-              </div>
-            </div>
-            
+            <div className='slider-container'>
+              <img src={Music} alt="Music" className="icon" />
+              <Slider 
+                id={"MUSICA"}
+                min={0}
+                max={100}
+                value={musicVolume * 100}
+                onChange={handleMusicChange}
+                
+              />
+            </div> 
           </div>
           <div className="buttonContainer2">
             <PopupButton buttonBack={true} valueButton={'No Guardar'} textValue={'¿Está seguro/a que NO quiere guardar la configuración?'} onClick={handleExit} />
