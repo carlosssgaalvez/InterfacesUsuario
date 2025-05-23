@@ -92,19 +92,24 @@ function InstructionsMemoryGame() {
           <ImageLogo className={"imgLogo"} src={imgLogo}/>
 
           <Title className="title" valueText={'MODO MEMORIA:'}/>
-          <Title className="title" valueText={'¿Cómo Jugar?'}/>
-          <PlainText className="plainText2" textValue={'Pon a prueba tu memoria encontrando todas las parejas de cartas iguales.'}/>
-          <PlainText className="plainText2" textValue={'Haz clic en una carta para verla.'}/>
-          <PlainText className="plainText2" textValue={'Selecciona otra carta para ver si coincide.'}/>
-          <PlainText className="plainText2" textValue={'Si son iguales, permanecerán boca arriba.'}/>
-          <PlainText className="plainText2" textValue={'Si no lo son, se darán la vuelta de nuevo tras unos segundos.'}/>
-          <PlainText className="plainText2" textValue={'Tu objetivo es encontrar todos los pares en el menor tiempo posible.'}/>
-          <PlainText className="plainText2" textValue={'¡Concéntrate y trata de completar el juego con el numero de movimientos posibles!'}/>
+          <Title className="title" valueText={'¿Cómo Jugar?'} speakOnFocus/>
+          <PlainText 
+            speakOnFocus
+            className="plainText2" 
+            textValue={
+              'Pon a prueba tu memoria encontrando todas las parejas de cartas iguales.\n' +
+              'Haz clic en una carta para verla.\n' +
+              'Selecciona otra carta para ver si coinciden.\n' +
+              'Si son iguales, permanecerán boca arriba.\n' +
+              'Si no lo son, se darán la vuelta de nuevo tras unos segundos.\n' +
+              'Tu objetivo es encontrar todos los pares en el menor tiempo posible.\n' +
+              '¡Concéntrate y trata de completar el juego con el menor número de movimientos posibles!'
+              }/>
           <br></br>
       </header>
         <div className="checkbox-container">
               <DivLabelInput>
-                <CheckBox className="checkbox-style" id={"MEMORY GAME"} checked={checkedMode3} onChange={handleCheckBoxChange3}/>
+                <CheckBox className="checkbox-style" id={"MEMORY GAME"} checked={checkedMode3} onChange={handleCheckBoxChange3} labelText="No volver a mostrar instrucciones"/>
                 <Label className="textSettings" forId={'MEMORY GAME'} textValue={'No volver a mostrar instrucciones'}/>
               </DivLabelInput>
         </div>
