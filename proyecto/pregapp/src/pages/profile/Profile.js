@@ -56,34 +56,34 @@ function Profile() {
       <header className="Profile-header">   
         
           <Image className={"imgProfile"} alt={'imagen'}src={Profimg}/>
-            <Title className="title" valueText={user.username}/>
-            <Subtitle className="profileText2" valueText={user.email}/>
+            <Title className="title" valueText={user.username} speakOnFocus/>
+            <Subtitle className="profileText2" valueText={user.email} speakOnFocus/>
 
-            <Title className="title" valueText={'Puntos Totales'}/>
-            <Subtitle className="profileText2" valueText={user.QuestionPoints + user.WordlePoints + user.ChainPoints}/>
+            <Title className="title" valueText={'Puntos Totales'} speakOnFocus/>
+            <Subtitle className="profileText2" valueText={user.QuestionPoints + user.WordlePoints + user.ChainPoints} speakOnFocus/>
             <br/><br/>
             <div className="divisor">
             <div className="line">
-            <Title className="title" valueText={'Preguntas Acertadas'}/>
-            <Subtitle className="profileText2" valueText={user.QuestionPoints/20}/>
+            <Title className="title" valueText={'Preguntas Acertadas'} speakOnFocus/>
+            <Subtitle className="profileText2" valueText={user.QuestionPoints/20} speakOnFocus/>
             </div>
 
             <div className="line">
-            <Title className="title" valueText={'Wordles Acertados'}/>
-            <Subtitle className="profileText2" valueText={user.WordlePoints/200}/>
+            <Title className="title" valueText={'Wordles Acertados'} speakOnFocus/>
+            <Subtitle className="profileText2" valueText={user.WordlePoints/200} speakOnFocus/>
             </div>
             
             </div>
             <br/><br/>
             <div className="divisor">
             <div className="line">
-            <Title className="title" valueText={'Menos movimientos en Memoria'}/>
-            <Subtitle className="profileText2" valueText={user.MemoryGameMoves}/>
+            <Title className="title" valueText={'Menos movimientos en Memoria'} speakOnFocus/>
+            <Subtitle className="profileText2" valueText={user.MemoryGameMoves} speakOnFocus/>
             </div>
 
             <div className="line">
-            <Title className="title" valueText={'Más palabras seguidas en Cadena'}/>
-            <Subtitle className="profileText2" valueText={user.ChainLength}/>
+            <Title className="title" valueText={'Más palabras seguidas en Cadena'} speakOnFocus/>
+            <Subtitle className="profileText2" valueText={user.ChainLength} speakOnFocus/>
             </div>
           </div>
             
