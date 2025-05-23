@@ -5,7 +5,6 @@ import '../../styles/sliders.css';
 import ImageLogo from '../../components/Image/ImageLogo';
 import Logo from '../../images/logo.png';
 import Music from '../../images/music.png';
-import Sound from '../../images/sound.png';
 import DivGap4 from '../../components/divs/divGap4';
 import Slider from '../../components/Slider/Slider';
 import Button from '../../components/Button/Button';
@@ -20,19 +19,12 @@ import DivLabelInput from '../../components/divs/divLabelInput';
 import Title from '../../components/Text/Title';
 
 function Settings() {
-  const [soundValue, setSoundValue] = useState(50);  // Estado para el volumen del sonido
   const {musicVolume, setMusicVolume} = useContext(AudioContext);
   const [initialMusicVolume] = useState(musicVolume); // Guardo el volumen por si el usuario no guarda las modificaciones
   const [checkedMode1, setCheckedMode1] = useState(false);
   const [checkedMode2, setCheckedMode2] = useState(false);
   const [checkedMode3, setCheckedMode3] = useState(false);
   const [checkedMode4, setCheckedMode4] = useState(false);
-
-  // Funciones para manejar el cambio de volumen (Provisional)
-  const handleSoundChange = (value) => {
-    setSoundValue(value);
-    console.log(`Nuevo volumen de sonido: ${value}`);
-  };
 
   const handleMusicChange = (value) => {
     setMusicVolume(value / 100);
@@ -143,7 +135,7 @@ function Settings() {
           <ImageLogo className={"imgLogo"} src={Logo}/>
           <Title className="title" valueText={'Configuración'}/>
           <div className="settings-container">
-              <Subtitle className={"textSettings"} valueText={"Selecciona las instrucciones que desea saltar:"}/>
+              <Subtitle className={"textSettings"} valueText={"Selecciona las instrucciones que desea saltar:"} speakOnFocus/>
               <DivLabelInput>
                 <CheckBox className="checkbox-style" id={"PREGUNTAS"} checked={checkedMode1} onChange={handleCheckBoxChange1}/>
                 <Label className="textSettings" forId={'PREGUNTAS'} textValue={'PREGUNTAS'}/>
@@ -172,16 +164,6 @@ function Settings() {
                   value={musicVolume * 100}
                   onChange={handleMusicChange}
                   
-                />
-              </div>
-              <div className='slider-container'>
-                <img src={Sound} alt="Sound" className="icon" />
-                <Slider className={"slider"}
-                  id={"SONIDO"}
-                  min={0}
-                  max={100}
-                  value={soundValue}
-                  onChange={handleSoundChange}
                 />
               </div>
             </div>
