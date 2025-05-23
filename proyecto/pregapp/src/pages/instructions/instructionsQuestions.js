@@ -96,8 +96,9 @@ function InstructionsQuestions() {
               'En este modo se te presentarán preguntas de forma aleatoria.\n' +
               'Cada pregunta tiene cuatro posibles respuestas, pero solo una es la correcta.\n' +
               'Selecciona la opción que creas correcta para sumar 20 puntos.\n' +
-              'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.\n'
+              'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'
             }/>
+        <br></br>
       </header>
         <div className="checkbox-container">
               <DivLabelInput>

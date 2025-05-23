@@ -88,17 +88,22 @@ function InstructionsChain() {
           <ImageLogo className={"imgLogo"} src={imgLogo}/>
 
           <Title className="title" valueText={'MODO CADENA:'}/>
-          <Title className="title" valueText={'¿Cómo Jugar?'}/>
-          <PlainText className="plainText2" textValue={'Al principio se te da una palabra aleatoria.'}/>
-          <PlainText className="plainText2" textValue={'Tienes 6 segundos para escribir otra palabra que empiece por la misma letra.'}/>
-          <PlainText className="plainText2" textValue={'Por cada palabra que escribas se te darán puntos y se reiniciará el tiempo.'}/>
-          <PlainText className="plainText2" textValue={'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'}/>
+          <Title className="title" valueText={'¿Cómo Jugar?'} speakOnFocus/>
+          <PlainText 
+            speakOnFocus
+            className="plainText2" 
+            textValue={
+              'Al principio se te da una palabra aleatoria.\n' +
+              'Tienes 8 segundos para escribir otra palabra que empiece por la misma letra.\n' +
+              'Por cada palabra que escribas se te darán puntos y se reiniciará el tiempo.\n' +
+              'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'
+              }/>
           <br></br>
 
       </header>
       <div className="checkbox-container">
               <DivLabelInput>
-                <CheckBox className="checkbox-style" id={"CADENA"} checked={checkedMode4} onChange={handleCheckBoxChange4}/>
+                <CheckBox className="checkbox-style" id={"CADENA"} checked={checkedMode4} onChange={handleCheckBoxChange4} labelText="No volver a mostrar instrucciones"/>
                 <Label className="textSettings" forId={'CADENA'} textValue={'No volver a mostrar instrucciones'}/>
               </DivLabelInput>
         </div>

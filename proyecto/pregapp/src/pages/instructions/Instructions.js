@@ -107,7 +107,7 @@ function Instructions() {
               className="plainText2" 
               textValue={
                 'Al principio se te da una palabra aleatoria.\n' +
-                'Tienes 6 segundos para escribir otra palabra que empiece por la misma letra.\n' +
+                'Tienes 8 segundos para escribir otra palabra que empiece por la misma letra.\n' +
                 'Por cada palabra que escribas se te darán puntos y se reiniciará el tiempo.\n' +
                 'Puedes terminar la partida en cualquier momento pulsando "Salir", y se contarán los puntos obtenidos hasta ese momento.'
                 }/>
