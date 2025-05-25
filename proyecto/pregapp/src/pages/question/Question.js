@@ -102,7 +102,7 @@ function Question() {
     if (parseInt(idPregunta) < questionsData.length) {
       navigate(`/question?idPregunta=${parseInt(idPregunta) + 1}`);
     } else {
-      navigate('/finalPoints');
+      navigate('/finalPoints?tipo=pregunta');
     }
     
   };

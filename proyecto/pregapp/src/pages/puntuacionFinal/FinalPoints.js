@@ -29,6 +29,7 @@ function FinalPoints(){
     const storedPuntosPartidaActual = localStorage.getItem('puntosPartidaActual');
     if (storedPuntosPartidaActual) {
       setPuntosPartidaActual(storedPuntosPartidaActual);
+      console.log('Puntos Partida Actual:', storedPuntosPartidaActual);
     } else {
       setPuntosPartidaActual(0); // or set it to an empty string or any other default value
     }    
@@ -62,18 +63,32 @@ function FinalPoints(){
           <br/> <br/> <br/> <br/> <br/>
         <DivGap4>
             <div className="divWithBorder" style={{ textAlign: 'center' }}>
-              {puntosPartidaActual === 0? <h2 style={{ color: 'red' }}>¡PERDISTE!</h2> :
+
+              {puntosPartidaActual == 0? 
+                <h2 style={{ color: 'red' }}>¡PERDISTE!</h2> 
+              :
                 <h1>¡FELICIDADES!</h1>}
+
                 <p>Has ganado los siguientes puntos:</p>
             </div>
             <div className="divWithBorder" style={{ backgroundColor: 'black', textAlign: 'center', fontSize: '2em', width: '120px' }}>
-                <p className='puntuacion'>{puntosPartidaActual}/{puntosTotales}</p>
+                {tipo == 'pregunta'?
+                  <p className='puntuacion'>{puntosPartidaActual}/{puntosTotales}</p>
+                :
+                  <p className='puntuacion'>{puntosPartidaActual}</p>}
             </div>
             <div className="divWithBorder" style={{ textAlign: 'center' }}>
                
                
-                  {tipo ===  'wordle'? puntosPartidaActual === 0? <p> "La palabra era " + {palabra}  </p>: <p>"Has acertado la palabra"  </p> : <p className='percentage'>Has acertado el <span>{puntosPartidaActual/puntosTotales*100}%</span> de las preguntas</p>}
-                   
+                  {tipo ===  'wordle'? 
+                      puntosPartidaActual == 0? 
+                        <p> La palabra era {palabra}  </p>
+                        :<p>"Has acertado la palabra"  </p> 
+                  :tipo === 'pregunta'?
+                    <p className='percentage'>Has acertado el <span>{puntosPartidaActual/puntosTotales*100}%</span> de las preguntas</p>
+                  :tipo === 'chain'?
+                    <p>Has conseguido encadenar <span>{puntosPartidaActual/10 +1}</span> palabras</p>
+                  :<p>prueba</p>} 
               
             </div>
         </DivGap4>

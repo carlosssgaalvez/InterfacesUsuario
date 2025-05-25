@@ -43,28 +43,27 @@ export default function WordChainGame() {
     return () => clearTimeout(timer); // Limpieza del timeout
   }, []);
   
-      useEffect(() => {
-        document.documentElement.classList.add('page-scrollable');
-        document.body.classList.add('page-scrollable');
-        const rootElement = document.getElementById('root');
+  useEffect(() => {
+    document.documentElement.classList.add('page-scrollable');
+    document.body.classList.add('page-scrollable');
+    const rootElement = document.getElementById('root');
+    if (rootElement) {
+      rootElement.classList.add('page-scrollable');
+    }
+  
+    return () => {
+      document.documentElement.classList.remove('page-scrollable');
+      document.body.classList.remove('page-scrollable');
         if (rootElement) {
-          rootElement.classList.add('page-scrollable');
+          rootElement.classList.remove('page-scrollable');
         }
-      
-        return () => {
-          document.documentElement.classList.remove('page-scrollable');
-          document.body.classList.remove('page-scrollable');
-            if (rootElement) {
-              rootElement.classList.remove('page-scrollable');
-            }
-        };
-      }, []);
+    };
+  }, []);
 
 
   // Temporizador
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
-    localStorage.setItem('puntosPartidaActual', 0);
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     } else {
@@ -77,23 +76,25 @@ export default function WordChainGame() {
       setGameOver(true);
       setError("¡Tiempo agotado!");
       const puntos = (words.length * 10)-10;
+      console.log('Puntos obtenidos:', puntos);
+      console.log('Palabras usadas:', words);
       const length = words.length-1;
       localStorage.setItem('puntosPartidaActual', puntos);
-          user.ChainPoints += puntos;
-          const allUsers = localStorage.getItem('users');
-          const allUsersParsed = JSON.parse(allUsers) || [];
-          const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
-          allUsersParsed[userIndex].ChainPoints += puntos;
-           if(user.ChainLength < length){
-            user.ChainLength = length;
-            allUsersParsed[userIndex].ChainLength = length;
-          }
-          localStorage.setItem('user', JSON.stringify(user));
-          localStorage.setItem('users', JSON.stringify(allUsersParsed));
-          console.log(user);
-          setTimeout(() => {
-            navigate('/finalPoints?tipo=chain');
-          }, 2000);
+      user.ChainPoints += puntos;
+      const allUsers = localStorage.getItem('users');
+      const allUsersParsed = JSON.parse(allUsers) || [];
+      const userIndex = allUsersParsed.findIndex(u => u.username === user.username);
+      allUsersParsed[userIndex].ChainPoints += puntos;
+        if(user.ChainLength < length){
+        user.ChainLength = length;
+        allUsersParsed[userIndex].ChainLength = length;
+      }
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('users', JSON.stringify(allUsersParsed));
+      console.log(user);
+      setTimeout(() => {
+        navigate('/finalPoints?tipo=chain');
+      }, 2000);
           
     }
 
