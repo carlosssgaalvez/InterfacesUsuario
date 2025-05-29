@@ -65,7 +65,7 @@ function FinalPoints(){
             <div className="divWithBorder" style={{ textAlign: 'center' }}>
 
               {puntosPartidaActual == 0? 
-                <h2 style={{ color: 'red' }}>¡PERDISTE!</h2> 
+                <h1 style={{ color: 'red' }}>¡PERDISTE!</h1> 
               :
                 <h1>¡FELICIDADES!</h1>}
 
