@@ -106,7 +106,7 @@ function InstructionsWordle() {
         <div className="checkbox-container">
               <DivLabelInput>
                 <CheckBox className="checkbox-style" id={"WORDLE GAME"} checked={checkedMode2} onChange={handleCheckBoxChange2} labelText="No volver a mostrar instrucciones"/>
-                <Label className="textSettings" forId={'WORLDE GAME'} textValue={'No volver a mostrar instrucciones'}/>
+                <Label className="textSettings" forId={'WORDLE GAME'} textValue={'No volver a mostrar instrucciones'}/>
               </DivLabelInput>
         </div>
         <div className="buttonContainer2">
