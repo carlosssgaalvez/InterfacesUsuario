@@ -1,15 +1,7 @@
 import React from "react";
-import "../../styles/divs.css";
+import "../../styles/login.css";
 function DivLabelInput({ children }) {
-  const style = {
-    display: "flex",
-    flexDirection: "row",
-    gap: "4px",
-    alignItems: "center",
-    justifyContent: "space-between",
-  };
-
-  return <div style={style}>{children}</div>;
+  return <div className="labelInput">{children}</div>;
 }
 
 export default DivLabelInput;

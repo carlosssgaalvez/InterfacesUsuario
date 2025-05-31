@@ -1,0 +1,19 @@
+.labelInput {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Móvil: cambia a vertical */
+@media (max-width: 600px) {
+  .labelInput {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.labelInput > * {
+  margin: 0;
+}
