@@ -176,9 +176,14 @@ function MemoryGame() {
             textValue={'Completaste el juego en ' + moves + ' movimientos.'}
           />
           <br></br>
-          <ButtonAdvance  valueButton={'Reintentar'} onClick={handlePlayAgain}/>
+          <div className="buttonContainer2">
+            <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'}  onClick={handleExit}  />    
+            <ButtonAdvance  valueButton={'Reintentar'} onClick={handlePlayAgain}/>
+          </div>
+          {/* <ButtonAdvance  valueButton={'Reintentar'} onClick={handlePlayAgain}/> */}
         </div>
       ) : (
+        <div>
         <div className="card-grid">
           {cards.map((card, index) => {
           const row = Math.floor(index / COLUMNS) + 1;
@@ -219,10 +224,21 @@ function MemoryGame() {
             </div>
           );
           })}
+          
+        </div>
+          <div className="buttonContainer">
+            <PopupButton 
+              valueButton={'Salir'} 
+              textValue={'¿Está seguro/a que desea salir de la partida?'} 
+              onClick={handleExit} 
+              oneButton={false} 
+              buttonBack={true}
+            />
+          </div>
         </div>
       )}
 
-      <div className="buttonContainer buttonContainerMemory">
+      {/* <div className="buttonContainer buttonContainerMemory">
       <PopupButton 
         valueButton={'Salir'} 
         textValue={'¿Está seguro/a que desea salir de la partida?'} 
@@ -230,7 +246,7 @@ function MemoryGame() {
         oneButton={false} 
         buttonBack={true}
       />
-      </div>
+      </div> */}
     </div>
     </div>
     </nav>
