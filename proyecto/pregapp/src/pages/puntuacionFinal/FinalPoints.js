@@ -84,7 +84,7 @@ function FinalPoints(){
                
                   {tipo ===  'wordle'? 
                       puntosPartidaActual == 0? 
-                        <PlainText speakOnFocus className="plainText2" textValue='La palabra era {palabra}'/>
+                        <PlainText speakOnFocus className="plainText2" textValue={`La palabra era ${palabra}`}/>
                         :<PlainText speakOnFocus className="plainText2" textValue='Has acertado la palabra'/>
                   :tipo === 'pregunta'?
                     <PlainText speakOnFocus className="plainText2" textValue={`Has acertado el ${puntosPartidaActual/puntosTotales*100}% de las preguntas`}/>
