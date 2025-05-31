@@ -7,6 +7,8 @@ import DivGap4 from '../../components/divs/divGap4';
 import { useNavigate } from 'react-router-dom';
 import PopupButton from '../../components/Button/PopupButton';
 import Title from '../../components/Text/Title';
+import { speakIfTabbing } from '../../utils/speech';
+
 
 const MAX_ATTEMPTS = 6;
 const WORD_LIST = [
@@ -28,6 +30,7 @@ function Wordle() {
   const [guesses, setGuesses] = useState([]); // Lista de palabras intentadas
   const [currentGuess, setCurrentGuess] = useState(''); // Palabra actual
   const [message, setMessage] = useState('');
+  const [initialInstructionsSpoken, setInitialInstructionsSpoken] = useState(false);
 
   // sesion
   useEffect(() => {
@@ -63,6 +66,71 @@ function Wordle() {
         }
       };
     }, []);
+
+  // Efecto para anunciar instrucciones iniciales
+  useEffect(() => {
+    if (wordLength > 0 && !initialInstructionsSpoken) {
+      const initialMessage = `Comienza el juego de Wordle. La palabra a adivinar tiene ${wordLength} letras. Tienes ${MAX_ATTEMPTS} intentos. Escribe tu primera palabra.`;
+      speakIfTabbing(initialMessage);
+      setInitialInstructionsSpoken(true);
+    }
+  }, [wordLength, initialInstructionsSpoken]);
+
+
+
+  // Función para obtener el feedback de una palabra adivinada
+  const getGuessFeedbackSpeech = (guess, secret) => {
+    let feedback = "";
+    const upperSecret = secret.toUpperCase();
+    const upperGuess = guess.toUpperCase();
+    const secretLettersCount = {}; 
+
+    for (const letter of upperSecret) {
+      secretLettersCount[letter] = (secretLettersCount[letter] || 0) + 1;
+    }
+
+    const tempFeedback = upperGuess.split('').map((letter, index) => {
+      if (letter === upperSecret[index]) {
+        secretLettersCount[letter]--; 
+        return { letter, status: "correcta", pos: index + 1 };
+      }
+      return { letter, status: "pending", pos: index + 1 }; 
+    });
+    
+    const finalFeedbackString = tempFeedback.map(({ letter, status, pos }) => {
+      if (status === "correcta") {
+        return `Letra ${letter} en posición ${pos} es correcta.`;
+      }
+      // Segunda pasada para las 'presentes'
+      if (upperSecret.includes(letter) && secretLettersCount[letter] > 0) {
+        secretLettersCount[letter]--; 
+        return `Letra ${letter} en posición ${pos} está presente en otra posición.`;
+      }
+      return `Letra ${letter} en posición ${pos} no está en la palabra.`;
+    }).join(' ');
+
+    return finalFeedbackString;
+  };
+
+  useEffect(() => {
+    if (guesses.length === 0) return;
+
+    const lastGuess = guesses[guesses.length - 1];
+
+    if (lastGuess !== secretWord) {
+      const feedbackSpeech = getGuessFeedbackSpeech(lastGuess, secretWord);
+      speakIfTabbing(feedbackSpeech);
+    }
+
+  }, [guesses, secretWord]);
+
+  useEffect(() => {
+    if (message) {
+      setTimeout(() => {
+        speakIfTabbing(message);
+      }, 500); 
+    }
+  }, [message]);
 
   // captar pulsaciones de teclas
   const handleKeyPress = (event) => {
