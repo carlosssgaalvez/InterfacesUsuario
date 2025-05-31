@@ -12,16 +12,26 @@ import card2 from '../../images/elefante.png';
 import card3 from '../../images/tortuga.png';
 import card4 from '../../images/pez.png';
 import card5 from '../../images/camaleon.png';
+import { speakIfTabbing } from '../../utils/speech';
+import Subtitle from '../../components/Text/Subtitle';
+import PlainText from '../../components/Text/PlainText';
 
 
-const cardImages = [card1, card2, card3, card4, card5];
-const cardIds = [1, 2, 3, 4, 5]; // IDs de las cartas
+const cardData = [
+  { id: 1, name: 'pájaro', image: card1 },
+  { id: 2, name: 'elefante', image: card2 },
+  { id: 3, name: 'tortuga', image: card3 },
+  { id: 4, name: 'pez', image: card4 },
+  { id: 5, name: 'camaleón', image: card5 },
+];
+const COLUMNS = 5;
 
 const initializeBoard = () => {
   // Asocia cada imagen con su cardId
-  const originalCards = cardImages.map((image, index) => ({
-    image,
-    cardId: cardIds[index],
+  const originalCards = cardData.map(card => ({
+    image: card.image,
+    name: card.name,
+    cardId: card.id,
   }));
 
   // Duplica las cartas (para hacer las parejas)
@@ -37,6 +47,7 @@ const initializeBoard = () => {
   return duplicatedCards.map((card, index) => ({
     id: index,
     image: card.image,
+    name: card.name,
     cardId: card.cardId, // ID de pareja
     isFlipped: false,
     isMatched: false,
@@ -67,8 +78,8 @@ function MemoryGame() {
       const [index1, index2] = flippedIndices;
       const card1 = cards[index1];
       const card2 = cards[index2];
-
       if (card1.cardId === card2.cardId) {
+        speakIfTabbing(`¡Pareja encontrada! ${card1.name}`);
         setCards(prevCards =>
           prevCards.map(card =>
             card.id === card1.id || card.id === card2.id
@@ -79,6 +90,7 @@ function MemoryGame() {
         setFlippedIndices([]);
         setCanFlip(true); 
       } else {
+        speakIfTabbing(`No es una pareja. ${card1.name} y ${card2.name}`);
         setTimeout(() => {
           setCards(prevCards =>
             prevCards.map(card =>
@@ -125,8 +137,8 @@ function MemoryGame() {
       prevCards.map(card =>
         card.id === index ? { ...card, isFlipped: true } : card
       )
-    );
-
+    );  
+    speakIfTabbing(`Carta descubierta: ${cards[index].name}`);
     setFlippedIndices(prevIndices => [...prevIndices, index]);
   };
 
@@ -157,17 +169,43 @@ function MemoryGame() {
 
       {gameOver ? (
         <div className="game-over">
-          <h2>¡Felicidades, has ganado!</h2>
-          <p>Completaste el juego en {moves} movimientos.</p>
+          <Subtitle className="MemoryGameText2" valueText='¡Felicidades, has ganado!' speakOnFocus/>
+          <PlainText 
+            speakOnFocus
+            className="plainText2" 
+            textValue={'Completaste el juego en ' + moves + ' movimientos.'}
+          />
+          <br></br>
           <ButtonAdvance  valueButton={'Reintentar'} onClick={handlePlayAgain}/>
         </div>
       ) : (
         <div className="card-grid">
-          {cards.map((card) => (
+          {cards.map((card, index) => {
+          const row = Math.floor(index / COLUMNS) + 1;
+          const col = (index % COLUMNS) + 1;
+
+          return (
             <div
               key={card.id}
               className={`card ${card.isFlipped || card.isMatched ? 'flipped' : ''} ${card.isMatched ? 'matched' : ''}`}
               onClick={() => handleCardClick(card.id)}
+              role="button"
+              tabIndex="0"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleCardClick(card.id);
+                }
+              }}
+              onFocus={() => {
+                const status = card.isFlipped || card.isMatched ? 'Carta descubierta' : 'Carta cubierta';
+                let message = `${status}. Fila ${row}, columna ${col}`;
+                if (card.isFlipped || card.isMatched) {
+                  message += `. Animal: ${card.name}`;
+                }
+                speakIfTabbing(message);
+              }}
+              aria-label={`Carta en fila ${row}, columna ${col}`}
             >
               <div className="card-inner">
                 <div className="card-front">
@@ -179,7 +217,8 @@ function MemoryGame() {
                 </div>
               </div>
             </div>
-          ))}
+          );
+          })}
         </div>
       )}
 
