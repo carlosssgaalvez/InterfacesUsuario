@@ -17,3 +17,11 @@ export const announceAnswerResult = (isCorrect) => {
   const text = isCorrect ? 'Correcto' : 'Incorrecto';
   speakIfTabbing(text);
 };
+
+export const speakWithoutTabbing = (text) => {
+  if (!window.speechSynthesis) return;
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  speechSynthesis.cancel();
+  speechSynthesis.speak(utterance);
+};

@@ -11,6 +11,7 @@ import PopupButton from "../../components/Button/PopupButton";
 import { useNavigate } from 'react-router-dom';
 import ButtonBack from "../../components/Button/ButtonBack";
 import InputTextChainMode from "../../components/Form/InputTextChainMode";
+import { speakWithoutTabbing } from "../../utils/speech";
 
 export default function WordChainGame() {
   const WORD_LIST = [
@@ -105,6 +106,18 @@ export default function WordChainGame() {
     return () => clearTimeout(timer);
   }, [timeLeft, gameOver]);
 
+    // Anuncio de la letra inicial al cargar la página
+  const hasSpoken = useRef(false);
+
+  useEffect(() => {
+    if (!hasSpoken.current && words.length > 0) {
+      const firstWord = words[0];
+      const lastChar = firstWord.slice(-1).toUpperCase();
+      speakWithoutTabbing("Palabra que empiece por la letra: " + lastChar);
+      hasSpoken.current = true;
+    }
+  }, [words]);
+
   const handleSubmit = () => {
     if (gameOver) return;
 
@@ -116,12 +129,16 @@ export default function WordChainGame() {
 
     if (words.includes(newWord)) {
       setError("¡Palabra repetida!");
+      speakWithoutTabbing("¡Palabra repetida! Pon otra con la letra:" + lastChar);
     } else if (!newWord.startsWith(lastChar)) {
       setError(`La palabra debe empezar con "${lastChar}"`);
+      speakWithoutTabbing(`La palabra debe empezar con la letra: ${lastChar}`);
     } else {
       setWords([...words, newWord]);
       setError("");
       setTimeLeft(9); // Reinicia el temporizador
+      const nextLetter = newWord.slice(-1).toUpperCase();
+      speakWithoutTabbing("Palabra que empiece por la letra: " + nextLetter);
     }
 
     setCurrentInput("");
@@ -155,11 +172,30 @@ export default function WordChainGame() {
         type="text"
         value={currentInput}
         onChange={(e) => setCurrentInput(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSubmit();
+          }
+        }}
         disabled={gameOver}
         ref={inputRef}
       />
-      <Button onClick={handleSubmit} className={"buttonChain"}  disabled={gameOver} valueButton={"Enviar"}>"Enviar"</Button>
+      <Button
+        onClick={handleSubmit}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            const lastChar = currentInput.trim().slice(-1);
+            if (lastChar) {
+              speakWithoutTabbing("Palabra que empiece por la letra: " + lastChar);
+            }
+          }
+        }}
+        className={"buttonChain"}
+        disabled={gameOver}
+        valueButton={"Enviar"}
+      >
+        Enviar
+      </Button>
       </div>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
