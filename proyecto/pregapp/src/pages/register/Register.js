@@ -4,7 +4,7 @@ import Button from '../../components/Button/Button';
 import ImageLogo from '../../components/Image/ImageLogo';
 import Logo from '../../images/logo.png';
 import Title from '../../components/Text/Title';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import InputText from '../../components/Form/InputText';
 import '../../styles/inputs.css';
 import '../../styles/buttons.css';
@@ -28,7 +28,22 @@ function Register(){
   const handleExit = () => {
      navigate('/login'); 
   };
-
+  useEffect(() => {
+        document.documentElement.classList.add('page-scrollable');
+        document.body.classList.add('page-scrollable');
+        const rootElement = document.getElementById('root');
+        if (rootElement) {
+          rootElement.classList.add('page-scrollable');
+        }
+  
+        return () => {
+          document.documentElement.classList.remove('page-scrollable');
+          document.body.classList.remove('page-scrollable');
+          if (rootElement) {
+            rootElement.classList.remove('page-scrollable');
+          }
+        };
+    }, []);
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
     if (event.target.value !== '' && username !== '' && password !== '' && confirmPassword !== '') {
