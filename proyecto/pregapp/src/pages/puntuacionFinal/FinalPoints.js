@@ -9,6 +9,9 @@ import DivGap4 from '../../components/divs/divGap4';
 import { useNavigate, useLocation } from 'react-router-dom';
 import PopupButton from '../../components/Button/PopupButton';
 import questionsData from '../../resources/questions.json';
+import H1 from '../../components/Text/H1';
+import PlainText from '../../components/Text/PlainText';
+
 function FinalPoints(){
   const navigate = useNavigate();
   const location = useLocation();
@@ -65,34 +68,32 @@ function FinalPoints(){
             <div className="divWithBorder" style={{ textAlign: 'center' }}>
 
               {puntosPartidaActual == 0? 
-                <h1 style={{ color: 'red' }}>¡PERDISTE!</h1> 
+                <H1 className="h1" valueText={'¡PERDISTE!'} speakOnFocus/> 
               :
-                <h1>¡FELICIDADES!</h1>}
-
-                <p>Has ganado los siguientes puntos:</p>
+                <H1 className="h1" valueText={'¡FELICIDADES!'} speakOnFocus/>}
+                <PlainText speakOnFocus className="plainText2" textValue='Has ganado los siguientes puntos:'/>
             </div>
             <div className="divWithBorder" style={{ backgroundColor: 'black', textAlign: 'center', fontSize: '2em', width: '120px' }}>
                 {tipo == 'pregunta'?
-                  <p className='puntuacion'>{puntosPartidaActual}/{puntosTotales}</p>
+                  <PlainText speakOnFocus className="puntuacion" textValue={`${puntosPartidaActual} de ${puntosTotales}`}/>
                 :
-                  <p className='puntuacion'>{puntosPartidaActual}</p>}
+                  <PlainText speakOnFocus className="puntuacion" textValue={`${puntosPartidaActual}`}/>}
             </div>
             <div className="divWithBorder" style={{ textAlign: 'center' }}>
                
                
                   {tipo ===  'wordle'? 
                       puntosPartidaActual == 0? 
-                        <p> La palabra era {palabra}  </p>
-                        :<p>"Has acertado la palabra"  </p> 
+                        <PlainText speakOnFocus className="plainText2" textValue='La palabra era {palabra}'/>
+                        :<PlainText speakOnFocus className="plainText2" textValue='Has acertado la palabra'/>
                   :tipo === 'pregunta'?
-                    <p className='percentage'>Has acertado el <span>{puntosPartidaActual/puntosTotales*100}%</span> de las preguntas</p>
+                    <PlainText speakOnFocus className="plainText2" textValue={`Has acertado el ${puntosPartidaActual/puntosTotales*100}% de las preguntas`}/>
                   :tipo === 'chain'?
-                    <p>Has conseguido encadenar <span>{puntosPartidaActual/10 +1}</span> palabras</p>
-                  :<p>prueba</p>} 
-              
+                    <PlainText speakOnFocus className="plainText2" textValue={`Has conseguido encadenar ${puntosPartidaActual/10 +1} palabras`}/>
+                  :<PlainText speakOnFocus className="plainText2" textValue='prueba'/>}
             </div>
         </DivGap4>
-        
+
         <br/><br/>
         <div className="buttonContainer2">
         <PopupButton valueButton={'Salir'} textValue={'¿Está seguro/a que desea salir de la partida?'}  onClick={handleExit}  />    
