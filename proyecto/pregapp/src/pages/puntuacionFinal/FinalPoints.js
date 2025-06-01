@@ -67,14 +67,14 @@ function FinalPoints(){
         <DivGap4>
             <div className="divWithBorder" style={{ textAlign: 'center' }}>
 
-              {puntosPartidaActual == 0? 
+              {puntosPartidaActual === 0? 
                 <H1 className="h1" valueText={'¡PERDISTE!'} speakOnFocus/> 
               :
                 <H1 className="h1" valueText={'¡FELICIDADES!'} speakOnFocus/>}
                 <PlainText speakOnFocus className="plainText2" textValue='Has ganado los siguientes puntos:'/>
             </div>
             <div className="divWithBorder" style={{ backgroundColor: 'black', textAlign: 'center', fontSize: '2em', width: '120px' }}>
-                {tipo == 'pregunta'?
+                {tipo === 'pregunta'?
                   <PlainText speakOnFocus className="puntuacion" textValue={`${puntosPartidaActual} de ${puntosTotales}`}/>
                 :
                   <PlainText speakOnFocus className="puntuacion" textValue={`${puntosPartidaActual}`}/>}
@@ -83,7 +83,7 @@ function FinalPoints(){
                
                
                   {tipo ===  'wordle'? 
-                      puntosPartidaActual == 0? 
+                      puntosPartidaActual === 0? 
                         <PlainText speakOnFocus className="plainText2" textValue={`La palabra era ${palabra}`}/>
                         :<PlainText speakOnFocus className="plainText2" textValue='Has acertado la palabra'/>
                   :tipo === 'pregunta'?

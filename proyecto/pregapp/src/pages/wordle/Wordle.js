@@ -80,7 +80,6 @@ function Wordle() {
 
   // Función para obtener el feedback de una palabra adivinada
   const getGuessFeedbackSpeech = (guess, secret) => {
-    let feedback = "";
     const upperSecret = secret.toUpperCase();
     const upperGuess = guess.toUpperCase();
     const secretLettersCount = {}; 

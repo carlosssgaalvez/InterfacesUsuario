@@ -3,7 +3,6 @@ import './Chain.css';
 import '../../styles/globalStyles.css';
 import '../../styles/buttons.css'
 import Button from '../../components/Button/Button';
-import InputText from "../../components/Form/InputText";
 import Title from "../../components/Text/Title";
 import ImageLogo from "../../components/Image/ImageLogo";
 import Logo from "../../images/logo.png";
