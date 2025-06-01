@@ -33,8 +33,13 @@ git clone https://github.com/carlosssgaalvez/InterfacesUsuario
 npm install
 npm start
 ```
-Una vez has ejecutado los comandos anteriores deberías ver la aplicación en  http://localhost:3000
+Una vez has ejecutado los comandos anteriores deberías ver la aplicación.
+
+En tu navegador en: http://localhost:3000
+
+En el móvil: Aparece la url cuando haces npm start
 
 ## Consideraciones
 
-Recomendamos visualizar la aplicación en chrome, ya que es donde hemos hecho la mayoría de las pruebas.
+- Recomendamos visualizar la aplicación en chrome, ya que es donde hemos hecho la mayoría de las pruebas.
+- Para que se pueda visualizar en el móvil debes estar conectado a la misma red que tu ordenador.
