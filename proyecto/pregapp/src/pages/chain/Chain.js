@@ -197,7 +197,7 @@ export default function WordChainGame() {
       </Button>
       </div>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: '#A80000' }}>{error}</p>}
       <br/>
       <h2>Palabras usadas:</h2>
       <div className="wordList">
