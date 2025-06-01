@@ -213,7 +213,7 @@ function Wordle() {
       hiddenInputRef.current.focus();
     }
   }, []);
-
+  
   const isLoggedIn = user !== undefined && user !== "";
   return isLoggedIn ? (
     <div className='container'>
