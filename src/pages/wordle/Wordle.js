@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Wordle.css';
 import '../../styles/globalStyles.css';
 import ImageLogo from '../../components/Image/ImageLogo';
@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import PopupButton from '../../components/Button/PopupButton';
 import Title from '../../components/Text/Title';
 import { speakIfTabbing } from '../../utils/speech';
+
 
 
 const MAX_ATTEMPTS = 6;
@@ -31,6 +32,8 @@ function Wordle() {
   const [currentGuess, setCurrentGuess] = useState(''); // Palabra actual
   const [message, setMessage] = useState('');
   const [initialInstructionsSpoken, setInitialInstructionsSpoken] = useState(false);
+  const hiddenInputRef = useRef(null);
+
 
   // sesion
   useEffect(() => {
@@ -205,6 +208,12 @@ function Wordle() {
     
   };
 
+  useEffect(() => {
+    if (hiddenInputRef.current) {
+      hiddenInputRef.current.focus();
+    }
+  }, []);
+
   const isLoggedIn = user !== undefined && user !== "";
   return isLoggedIn ? (
     <div className='container'>
@@ -213,7 +222,31 @@ function Wordle() {
         <ImageLogo className={"imgLogo"} src={Logo} />
         <Title className={"title"} valueText={"WORDLE"}/>
         <div className="game-container">
-            
+            <input
+              ref={hiddenInputRef}
+              type="text"
+              inputMode="text"
+              autoCapitalize="characters"
+              autoComplete="off"
+              autoCorrect="off"
+              maxLength={wordLength}
+              value={currentGuess}
+              onChange={(e) => {
+                const value = e.target.value.toUpperCase().replace(/[^A-Z]/g, '');
+                if (value.length <= wordLength) setCurrentGuess(value);
+              }}
+              onKeyDown={handleKeyPress}
+              style={{
+                position: 'absolute',
+                opacity: 0.01,
+                height: 1,
+                width: 1,
+                zIndex: -1,
+              }}
+              onFocus={() => {
+                if (hiddenInputRef.current) hiddenInputRef.current.focus();
+              }}
+            />
             {/* Para renderizar los intentos hechos (colorearlos) */}
           {guesses.map((guess, i) => (
             <div key={i} className="word-row">
@@ -226,22 +259,23 @@ function Wordle() {
             <div className="word-row">
               
               {Array.from({ length: wordLength }).map((_, i) => {
-                 //<div key={i} className='square'>{currentGuess[i] || ''}</div>
                 const letter = currentGuess[i] || '';
                 const isFilled = i < currentGuess.length;
                 return (
                   <div
                     key={i}
                     className={`square ${isFilled ? 'bounce' : ''}`}
+                    onClick={() => hiddenInputRef.current?.focus()}
                   >
                     {letter}
                   </div>
                 );
               })}
+
             </div>
           )}
 
-            {/* Para mostrar los intentos restantes */}
+
           {Array.from({ length: MAX_ATTEMPTS - guesses.length - 1 }).map((_, i) => (
             <div key={i} className="word-row">
               {Array.from({ length: wordLength }).map((_, j) => (
