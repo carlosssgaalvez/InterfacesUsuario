@@ -105,7 +105,7 @@ function Wordle() {
         secretLettersCount[letter]--; 
         return `Letra ${letter} en posición ${pos} está presente en otra posición.`;
       }
-      return `Letra ${letter} en posición ${pos} no está en la palabra.`;
+      return ``;
     }).join(' ');
 
     return finalFeedbackString;
