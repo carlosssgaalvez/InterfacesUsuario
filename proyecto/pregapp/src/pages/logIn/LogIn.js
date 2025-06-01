@@ -138,9 +138,9 @@ function LogIn(){
         <br/>
         <div className="buttonContainer">
         {isCorrectAccount? (
-          <ButtonAdvance  valueButton={'Iniciar sesión'} onClick={handleClick}/>
+          <ButtonAdvance   valueButton={'Iniciar sesión'} onClick={handleClick} classLogin={true}/>
         ):(
-          <PopupButton valueButton={'Iniciar sesión'} textValue={popUpText} oneButton={true}/>
+          <PopupButton valueButton={'Iniciar sesión'} textValue={popUpText} oneButton={true} classLogin={true}/>
         )}
         </div>
         </div>

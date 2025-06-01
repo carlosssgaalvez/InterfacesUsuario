@@ -5,7 +5,7 @@ import '../../styles/buttons.css';
 import { useNavigate } from 'react-router-dom';
 import { speakIfTabbing } from '../../utils/speech';
 
-function PopupButton({ valueButton, textValue, onClick, buttonBack, oneButton }) {
+function PopupButton({ valueButton, textValue, onClick, buttonBack, oneButton, classLogin }) {
     const [isPopupOpen, setPopupOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -38,6 +38,7 @@ function PopupButton({ valueButton, textValue, onClick, buttonBack, oneButton })
                     onClick={openPopup}
                     aria-label={valueButton}
                     onFocus={() => speakIfTabbing(valueButton)}
+                    classLogin={classLogin ? true : false}
                 />
             )}
 

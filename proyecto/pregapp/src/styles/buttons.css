@@ -17,6 +17,26 @@
     cursor: pointer;
 }
 
+.buttonAdvanceLogin {
+    font-size: 25px;
+    background-color: #2ECC71;
+    color: #000000;
+    border-radius: 30px;
+    width: 200px;
+    height: 52px;
+    border:#000000 0.3px solid;
+    @media (max-width: 768px) {
+        width: 130px;
+        height: 40px;
+        font-size: 15px;
+    }
+}
+
+.buttonAdvanceLogin:hover {
+    box-shadow: #000000 0px 4px 4px 0px;
+    cursor: pointer;
+}
+
 .buttonBack {
     font-size: 25px;
     background-color: #E94E4E;
