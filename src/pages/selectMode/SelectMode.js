@@ -46,6 +46,23 @@ function SelectMode() {
     },[]);
 
   useEffect(() => {
+    document.documentElement.classList.add('page-scrollable');
+    document.body.classList.add('page-scrollable');
+    const rootElement = document.getElementById('root');
+    if (rootElement) {
+      rootElement.classList.add('page-scrollable');
+    }
+  
+    return () => {
+      document.documentElement.classList.remove('page-scrollable');
+      document.body.classList.remove('page-scrollable');
+        if (rootElement) {
+          rootElement.classList.remove('page-scrollable');
+        }
+    };
+  }, []);
+
+  useEffect(() => {
     if (user) {
       setQuestionInstructions(!user.checkedMode1);
       setWordleInstructions(!user.checkedMode2);
