@@ -136,22 +136,22 @@ function Settings() {
           <Title className="title" valueText={'Configuración'}/>
           <div className="settings-container">
               <Subtitle className={"textSettings"} valueText={"Selecciona las instrucciones que desea saltar:"} speakOnFocus/>
-              <DivLabelInput>
+              <div className='divLabelInputText'>
                 <CheckBox className="checkbox-style" id={"PREGUNTAS"} checked={checkedMode1} onChange={handleCheckBoxChange1} labelText= "Modo Preguntas"/>
                 <Label className="textSettings" forId={'PREGUNTAS'} textValue={'PREGUNTAS'}/>
-              </DivLabelInput>
-              <DivLabelInput>
+              </div>
+              <div className='divLabelInputText'>
                 <CheckBox className="checkbox-style" id={"WORDLE"} checked={checkedMode2} onChange={handleCheckBoxChange2} labelText="Modo Wordle"/>
                 <Label className="textSettings" forId={'WORDLE'} textValue={'WORDLE'}/>
-              </DivLabelInput>
-              <DivLabelInput>
+              </div>
+              <div className='divLabelInputText'>
                 <CheckBox className="checkbox-style" id={"MEMORY GAME"} checked={checkedMode3} onChange={handleCheckBoxChange3} labelText="Modo Memoria"/>
                 <Label className="textSettings" forId={'MEMORY GAME'} textValue={'MEMORIA'}/>
-              </DivLabelInput>
-              <DivLabelInput>
+              </div>
+              <div className='divLabelInputText'>
                 <CheckBox className="checkbox-style" id={"CADENA"} checked={checkedMode4} onChange={handleCheckBoxChange4} labelText="ModoCadena"/>
                 <Label className="textSettings" forId={'CADENA'} textValue={'CADENA'}/>
-              </DivLabelInput>
+              </div>
             </div>
           <div className="music-settings-container">
             <div className='slider-container'>
