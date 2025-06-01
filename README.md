@@ -30,7 +30,6 @@
 ## 🛠️ Instalación
 ```bash
 git clone https://github.com/carlosssgaalvez/InterfacesUsuario
-cd 
 npm install
 npm start
 ```
