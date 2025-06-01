@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import '../../styles/inputs.css';
 import '../../styles/buttons.css';
 import '../../styles/globalStyles.css';
+import '../../styles/divs.css';
 import ButtonAdvance from '../../components/Button/ButtonAdvance';
 import DivGap4 from '../../components/divs/divGap4';
 import { useNavigate, useLocation } from 'react-router-dom';
