@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import PopupButton from '../../components/Button/PopupButton';
 import Title from '../../components/Text/Title';
 import { speakIfTabbing } from '../../utils/speech';
+import Label from '../../components/Text/Label';
 
 
 
@@ -223,6 +224,7 @@ function Wordle() {
         <Title className={"title"} valueText={"WORDLE"}/>
         <div className="game-container">
             <input
+              id="hidden-input"
               ref={hiddenInputRef}
               type="text"
               inputMode="text"
@@ -247,6 +249,7 @@ function Wordle() {
                 if (hiddenInputRef.current) hiddenInputRef.current.focus();
               }}
             />
+            <Label forId="hidden-input" textValue={"."} isHidden={true}/>
             {/* Para renderizar los intentos hechos (colorearlos) */}
           {guesses.map((guess, i) => (
             <div key={i} className="word-row">
